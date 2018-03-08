@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//Math对象 是用来执行一些数学任务
+
+			//取最大值
+			//var num = Math.max(10,20,30,5);
+			//alert(num);
+
+			//取最小值
+			//var num= Math.min(20,40,1,2);
+			//alert(num);
+
+			//四舍五入 取整
+			//var num = Math.round(14.5);
+			//alert(num);
+
+			//向上取整
+			//var num = Math.ceil(15.1);
+			//alert(num);
+
+			//var num = Math.ceil(-15.1);
+			//alert(num);
+
+			//向下取整
+			//var num = Math.floor(50.6);
+			//alert(num);
+
+			//随机数
+			//JS的随机数是产生0~1之间的随机小数
+			//不包括0和1
+
+			//console.log(Math.random());
+
+			//生成0~10的随机整数
+//			for(var i = 0; i < 20; i++) {
+//				console.log(Math.round(Math.random() * 10));
+//			}
+			
+			//生成10~100的随机整数
+			//
+//			for(var i=0;i<20;i++){
+//				console.log(Math.floor(Math.random()*(100-10+1)+10));
+//			}
+			
+			//取随机数公式
+			var min=0;//最小值
+			var max=10; //最大值
+			for(var i=0;i<20;i++){
+				console.log(Math.floor(Math.random()*(max-min+1)+min));
+			}
+		</script>
+	</body>
+
+</html>

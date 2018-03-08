@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<a href="http://www.baidu.com">百度一下</a>
+		
+		<script type="text/javascript">
+		
+			var baidu = document.getElementsByTagName("a")[0];
+			
+			baidu.onclick = function(e){
+				alert("要去百度吗？没门！！！");
+				
+				var e = e || window.event;
+				
+				//取消默认行为
+				if(e.preventDefault){
+					//非IE
+					e.preventDefault();
+				}else{
+					//IE
+					e.returnValue = false;
+					//return false; 
+				}
+				
+			}
+		</script>
+	</body>
+</html>

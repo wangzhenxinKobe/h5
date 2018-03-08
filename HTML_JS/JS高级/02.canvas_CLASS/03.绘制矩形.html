@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="500" style="border:1px solid black">
+			您的浏览器不支持canvas，请升级浏览器。
+		</canvas>
+		
+		<script>
+			//获取canvas元素
+			var oC = document.getElementById("canvas");
+			//获取绘图环境对象
+			var ctx = oC.getContext("2d");
+			ctx.strokeStyle = "black";
+			//设置线条的宽度
+			ctx.lineWidth = 10;
+			//绘制空心矩形
+			ctx.strokeRect(100,100,200,200);
+			ctx.strokeStyle = "black";
+			ctx.strokeRect(50,50,50,50);
+			
+			//ctx.clearRect(0,0,600,500);
+			
+			//绘制填充矩形
+			ctx.fillStyle = "red";
+			ctx.fillRect(100,100,200,200);
+			ctx.fillStyle = "blue";
+			ctx.fillRect(50,50,50,50);
+			
+		</script>
+	</body>
+</html>

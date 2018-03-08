@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding-top: 0;
+			}
+			
+			#box2 {
+				position: absolute;
+				left: 0;
+				top: 500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box1">
+			<div class="glass-wrap">
+				<div class="glass-small-wrap">
+					<img class="glass-img-small" src="img/min.jpg" alt="" />
+					<div class="glass-box"></div>
+				</div>
+				<div class="glass-big-wrap">
+					<img class="glass-img-big" src="img/max.jpg" alt="" />
+				</div>
+			</div>
+		</div>
+		<div id="box2">
+			<div class="glass-wrap">
+				<div class="glass-small-wrap">
+					<img class="glass-img-small" src="img/min.jpg" alt="" />
+					<div class="glass-box"></div>
+				</div>
+				<div class="glass-big-wrap">
+					<img class="glass-img-big" src="img/max.jpg" alt="" />
+				</div>
+			</div>
+		</div>
+
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="jquery.glass.js"></script>
+
+		<script>
+			$(function() {
+				$("#box1").find(".glass-wrap").glass();
+				$("#box2").find(".glass-wrap").glass({
+					width: 400,
+					height: 400
+				});
+			})
+		</script>
+	</body>
+
+</html>

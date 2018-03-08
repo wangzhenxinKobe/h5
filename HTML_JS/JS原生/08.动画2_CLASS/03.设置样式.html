@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			//JSON(Javascript Object Notation)
+			//是一种轻量级的数据交换格式
+			var json = {"name":{"bigname":"江疏影","smallname":"小影影"},"height":"170","age":"28"};
+			
+			for(var arr in json){
+				console.log(arr + ":"+json[arr]);
+			}
+			
+			//console.log(json.name);
+			//console.log(json["name"]);
+			console.log(json["name"]["smallname"]);
+			
+			var oWrap = document.getElementById("wrap");
+			
+			//oWrap.style.width = "100px";
+			oWrap["style"]["width"] = "200px";
+			console.log(document["getElementById"]("wrap"));
+			
+			
+		</script>
+		
+	</body>
+</html>

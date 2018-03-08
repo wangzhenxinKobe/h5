@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="600" height="500" style="border:1px solid black">
+			您的浏览器不支持canvas，请升级浏览器。
+		</canvas>
+
+		<script>
+			//获取canvas元素
+			var oC = document.getElementById("canvas");
+			//获取绘图环境对象
+			var ctx = oC.getContext("2d");
+
+			//设置每个格子的宽高
+			var rectH = 50;
+			var rectW = 50;
+
+			//计算线条数
+			var lineHNum = oC.height / rectH;
+			var lineVNum = oC.width / rectW;
+
+			//绘制横线
+			for(var i = 0; i <= lineHNum; i++) {
+				ctx.beginPath();
+				ctx.moveTo(0,i*rectH);
+				ctx.lineTo(oC.width,i*rectH);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			
+			//绘制竖线
+			for(var i = 0; i <= lineVNum; i++) {
+				ctx.beginPath();
+				ctx.moveTo(i*rectW,0);
+				ctx.lineTo(i*rectW,oC.height);
+				ctx.closePath();
+				ctx.stroke();
+			}
+		</script>
+	</body>
+
+</html>

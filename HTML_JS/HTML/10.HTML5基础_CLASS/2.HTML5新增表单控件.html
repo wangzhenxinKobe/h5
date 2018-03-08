@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="get">
+			<!--邮箱地址，输入错误地址会有验证提示
+				在移动端自动切换英文键盘
+			-->
+			<input type="email" />
+			<br />
+			<!--网址 输入错误会有验证提示-->
+			<input type="url" />
+			<br />
+			
+			<!--搜索框
+				没啥特殊变化，就后面多一个叉
+			-->
+			<input type="search" />
+			
+			<!--数值择器
+				max最大数值
+				min最小数值
+				value当前数值
+				step步数
+			-->
+			<input type="range" max="100" min="0" step="20" value="20" />
+			<br />
+			<!--电话号码输入框
+				在PC端没有验证
+				移动端会自动切换为数字键盘
+			-->
+			<input type="tel" />
+			<br />
+			
+			<!--数字
+				在移动端会自动切换为数字键盘
+			-->
+			<input type="number">
+			<br />
+			
+			<!--日期选择器-->
+			<input type="date" />
+			<br />
+			<!--日期时间选择器-->
+			<!--chrome firefox都不支持 opera支持-->
+			<input type="datetime" />
+			
+			<!--时间选择器
+				firefox不支持
+			-->
+			<input type="time" />
+			<br />
+			
+			<!--时间日期选择器 不带时区-->
+			<input type="datetime-local" value="" />
+			<br />
+			
+			<!--周选择器-->
+			<input type="week" value="" />
+			
+			<br />
+			<!--月选择器-->
+			<input type="month" value="" />
+			<br />
+			
+			<!--颜色选择器-->
+			<input type="color" name="color" />
+			
+			<input type="submit" value="提交"/>
+			
+			
+		</form>
+		
+	</body>
+</html>

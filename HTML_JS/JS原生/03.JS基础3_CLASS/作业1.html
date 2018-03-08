@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.tab{
+				width: 328px;
+				overflow: hidden;
+			}
+			.tab div{
+				width: 80px;
+				height: 30px;
+				border: 1px solid gainsboro;
+				text-align: center;
+				line-height: 30px;
+				float: left;
+			}
+			.tab .sel{
+				background-color: #666666;
+				color: white;
+			}
+			.box{
+				width: 326px;
+				height: 300px;
+				border: 1px solid gainsboro;
+			}
+			.box>div{
+				width: 100%;
+				height: 100%;
+			}
+			.box>div:nth-child(1){
+				background-color: red;
+			}
+			.box>div:nth-child(2){
+				background-color: green;
+				display: none;
+			}
+			.box>div:nth-child(3){
+				background-color: blue;
+				display: none;
+			}
+			.box>div:nth-child(4){
+				background-color: yellow;
+				display: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="wrap">
+			<div class="tab">
+				<div id="t1" class="sel">导航</div>
+				<div id="t2">推荐</div>
+				<div id="t3">购物</div>
+				<div id="t4">视频</div>
+			</div>
+			<div class="box">
+				<div id="b1">11111</div>
+				<div id="b2">22222</div>
+				<div id="b3">33333</div>
+				<div id="b4">44444</div>
+			</div>
+		</div>
+		
+		<script>
+		
+			//获取选项卡元素
+			var oT1= document.getElementById("t1");
+			var oT2= document.getElementById("t2");
+			var oT3= document.getElementById("t3");
+			var oT4= document.getElementById("t4");
+			
+			//获取模块元素
+			var oB1= document.getElementById("b1");
+			var oB2= document.getElementById("b2");
+			var oB3= document.getElementById("b3");
+			var oB4= document.getElementById("b4");
+			
+			
+			oT1.onmouseover = function(){
+				oT1.className = "sel";
+				oT2.className = "";
+				oT3.className = "";
+				oT4.className = "";
+				
+				oB1.style.display = "block";
+				oB2.style.display = "none";
+				oB3.style.display = "none";
+				oB4.style.display = "none";
+				
+				oB1.style.backgroundColor = "red";
+				
+			}
+			oT2.onmouseover = function(){
+				oT1.className = "";
+				oT2.className = "sel";
+				oT3.className = "";
+				oT4.className = "";
+				
+				oB1.style.display = "none";
+				oB2.style.display = "block";
+				oB3.style.display = "none";
+				oB4.style.display = "none";
+				
+				oB2.style.backgroundColor = "blue";
+				
+			}
+			oT3.onmouseover = function(){
+				oT1.className = "";
+				oT2.className = "";
+				oT3.className = "sel";
+				oT4.className = "";
+				
+				oB1.style.display = "none";
+				oB2.style.display = "none";
+				oB3.style.display = "block";
+				oB4.style.display = "none";
+				
+				oB3.style.backgroundColor = "yellow";
+				
+			}
+			oT4.onmouseover = function(){
+				oT1.className = "";
+				oT2.className = "";
+				oT3.className = "";
+				oT4.className = "sel";
+				
+				oB1.style.display = "none";
+				oB2.style.display = "none";
+				oB3.style.display = "none";
+				oB4.style.display = "block";
+				
+				oB4.style.backgroundColor = "green";
+				
+			}
+						
+		</script>
+	</body>
+</html>

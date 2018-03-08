@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			Array.prototype.a = 88;
+			//var ary =new Array(1,2,3,4);
+			var ary = [1,2,3,4];		
+			alert(ary.a);
+			ary.a = 66;
+			alert(ary.a);
+			
+			//删除对象的属性
+			delete ary.a;
+			
+			alert(ary.a);
+			
+			//原型链（面试经常问）
+			//当获取某对象属性值得时候，系统首先判断该对象是否有这个属性，
+			//如果有就返回，如果没有，
+			//就去构造函数的原型中去找，如果还没有返回undefined
+			
+			
+		</script>
+	</body>
+</html>

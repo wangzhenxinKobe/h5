@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<script>
+			var arr = [10, 2, 3, 5, 1, 9];
+			//按照从小到大的顺序排序
+//			for(var i = 0; i < arr.length - 1; i++) {
+//
+//				for(var j = 0; j < arr.length - 1 - i; j++) {
+//					
+//					//如果当前j大于下一个j+1，调换位置
+//					if(arr[j] > arr[j + 1]) {
+//						var temp = arr[j];
+//						arr[j] = arr[j+1];
+//						arr[j+1] = temp;
+//					}
+//				}
+//			}
+//			console.log(arr);
+			
+			//按照从大到小的顺序排序
+			for(var i = 0; i < arr.length - 1; i++) {
+
+				for(var j = 0; j < arr.length - 1 - i; j++) {
+					
+					//如果当前j小于下一个j+1，调换位置
+					if(arr[j] < arr[j + 1]) {
+						var temp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp;
+					}
+				}
+			}
+			console.log(arr);
+		</script>
+
+	</body>
+
+</html>

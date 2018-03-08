@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select name="" id="city">
+			<option value="沈阳市">沈阳市</option>
+			<option value="大连市">大连市</option>
+			<option value="鞍山市">鞍山市</option>
+		</select>
+		
+		<script type="text/javascript">
+			var oCity= document.getElementById("city");
+			
+			//当下拉菜单选项值发生变化时触发
+			oCity.onchange = function(){
+				//显示当前选择的值
+				//this指向的是当前发生这个事件的对象
+				alert(this.value);
+			}
+		</script>
+	</body>
+</html>

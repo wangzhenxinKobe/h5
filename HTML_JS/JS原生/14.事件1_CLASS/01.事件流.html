@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box1{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+			#box2{
+				width: 200px;
+				height: 200px;
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box1">
+			<div id="box2"></div>
+		</div>
+		
+		<script>
+			
+			//事件是javascript与文档或浏览器之间发生的特定的交互瞬间，
+			//可以使用事件监听或处理程序来预订事件，以便事件发生时执行相应的代码
+			
+			//event对象 代表当前事件的状态，例如触发event对象的元素、鼠标位置及状态、
+			//按下的按键等等。
+			
+			//事件流
+			//标准事件流分为三个阶段：事件捕获阶段、处理目标阶段、事件冒泡阶段
+			//IE事件流：处理目标阶段、事件冒泡阶段
+			
+			document.getElementById("box2").onclick= function(e){
+				
+				//获取event对象
+				var e = e || window.event;
+				
+				alert("我是box2");
+				
+				
+				//阻止冒泡
+				if(e.stopPropagation){
+					//非IE的
+					e.stopPropagation();
+				}else{
+					//IE阻止冒泡
+					e.cancelBubble();
+				}
+				
+			}
+			
+			document.getElementById("box1").onclick = function(){
+				alert("我是box1");
+			}
+			
+			document.body.onclick = function(){
+				alert("我是body");
+			}
+		</script>
+	</body>
+</html>

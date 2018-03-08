@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			// 练习：写一个求两个数的差的函数
+//			function chaNum(num1, num2) {
+//				var ret = num1 - num2;
+//				return ret;
+//			}
+			//console.log(chaNum(100, 50));
+
+			// 练习：求两个数的和
+//			function chaNum(num1, num2) {
+//				var ret = num1 + num2;
+//				return ret;
+//			}
+			//console.log(chaNum(100, 50));
+
+			// 练习：求两个数的商
+//			function chaNum(num1, num2) {
+//				var ret = num1 / num2;
+//				return ret;
+//			}
+			//console.log(chaNum(100, 50));
+
+			// 练习：求两个数相乘
+//			function chaNum(num1, num2) {
+//				var ret = num1 * num2;
+//				return ret;
+//			}
+			//console.log(chaNum(100, 50));
+
+			//			function compute(num1, num2, type) {
+			//				if(type == "+") {
+			//					return num1 + num2;
+			//				}else if(type == "-"){
+			//					return num1 - num2;
+			//				}else if(type == "*"){
+			//					return num1*num2;
+			//				}else if(type == "/"){
+			//					return num1/num2
+			//				}else{
+			//					return "请输入标准运算符";
+			//				}
+			//			}
+//			function compute(num1, num2, type) {
+//				var ret = "请输入标准运算符";
+//
+//				if(type == "+") {
+//					ret = num1 + num2;
+//				} else if(type == "-") {
+//					ret = num1 - num2;
+//				} else if(type == "*") {
+//					ret = num1 * num2;
+//				} else if(type == "/") {
+//					ret = num1 / num2
+//				}
+//				return ret;
+//			}
+//
+//			var n1 = compute(20, 50, "+");
+//			console.log(n1);
+//
+//			n1 = compute(20, 50, "-");
+//			console.log(n1);
+//
+//			n1 = compute(20, 50, "*");
+//			console.log(n1);
+//
+//			n1 = compute(20, 50, "/");
+//			console.log(n1);
+
+			// 练习：用函数，求出整型数组元素的总和
+
+//			var ary1 = [10, 20, 45, 20, 23, 68, 79];
+//			var s = sumAry(ary1);
+//			console.log(s);
+//
+//			var ary2 = [10, 20, 45, 20, 23, 68, 79, 100, 200, 300];
+//			s = sumAry(ary2);
+//			console.log(s);
+//
+//			function sumAry(arr) {
+//				var sum = 0;
+//				for(var i = 0; i < arr.length; i++) {
+//					sum += arr[i];
+//				}
+//				return sum;
+//			}
+
+			// 写一个函数，求整型数组中的最大值
+			
+			var ary1 = [10, 78, 29, 66, 99, 100];
+
+			function aryMax(arr) {
+				var max = arr[0];
+				for(var i = 0; i < arr.length; i++) {
+					if(arr[i]>max){
+						max = arr[i];
+					}
+				}
+				return max;
+			}
+			
+			console.log(aryMax(ary1));
+			
+
+			// 练习：求两个数的最大值
+			function maxNum2(a,b){
+				return a>b?a:b;
+			}
+			//alert(maxNum2(10,20));
+			// 练习：求三个数的最大值
+			
+			function maxNum3(a,b,c){
+				var num = maxNum2(a,b);
+				return num>c?num:c;
+			}
+			// 练习：求四个数的最大值
+			function maxNum4(a,b,c,d){
+				var num = maxNum3(a,b,c);
+				return num>d?num:d;
+			}
+		</script>
+	</body>
+
+</html>

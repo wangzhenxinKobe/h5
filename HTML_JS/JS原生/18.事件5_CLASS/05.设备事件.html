@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<script>
+			//orientationchange事件 只支持ios系统
+			//改变屏幕的查看模式时触发
+			//属于window对象的事件
+			window.addEventListener("orientationchange",function(){
+				//window.orientation 三个值
+				//90为手机向左旋转横屏模式
+				//0为正常竖屏模式(肖像模式)
+				//-90为手机向右旋转横屏模式
+				//180为手机倒立竖屏模式(目前尚不支持)
+				
+				//alert(window.orientation);
+			},false);
+			
+			//deviceorientation
+			//方向传感器数据事件 可以获取手机静止状态下的方向数据
+			//加速针检测到设备方向变化的时候(手机所处的角度、方位和朝向等)触发
+			var oWrap = document.getElementById("wrap");
+			window.addEventListener("deviceorientation",function(e){
+				var e = e || window.event;
+				//alpha 在围绕z轴旋转(左右旋转)时与y轴的角度差(0~360之间的浮点数)
+				oWrap.innerHTML = e.alpha + "<br>";
+				//beta 在围绕x轴旋转时(前后旋转)与z轴的角度差(-180~180之间的浮点数)
+				oWrap.innerHTML += e.beta + "<br>";
+				//gamma 在围绕y轴旋转时(设备扭转)与z轴的角度差(-90~90之间的浮点数)
+				oWrap.innerHTML += e.gamma + "<br>";
+				//alert(e.alpha);
+			},false);
+			
+			//devicemotion 封装了运动传感器的事件，可以获取手机运动状态下的加速度等数据
+			
+			window.addEventListener("devicemotion",function(e){
+				//acceleration属性：
+				//包括x y z三个属性对象，在不考虑重力的情况告诉你每个方向的加速度
+				
+				//accelerationIncludingGravity属性
+				//包括x y z三个属性对，在考虑z轴自然重力加速度的情况，告诉你每个方向的加速度
+				
+				
+			},false)
+			
+		</script>
+		
+	</body>
+</html>

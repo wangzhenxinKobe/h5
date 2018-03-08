@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--DOM-->
+		<h1>MyGirl</h1><ul id="mygirls">
+			赵丽颖
+			<li>江疏影</li>
+			<li>范冰冰</li>
+			<li>汤唯</li>
+		</ul><div> </div>
+		<script>
+			//DOM Document Object Model（文档对象模型）
+			//是针对HTML和XML的一套API（应用程序编程接口）
+
+			//通过ID获取元素
+			var oMyGirls = document.getElementById("mygirls");
+			
+			//每一个节点对象都三个属性
+			//1.nodeType
+			//2.nodeName
+			//3.nodeValue
+		
+			//nodeType节点类型
+			//1元素节点
+			//2属性节点
+			//3文本节点
+			//8注释节点
+			//9根节点
+			console.log(oMyGirls.nodeType);
+			
+			//nodeName节点名称
+			//节点为元素节点时nodeName返回的是标签名
+			console.log(oMyGirls.nodeName);
+			
+			//nodeValue节点值
+			//如果是文本节点返回是文本的内容
+			//其他类型返回的是null
+			console.log(oMyGirls.nodeValue);
+			
+			//获取子节点
+			//childNodes获取子节点集合
+			//换行符会被解析为一个文本节点
+			var cNodes = oMyGirls.childNodes;
+			//节点集合长度（子节点的数量）
+			console.log(cNodes.length);
+			
+			//通过下标获取子节点
+			console.log(cNodes[0].nodeType);
+			console.log(cNodes[0].nodeName);
+			console.log(cNodes[0].nodeValue);
+			//获取子节点方法2
+			console.log(cNodes.item(1).nodeName);
+			
+			//获取第一个子节点
+			console.log(oMyGirls.firstChild.nodeValue);
+			
+			//获取最后一个子节点
+			console.log(oMyGirls.lastChild.nodeType);
+			
+			//获取兄弟级别的下一个节点
+			console.log(oMyGirls.nextSibling.nodeName);
+			
+			//获取兄弟级别的上一个节点
+			console.log(oMyGirls.previousSibling.nodeName.toLowerCase());
+			
+			//获取父级节点parentNode
+			console.log("父级节点："+oMyGirls.parentNode.nodeName);
+			
+			//toLowerCase() 字符中所有的大写字母都转换为小写字母
+			//toUpperCase() 字符中所有的小写字母都转换为大写字母
+			console.log("abc".toUpperCase());
+			
+			var nextNode = oMyGirls.nextSibling;
+			//hasChildNodes()用于判断该元素对象中是否拥有子节点
+			//有返回true 没有返回false
+			console.log(nextNode.hasChildNodes());
+			
+			
+			//children 返回是元素类型的节点集合
+			//不包括文本节点、换行符等	
+			var cr = oMyGirls.children;
+			console.log(cr.length);
+		</script>
+
+	</body>
+
+</html>

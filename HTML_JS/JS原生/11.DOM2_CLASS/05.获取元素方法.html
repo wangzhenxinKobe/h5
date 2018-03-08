@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="red"></div>
+			<div class="blue"></div>
+		</div>
+		<input type="text" name="username" id="username" />
+
+		<script type="text/javascript">
+			//通过name获取元素,返回是一个元素集合
+			//所有name等于username的元素
+//			var oUserName = document.getElementsByName("username")[0];
+//			oUserName.value = "呵呵";
+
+			//通过类名获取元素，返回是一个元素集合
+			//所有类名为red的元素
+			//IE9以上支持
+//			var oRed = document.getElementsByClassName("red")[1];
+//			oRed.style.width = "100px";
+//			oRed.style.height = "100px";
+//			oRed.style.backgroundColor = "red";
+
+			//通过CSS选择器获取元素 
+			//只获取选择器匹配的第一个元素	
+			//querySelector和querySelectorAll IE8以上支持
+			
+			//document.querySelector("#wrap");
+			//document.querySelector(".red");
+			var wd =document.querySelector("#wrap div");
+			wd.style.backgroundColor = "green";
+			
+			//通过CSS选择器获取元素
+			//获取选择器匹配所有元素，返回的是一个元素集合
+			var wraps = document.querySelectorAll("#wrap div");
+			var wraps = document.querySelectorAll(".red,.blue");
+			wraps[0].style.backgroundColor = "pink";
+			wraps[1].style.backgroundColor = "deeppink";
+			
+			console.log(wraps.length);
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 200px;
+				height: 200px;
+				overflow: scroll;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			姓名：江疏影
+生日：1986年9月1日
+简介：江疏影，1986年9月1日出生于上海，中国内地女演员，毕业于上海戏剧学院2004级表演系本科班，英国东英格利亚大学传媒经济学2009级硕士。2005年出演首部电视剧《飞花如蝶》“金凤...
+		</div>
+		<script type="text/javascript">
+			//UI事件 是指那些与用户操作不一定有关系的事件
+			
+			//onload事件
+			window.onload = function(){
+				//当页面完全加载完毕后触发
+			}
+			
+			var newImg = new Image();
+			newImg.src ="";
+			newImg.onload = function(){
+				//当图片加载完毕后执行
+			}
+			
+			//onunload事件
+			//当页面完全卸载时在window对象上触发
+			window.onunload = function(){
+				window.open("http://www.baidu.com");
+			}
+			
+			//onresize事件
+			//当页面尺寸发生变化时在window对象上触发
+			window.onresize = function(){
+				console.log(document.documentElement.clientWidth);
+			}
+			
+			//onscroll事件
+			//当用户滚动 带滚动条的元素内容时 在该元素上触发
+			document.getElementById("wrap").onscroll = function(){
+				console.log(this.scrollTop);
+			}
+		</script>
+	</body>
+</html>

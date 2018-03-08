@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制椭圆</title>
+		<style type="text/css">
+			#canvas {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<canvas id="canvas" width="600" height="500"></canvas>
+
+		<script>
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+			
+			//二次贝塞尔
+			ctx.beginPath();
+			ctx.moveTo(200,200);
+			ctx.quadraticCurveTo(300,300,400,200);
+			ctx.stroke();
+			
+			//三次贝塞尔
+			ctx.beginPath();
+			ctx.moveTo(200,400);
+			ctx.bezierCurveTo(100,500,500,500,400,400);
+			ctx.closePath();
+			ctx.fill();
+		</script>
+
+	</body>
+
+</html>
+	</body>
+</html>

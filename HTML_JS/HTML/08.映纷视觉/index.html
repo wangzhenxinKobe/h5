@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #F2F2F2;
+			}
+			
+			.wrap {
+				width: 100%;
+				position: relative;
+			}
+			
+			.head {
+				width: 100%;
+				height: 85px;
+				padding-top: 15px;
+				background-color: black;
+				position: fixed;
+				left: 0;
+				opacity: 0.75;
+				filter: alpha(opacity=75);
+				text-align: center;
+				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+				z-index: 1;
+			}
+			
+			.head img {
+				height: 44px;
+				width: 136px;
+			}
+			
+			.nav {
+				margin-top: 20px;
+			}
+			
+			.nav a {
+				font-size: 14px;
+				color: #898989;
+				text-decoration: none;
+				margin-left: 110px;
+			}
+			
+			.nav a:hover {
+				color: #FFFFFF;
+			}
+			
+			.nav .nav_one {
+				margin-left: 0;
+				color: #898989;
+			}
+			
+			.main {
+				position: relative;
+				width: 100%;
+				top: 120px;
+				overflow: hidden;
+			}
+			
+			.banner {
+				width: 1200px;
+				height: 675px;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.banner img {
+				width: 1200px;
+				height: 675px;
+			}
+			
+			.banner_title {
+				width: 100%;
+				height: 35px;
+				background-color: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				bottom: 0;
+				color: #FFFFFF;
+				line-height: 35px;
+				text-align: center;
+				font-size: 16px;
+			}
+			
+			.banner_tab {
+				width: 168px;
+				height: 8px;
+				margin: 10px auto;
+			}
+			
+			.tab {
+				width: 6px;
+				height: 6px;
+				border: 1px solid #FFFFFF;
+				background-color: #999999;
+				border-radius: 6px;
+				float: left;
+				margin: 0 10px;
+			}
+			
+			.tab_on {
+				border: 1px solid #999999;
+				background-color: #FFFFFF;
+			}
+			
+			.about {
+				width: 1200px;
+				padding: 25px 0;
+				color: #666666;
+				text-indent: 2em;
+				border-top: 1px solid #E8E8E8;
+				border-bottom: 1px solid #E8E8E8;
+				font-size: 14px;
+				line-height: 1.5em;
+				margin: 30px auto 0;
+				font-family: STKaiti, "微软雅黑";
+			}
+			
+			.icon {
+				width: 1200px;
+				margin: 20px auto 0;
+				text-align: center;
+				overflow: hidden;
+			}
+			
+			.icon img {
+				width: 60px;
+				margin: 0 10px;
+			}
+			
+			.work {
+				width: 1200px;
+				margin: 20px auto 0;
+				overflow: hidden;
+			}
+			
+			.work_item {
+				width: 372px;
+				height: 241px;
+				float: left;
+				position: relative;
+				border-radius: 5px;
+				overflow: hidden;
+				box-shadow: 2px 2px 2px #E3E3E3;
+				margin-bottom: 24px;
+			}
+			
+			.item_photo {
+				width: 372px;
+				height: 206px;
+				position: absolute;
+				top: 0;
+			}
+			
+			.item_photo img {
+				width: 372px;
+				height: 206px;
+			}
+			
+			.item_about {
+				width: 372px;
+				height: 126px;
+				position: absolute;
+				top: 0;
+				background-color: rgba(0, 0, 0, 0.5);
+				color: #FFFFFF;
+				text-align: center;
+				padding-top: 80px;
+				display: none;
+			}
+			
+			.item_title {
+				width: 372px;
+				height: 35px;
+				background-color: #FFFFFF;
+				text-align: center;
+				line-height: 35px;
+				color: #B9B9B9;
+				position: absolute;
+				bottom: 0;
+			}
+			
+			.item_about p {
+				margin: 0;
+				padding: 0;
+				font-size: 32px;
+			}
+			
+			.work_item:hover .item_about {
+				display: block;
+			}
+			
+			.work_item:hover .item_title {
+				color: #000000;
+			}
+			
+			.item_center {
+				margin: 0 42px;
+			}
+			
+			.foot {
+				width: 100%;
+				height: 152px;
+				background-color: #E0E0E0;
+				margin-top: 160px;
+				padding-top: 15px;
+			}
+			.foot_wrap{
+				width: 360px;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			.foot_left{
+				text-align: center;
+				width: 116px;
+				float: left;
+				
+			}
+			.foot_left img{
+				width: 30px;
+				height: 25px;
+				margin-left: 6px;
+				vertical-align: top;
+			}
+			.foot_right{
+				float: right;
+				font-size: 12px;
+				color: #707070;
+				text-shadow: 1px 1px 1px white;
+				border-left: 1px solid #BCBCBC;
+				padding-left: 20px;
+			}
+			.foot_right p{
+				padding: 0;
+				margin:4px;
+			}
+			.foot_right img{
+				width: 143px;
+			}
+		
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="head">
+				<img src="img/title2.png" alt="" />
+				<div class="nav">
+					<a href="" class="nav_one">HOME</a>
+					<a href="">WORK</a>
+					<a href="">CONTACT</a>
+					<a href="">JOIN US</a>
+				</div>
+			</div>
+			<div class="main">
+				<div class="banner">
+					<img src="img/yicheHD.jpg" alt="" />
+					<div class="banner_title">易车影业</div>
+				</div>
+				<div class="banner_tab">
+					<div class="tab tab_on"></div>
+					<div class="tab"></div>
+					<div class="tab"></div>
+					<div class="tab"></div>
+					<div class="tab"></div>
+					<div class="tab"></div>
+				</div>
+				<div class="about">
+					Infini Studio (映纷创意)是一家创意机构，专注于动画影像的创意与设计。我们使用设计、绘画、动画、特效及多种创新形式（Motion Graphics），以动态视觉语言对品牌与内容进行创意呈现。并由多名动画导演、设计师、插画师、三维艺术家共同协作完成。
+				</div>
+				<div class="icon">
+					<img src="img/1.jpg" alt="" />
+					<img src="img/2.jpg" alt="" />
+					<img src="img/3.jpg" alt="" />
+					<img src="img/4.jpg" alt="" />
+					<img src="img/5.jpg" alt="" />
+					<img src="img/6.jpg" alt="" />
+					<img src="img/7.jpg" alt="" />
+					<img src="img/8.jpg" alt="" />
+					<img src="img/9.jpg" alt="" />
+					<img src="img/10.jpg" alt="" />
+					<img src="img/11.jpg" alt="" />
+					<img src="img/12.jpg" alt="" />
+					<img src="img/13.jpg" alt="" />
+					<img src="img/14.jpg" alt="" />
+				</div>
+				<div class="work">
+					<a class="work_item" href="#">
+						<div class="item_photo">
+							<img src="img/1-16101GS5440-L.jpg" alt="" />
+							<div class="item_about">
+								<p>链家</p>
+								<span>链家大数据</span>
+							</div>
+						</div>
+						<div class="item_title">链家大数据</div>
+					</a>
+					<a class="work_item item_center" href="#">
+						<div class="item_photo">
+							<img src="img/1-1609261136480-L.jpg" alt="" />
+							<div class="item_about">
+								<p>阿里巴巴</p>
+								<span>天猫魔盒3Pro魔力全开</span>
+							</div>
+						</div>
+						<div class="item_title">天猫魔盒3Pro</div>
+					</a>
+					<a class="work_item" href="#">
+						<div class="item_photo">
+							<img src="img/1-1511061QA60-L.jpg" alt="" />
+							<div class="item_about">
+								<p>今日头条</p>
+								<span>今日头条功能片第一弹</span>
+							</div>
+						</div>
+						<div class="item_title">今日头条功能片第一弹</div>
+					</a>
+					<a class="work_item" href="#">
+						<div class="item_photo">
+							<img src="img/1-160R92040440-L.jpg" alt="" />
+							<div class="item_about">
+								<p>汇通天下G7</p>
+								<span>汇通天下G7品牌视频</span>
+							</div>
+						</div>
+						<div class="item_title">汇通天下G7</div>
+					</a>
+					<a class="work_item  item_center" href="#">
+						<div class="item_photo">
+							<img src="img/1-160Q91IKV58.jpg" alt="" />
+							<div class="item_about">
+								<p>链家</p>
+								<span>链家APP卖房频道2.0宣传动画片</span>
+							</div>
+						</div>
+						<div class="item_title">链家APP卖房频道2.0</div>
+					</a>
+					<a class="work_item" href="#">
+						<div class="item_photo">
+							<img src="img/1-16101GS5440-L.jpg" alt="" />
+							<div class="item_about">
+								<p>echo回声</p>
+								<span>echo回声嘉年华音乐节</span>
+							</div>
+						</div>
+						<div class="item_title">echo回声嘉年华音乐节</div>
+					</a>
+				</div>
+			</div>
+			<div class="foot">
+				<div class="foot_wrap">
+					<div class="foot_left">
+						<img src="img/contact1.jpg" alt="" />
+						<img src="img/contact2.jpg" alt="" />
+						<img src="img/contact3.jpg" alt="" />
+					</div>
+					<div class="foot_right">
+						<img src="img/footer_logo.jpg" alt="" />
+						<p>Infini Studio | 映纷创意</p>
+						<p>北京市朝阳北路107号院</p>
+						<p>Email : infinistudio@foxmail.com</p>
+						<p>QQ : 7585917</p>
+						<p>weibo : @InfiniStudio</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

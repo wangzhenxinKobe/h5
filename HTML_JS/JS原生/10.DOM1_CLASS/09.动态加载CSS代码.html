@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="变个色" id="btn"/>
+		<div></div>
+		
+		<script type="text/javascript">
+		//动态加载CSS代码
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var oStyle = document.createElement("style");
+				oStyle.type = "text/css";
+				
+				var strcss="div{background-color:green;width:200px;height:200px}";
+				//oStyle.innerText = "div{background-color:green;width:200px;height:200px}";
+				
+				//文本节点对象
+				//创建文件节点createTextNode(参数：文本内容)
+				
+				//try{}catch(e){}异常捕获
+				try{
+					//非IE下方法
+					var oCss = document.createTextNode(strcss);
+					oStyle.appendChild(oCss);	
+					
+				}catch(e){
+					//e.message 错误信息
+					console.log(e.message);
+					
+					//IE设置动态CSS代码的方法
+					oStyle.styleSheet.cssText = strcss;
+				}
+				
+				
+				document.head.appendChild(oStyle);
+			}
+		</script>
+	</body>
+</html>

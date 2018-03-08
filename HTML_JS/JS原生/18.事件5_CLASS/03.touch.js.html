@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="touch.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			//单击屏幕事件
+			
+		touch.on(window,"tap",function(){
+			//alert("我用的是touch.js事件");
+		})
+		
+		//双击屏幕事件
+		touch.on(window,"doubletap",function(e){
+			alert("我双击了屏幕");
+		})
+		
+		//滑动事件
+		touch.on(window,"swiperight",function(){
+			alert("我向右滑了一下");
+		})
+		</script>
+	</body>
+</html>

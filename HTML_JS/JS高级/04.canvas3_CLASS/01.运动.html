@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="600" height="500"></canvas>
+
+		<script type="text/javascript">
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+
+			//绘制矩形
+			function drawRect(obj) {
+				ctx.beginPath();
+				ctx.rect(obj.x, obj.y, obj.w, obj.h);
+				ctx.fillStyle = obj.fillStyle;
+				ctx.fill();
+			}
+
+			//创建生成矩形的构造函数
+			function Rect(x, y, w, h, fillStyle) {
+				this.x = x;
+				this.y = y;
+				this.w = w;
+				this.h = h;
+				this.fillStyle = fillStyle;
+				drawRect(this);
+			}
+			var rt1 = new Rect(0,0,50,50,"blue");
+			
+			var timer = setInterval(function(){
+				ctx.clearRect(0,0,oC.width,oC.height);
+				if(rt1.x+rt1.w >= oC.width){
+					rt1.x = oC.width - rt1.w;
+					clearInterval(timer);
+				}else{
+					rt1.x++;
+				}
+				drawRect(rt1);
+			},20);
+			
+		</script>
+	</body>
+
+</html>

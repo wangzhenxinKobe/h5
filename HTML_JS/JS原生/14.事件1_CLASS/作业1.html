@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#wrap {
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				position: relative;
+				margin: 0 auto;
+			}
+			
+			#box {
+				width: 20px;
+				height: 20px;
+				background-color: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+
+		<script>
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+			var oBox = document.getElementById("box");
+
+			//随机函数
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			//BOX的移动范围
+
+			var maxLeft = oWrap.offsetWidth - oBox.offsetWidth;
+			var maxTop = oWrap.offsetHeight - oBox.offsetHeight;
+
+			//设置初始的位置
+			oBox.style.left = getRandom(0, maxLeft) + "px";
+			oBox.style.top = getRandom(0, maxTop) + "px";
+
+			//设置运动的速度
+			var speedX = 1;
+			var speedY = 1;
+
+			//初始运动
+			oBox.timer = setInterval(function() {
+				var nowLeft = oBox.offsetLeft;
+				//判断碰壁
+				if(nowLeft >= maxLeft) {
+					clearInterval(oBox.timer);
+					alert("游戏结束");
+				} else {
+					oBox.style.left = oBox.offsetLeft + speedX + "px";
+				}
+			}, 20);
+			
+			var keyCode=39;
+			//按键改变方向
+			window.onkeydown = function(e) {
+				var e = e || window.event;
+				if(e.keyCode>=37 && e.keyCode<=40){
+					keyCode = e.keyCode;
+				}
+				//清除初始的定时器
+				clearInterval(oBox.timer);
+
+				oBox.timer = setInterval(function() {
+
+					//获取当前box的位置
+					var nowLeft = oBox.offsetLeft;
+					var nowTop = oBox.offsetTop;
+
+					//碰壁判断
+					if(nowLeft <= 0 || nowLeft >= maxLeft || nowTop <= 0 || nowTop >= maxTop) {
+						clearInterval(oBox.timer);
+						alert("游戏结束");
+					} else {
+						switch(keyCode) {
+							case 37:
+								oBox.style.left = oBox.offsetLeft - speedX + "px";
+								break;
+							case 38:
+								oBox.style.top = oBox.offsetTop - speedY + "px";
+								break;
+							case 39:
+								oBox.style.left = oBox.offsetLeft + speedX + "px";
+								break;
+							case 40:
+								oBox.style.top = oBox.offsetTop + speedY + "px";
+								break;
+							default:
+							    
+							    break;
+						}
+					}
+
+				}, 20);
+
+			}
+		</script>
+	</body>
+
+</html>

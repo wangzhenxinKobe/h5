@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+			}
+			
+			ul,
+			ol,
+			li {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			.wrap {
+				height: 100%;
+			}
+			
+			.wrap_left {
+				height: 100%;
+				width: 150px;
+				float: left;
+				background-color: #2A2A2A;
+				position: relative;
+			}
+			
+			.left_top {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+			
+			.left_bottom {
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+			}
+			
+			.wrap_left ul li {
+				height: 35px;
+			}
+			
+			.wrap_left ul li img {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				vertical-align: middle;
+				width: 21px;
+				height: 22px;
+			}
+			
+			.wrap_left ul li a {
+				font-size: 12px;
+				color: #626262;
+				text-decoration: none;
+			}
+			
+			.wrap_left ul li a:hover {
+				color: #FFFFFF;
+			}
+			
+			.wrap_right {
+				margin-left: 150px;
+				height: 100%;
+				position: relative;
+			}
+			
+			.right_title {
+				width: 100%;
+				font-size: 26px;
+				position: absolute;
+				top: 50px;
+				text-align: center;
+			}
+			
+			.right_title img {
+				vertical-align: middle;
+			}
+			
+			.right_tab {
+				width: 496px;
+				position: absolute;
+				top: 100px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			
+			.right_tab li {
+				float: left;
+				height: 26px;
+				width: 60px;
+				color: #868686;
+				text-align: center;
+				border-bottom: 1px solid gainsboro;
+				font-size: 12px;
+				line-height: 26px;
+			}
+			
+			.right_tab .tab_on {
+				border: 1px solid gainsboro;
+				border-top-left-radius: 4px;
+				border-top-right-radius: 4px;
+				border-bottom: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="wrap_left">
+				<ul class="left_top">
+					<li>
+						<img src="img/1.png" alt="" />
+						<a href="#">主页</a>
+					</li>
+					<li>
+						<img src="img/2.png" alt="" />
+						<a href="#">专题</a>
+					</li>
+					<li>
+						<img src="img/3.png" alt="" />
+						<a href="#">简友圈</a>
+					</li>
+					<li>
+						<img src="img/4.png" alt="" />
+						<a href="#">写文章</a>
+					</li>
+					<li>
+						<img src="img/5.png" alt="" />
+						<a href="#">下载手机应用</a>
+					</li>
+				</ul>
+				<ul class="left_bottom">
+					<li>
+						<img src="img/6.png" alt="" />
+						<a href="#">我的主页</a>
+					</li>
+					<li>
+						<img src="img/7.png" alt="" />
+						<a href="#">我的收藏</a>
+					</li>
+					<li>
+						<img src="img/8.png" alt="" />
+						<a href="#">提醒</a>
+					</li>
+					<li>
+						<img src="img/9.png" alt="" />
+						<a href="#">简信</a>
+					</li>
+					<li>
+						<img src="img/10.png" alt="" />
+						<a href="#">显示模式</a>
+					</li>
+					<li>
+						<img src="img/11.png" alt="" />
+						<a href="#">设置</a>
+					</li>
+					<li>
+						<img src="img/12.png" alt="" />
+						<a href="#">登出</a>
+					</li>
+				</ul>
+			</div>
+			<div class="wrap_right">
+				<div class="right_title">
+					<img src="img/15.png" alt="" /> 设置
+				</div>
+				<ul class="right_tab">
+					<li class="tab_on">基础设置</li>
+					<li>个人资料</li>
+					<li>社交账号</li>
+					<li>修改密码</li>
+					<li>其他</li>
+					<li>黑名单</li>
+					<li>打赏设置</li>
+					<li>账号管理</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

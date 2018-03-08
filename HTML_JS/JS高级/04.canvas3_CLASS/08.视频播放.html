@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<video src="img/oxford-10秒.mp4" autoplay="autoplay" loop="loop" width="0" height="0" id="video">
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+		<canvas id="canvas" width="600" height="400"></canvas>
+		<script type="text/javascript">
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+			var video = document.getElementById("video");
+			
+			video.oncanplay = function(){
+				video.play();
+				
+				//递归调用 函数内部调用函数本身
+				function animate(){
+					ctx.drawImage(video,0,0,oC.width,oC.height);
+					window.requestAnimationFrame(animate);
+				}
+				animate();
+			}
+		</script>
+	</body>
+</html>

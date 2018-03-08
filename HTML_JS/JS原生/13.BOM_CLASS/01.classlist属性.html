@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 100px;
+				height: 100px;
+				border: 2px solid red;
+				
+			}
+			.box2{
+				background-color: blue;
+			}
+			.box3{
+				color: white;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="box">我好累</div>
+		
+		<script>
+			var oBox = document.getElementsByClassName("box")[0];
+			
+			//获取class列表，类名的列表
+			//console.log(oBox.classList[0]);
+			//console.log(oBox.classList[1]);
+			
+			oBox.onclick  = function(){
+				//添加一个类
+				//oBox.classList.add("box3");
+				
+				//添加多个类
+				//oBox.classList.add("box2","box3");
+				
+				//移除一个类
+				//oBox.classList.remove("box3");
+				
+				//移除多个类
+				//oBox.classList.remove("box2","box3");
+				
+				//类的切换 当指定类名存在时移除该类 不存在时添加该类
+				//oBox.classList.toggle("box2");
+				
+				//通过item方法指定索引值返回类名
+				console.log(oBox.classList.item(0));
+				
+				//判断该类名是否存在 存在返回true 不存在返回false
+				console.log(oBox.classList.contains("box1"));
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

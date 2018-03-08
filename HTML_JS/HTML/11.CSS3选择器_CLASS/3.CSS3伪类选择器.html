@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 150px;
+				height: 150px;
+				border: 2px solid red;
+				margin-top: 5px;
+				font-size: 30px;
+			}
+			
+			/*
+			 * 选择父级元素中第一个div标签的元素
+			 */
+			/*div:nth-child(3){
+				background-color: red;
+			}*/
+			
+			/*
+			 * 选择父级中的奇数子元素并且是div标签
+			 */
+			/*div:nth-child(odd){
+				background-color: yellow;
+			}*/
+			
+			/*
+			 * 选择父级中的偶数子元素并且是div标签
+			 */
+			/*div:nth-child(even){
+				background-color: yellowgreen;
+			}*/
+			
+			/*n数学中的从0到无穷大的自然数 根据计算结果选择元素*/
+			/*div:nth-child(n+4){
+				background-color: goldenrod;
+			}*/
+			/*
+			 * nth-last-child与nth-child顺序相反
+			 * 从后向前数
+			 */
+			/*div:nth-last-child(1){
+				background-color: #00BFFF;
+			}*/
+			
+			/*
+			 * 选择父级中第一个div标签类型的元素
+			 */
+			/*div:nth-of-type(1){
+				background-color: #0000CD;
+			}*/
+			/*
+			 * nth-last-of-type与nth-of-type顺序相反
+			 * 从后向前数
+			 */
+			/*div:nth-last-of-type(1){
+				background-color: #3385FF;
+			}*/
+			
+			/*父级中所有类型标签的第一个*/
+			/*body *:nth-of-type(1){
+				background-color: red;
+			}*/
+			
+			/*
+			 * 不管什么类型的标签 只选择第一个
+			 */
+			/*body *:nth-child(1){
+				background-color: red;
+			}*/
+			
+			/*first-child等同于nth-child(1)*/
+			/*div:first-child{
+				background-color: red;
+			}*/
+			
+			/*
+			 * last-child等同于nth-last-child(1)
+			 */
+			/*div:last-child{
+				background-color: red;
+			}*/
+			
+			/*
+			 * first-of-type等同于nth-of-type(1)
+			 */
+			/*div:first-of-type{
+				background-color: red;
+			}*/
+			
+			/*
+			 * last-of-type等同于nth-last-of-type(1)
+			 */
+			/*div:last-of-type{
+				background-color: red;
+			}*/
+			
+			/*
+			 * 父级下一个空的div
+			 */
+			/*div:empty{
+				background-color: red;
+			}*/
+			
+			/*父级下只有一个子标签并且是span*/
+			/*div span:only-child{
+				color: red;
+			}*/
+			
+			/*
+			 * 父级下只能有一个span类型的标签，其他标签可以有
+			 */
+			div span:only-of-type{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<p>江疏影</p>
+		<div>范冰冰</div>
+		<div>佟丽娅</div>
+		<div>汤唯</div>
+		<div>唐<span>嫣</span><span>是个大美女</span></div>
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//图片地址数据
+			var imgs = [
+			 "http://img.52fuqing.com/upload/editor/2016-11-14/201611141483464261afh.jpg",
+			 "http://imgtu.5011.net/uploads/content/20160222/9720371456123505.jpg",
+			 "http://img1.3lian.com/2015/w3/83/d/1.jpg",
+			 "http://image94.360doc.com/DownloadImg/2016/02/0118/65386760_63.jpg",
+			 "http://www.sinaimg.cn/dy/slidenews/4_img/2016_33/704_1993953_534907.jpg"
+			];
+			//图片加载完的数量
+			var count=0;
+			//循环取出图片地址，并创建图片对象
+			for(var i=0;i<imgs.length;i++){
+				var newImg = new Image();
+				newImg.src = imgs[i];
+				
+				newImg.onload = function(){
+					onLoadImg();
+					document.body.appendChild(this);
+				}
+				
+				newImg.onerror = function(){
+					onLoadImg();
+				}
+			}
+			
+			function onLoadImg(){
+				count++;
+				if(count==imgs.length){
+					alert("所有图片加载完毕，请显示出图片！");	
+				}
+			}
+		</script>
+	</body>
+</html>

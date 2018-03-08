@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+
+			function toDraw() {
+				
+				//清除画布
+				ctx.clearRect(0,0,oC.width,oC.height);
+				
+				//获取时间
+				var oDate = new Date();
+				var iHours = oDate.getHours();
+				var iMin = oDate.getMinutes();
+				var iSec = oDate.getSeconds();
+
+				var hoursAngle = (-90 + iHours * 30 + iMin/2) * Math.PI / 180;
+				var minAngle = (-90 + iMin * 6) * Math.PI / 180;
+				var secAngle = (-90 + iSec * 6) * Math.PI / 180;
+
+				var x = 200;
+				var y = 200;
+				var r = 150;
+
+				//60刻度
+				ctx.beginPath();
+				for(var i = 0; i < 60; i++) {
+					ctx.moveTo(x, y);
+					ctx.arc(x, y, r, 6 * i * Math.PI / 180, 6 * (i + 1) * Math.PI / 180);
+				}
+				ctx.closePath();
+				ctx.stroke();
+
+				//覆盖白色
+				ctx.beginPath();
+				ctx.fillStyle = "white";
+				ctx.moveTo(x, y);
+				ctx.arc(x, y, r - 5, 0, 2 * Math.PI);
+				ctx.closePath();
+				ctx.fill();
+
+				//12刻度
+				ctx.lineWidth = 5;
+				ctx.beginPath();
+				for(var i = 0; i < 12; i++) {
+					ctx.moveTo(x, y);
+					ctx.arc(x, y, r, 30 * i * Math.PI / 180, 30 * (i + 1) * Math.PI / 180);
+				}
+				ctx.closePath();
+				ctx.stroke();
+
+				//覆盖白色
+				ctx.beginPath();
+				ctx.fillStyle = "white";
+				ctx.moveTo(x, y);
+				ctx.arc(x, y, r - 10, 0, 2 * Math.PI);
+				ctx.closePath();
+				ctx.fill();
+
+				//时针
+				ctx.lineWidth = 5;
+				ctx.beginPath();
+				ctx.moveTo(x, y);
+				ctx.arc(x, y, r - 60, hoursAngle, hoursAngle);
+				ctx.closePath();
+				ctx.stroke();
+
+				//分针
+				ctx.lineWidth = 3;
+				ctx.beginPath();
+				ctx.moveTo(x, y);
+				ctx.arc(x, y, r - 40, minAngle, minAngle);
+				ctx.closePath();
+				ctx.stroke();
+
+				//秒针
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(x, y);
+				ctx.arc(x, y, r - 20, secAngle, secAngle);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			setInterval(function(){
+				toDraw();
+			},1000);
+		</script>
+	</body>
+
+</html>

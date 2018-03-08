@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#small {
+				width: 350px;
+				height: 350px;
+				border: 1px solid black;
+				float: left;
+				position: relative;
+			}
+			
+			#big {
+				width: 350px;
+				height: 350px;
+				border: 1px solid black;
+				float: left;
+				overflow: hidden;
+				position: relative;
+				display: none;
+			}
+			
+			#glass {
+				width: 100px;
+				height: 100px;
+				background-color: skyblue;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0.3;
+				filter: alpha(opacity=30);
+				display: none;
+			}
+			
+			#big img {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="small">
+			<img src="img/min.jpg" alt="" />
+			<div id="glass"></div>
+		</div>
+		<div id="big">
+			<img src="img/max.jpg" alt="" />
+		</div>
+
+		<script>
+			//获取元素
+			var oSmall = document.getElementById("small");
+			var oBig = document.getElementById("big");
+			var oGlass = document.getElementById("glass");
+			var oMaxImg = oBig.querySelector("img");
+
+			//当鼠标移入small时显示放大镜和big
+			oSmall.onmouseover = function() {
+				oGlass.style.display = "block";
+				oBig.style.display = "block";
+			}
+
+			//当鼠标移出small时隐藏放大镜和big
+			oSmall.onmouseout = function() {
+				oGlass.style.display = "none";
+				oBig.style.display = "none";
+			}
+
+			//移动鼠标
+			oSmall.onmousemove = function(e) {
+				//获取event对象
+				var e = e || window.event;
+
+				//获取鼠标的位置
+				var mX = e.clientX;
+				var mY = e.clientY;
+
+				//计算放大镜的移动范围
+				var maxLeft = oSmall.offsetWidth - oGlass.offsetWidth;
+				var maxTop = oSmall.offsetHeight - oGlass.offsetHeight;
+
+				//设置临时位置
+				var tempLeft = mX - oGlass.offsetWidth / 2;
+				var tempTop = mY - oGlass.offsetHeight / 2;
+
+				//最终位置
+				var nowLeft = 0;
+				var nowTop = 0;
+
+				//当临时位置数值大于等于最大的范围时
+				if(tempLeft >= maxLeft) {
+					nowLeft = maxLeft;
+				} else if(tempLeft > 0 && tempLeft < maxLeft) {
+					nowLeft = tempLeft;
+				}
+				
+				if(tempTop >= maxTop){
+					nowTop = maxTop;
+				}else if(tempTop > 0 && tempTop < maxTop){
+					nowTop = tempTop;
+				}
+				
+				//设置放大镜的位置
+				oGlass.style.left = nowLeft + "px";
+				oGlass.style.top = nowTop + "px";
+				
+				//计算比例
+				var ratioX = oGlass.offsetLeft / oSmall.offsetWidth;
+				var ratioY = oGlass.offsetTop / oSmall.offsetHeight;
+				
+				//设置大图的位置
+				oMaxImg.style.left = (-oMaxImg.offsetWidth*ratioX) + "px";
+				oMaxImg.style.top = (-oMaxImg.offsetHeight*ratioY) + "px";
+				
+			}
+			
+		</script>
+	</body>
+
+</html>

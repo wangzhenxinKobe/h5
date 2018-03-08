@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,body{
+				margin: 0;
+				padding: 0;
+				height: 100%;
+			}
+			.wrap{
+				height: 100%;
+			}
+			.left{
+				width: 150px;
+				height: 100%;
+				float: left;
+				background-color: #2A2A2A;
+				position: relative;
+			}
+			.main{
+				width: 100%;
+				margin-left: 160px;
+				position: relative;
+			}
+			ul,li{
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.left_menu li img{
+				width: 21px;
+				height: 21px;
+				vertical-align: middle;
+			}
+			.left_menu li a{
+				color: #626262;
+				text-decoration: none;
+				font-size: 14px;
+			}
+			.left_menu li a:hover{
+				color: #FFFFFF;
+			}
+			.left_menu_top{
+				position: absolute;
+				top:10px;
+				left: 10px;
+			}
+			.left_menu_bottom{
+				position: absolute;
+				bottom:10px;
+				left: 10px;
+			}
+			.main_title{
+				text-align: center;
+				font-size: 26px;
+				font-weight: bold;
+				color: #000000;
+				position: absolute;
+				top: 50px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			.main_title img{
+				vertical-align: middle;	
+			}
+			.main_tab{
+				position: absolute;
+				width: 656px;
+				height: 32px;
+				top:100px;
+				margin: 0 auto;
+				left: 0;
+				right: 0;
+			}
+			.main_tab li{
+				float: left;
+				width: 80px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				color: #868686;
+				font-size: 12px;
+				border-bottom: 1px solid #DCDCDC;
+			}
+			.main_tab .tab_on{
+				border: 1px solid #DCDCDC;
+				border-bottom: 0;
+				border-top-left-radius: 4px;
+				border-top-right-radius: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left">
+				<ul class="left_menu left_menu_top">
+					<li>
+						<img src="img/1.png"/>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<img src="img/2.png"/>
+						<a href="#">专题</a>
+					</li>
+					<li>
+						<img src="img/3.png"/>
+						<a href="#">简友圈</a>
+					</li>
+					<li>
+						<img src="img/4.png"/>
+						<a href="#">写文章</a>
+						
+					</li>
+					<li>
+						<img src="img/5.png"/>
+						<a href="#">下载手机应用</a>
+						
+					</li>
+				</ul>
+				<ul class="left_menu left_menu_bottom">
+					<li>
+						<img src="img/6.png"/>
+						<a href="#">我的主页</a>
+					</li>
+					<li>
+						<img src="img/7.png"/>
+						<a href="#">我的收藏</a>
+					</li>
+					<li>
+						<img src="img/8.png"/>
+						<a href="#">提醒</a>
+					</li>
+					<li>
+						<img src="img/9.png"/>
+						<a href="#">简信</a>
+						
+					</li>
+					<li>
+						<img src="img/10.png"/>
+						<a href="#">显示模式</a>
+						
+					</li>
+					<li>
+						<img src="img/11.png"/>
+						<a href="#">设置</a>
+						
+					</li>
+					<li>
+						<img src="img/12.png"/>
+						<a href="#">登出</a>
+						
+					</li>
+				</ul>
+			</div>
+			<div class="main">
+				<div class="main_title">
+					<img src="img/15.png" alt="" />
+					设置
+				</div>
+				<ul class="main_tab">
+					<li class="tab_on">基础设置</li>
+					<li>个人资料</li>
+					<li>社交账号</li>
+					<li>修改密码</li>
+					<li>其他</li>
+					<li>黑名单</li>
+					<li>打赏设置</li>
+					<li>账号管理</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

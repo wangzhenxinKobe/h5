@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" id="num" />
+		<input type="button" value="提交" id="ok" />
+		<script>
+			//练习1：input标签输入，如果输入m 弹出男性，
+			//如果输入  不是m 则不弹出。
+
+			//			var oText = document.getElementById("text");
+			//			var oOk = document.getElementById("ok");
+			//			oOk.onclick = function () {
+			//				if(oText.value == "m"){
+			//					alert("男性")
+			//				}
+			//			}
+
+			// 练习2: 输入一个年份，判断该年份是否是闰年？如果是闰年，
+			//则输出该年是闰年，否则输出该年不是闰年。
+			// 满足闰年的条件：满足一个即可
+			// 1. 能被400整除。(如2000年是闰年，1900年不是闰年)
+			// 2. 能被4整除，但是不能被100整除。(如2004年就是闰年，
+			//2010年不是闰年)
+
+			//			var oYear = document.getElementById("year");
+			//			var oOk = document.getElementById("ok");
+			//			oOk.onclick = function () {
+			//				var iYear = parseInt(oYear.value);
+			//				
+			//				if(iYear%400 == 0 || (iYear%4 == 0 && iYear%100 != 0)){
+			//					alert("闰年");
+			//				}
+			//				else{
+			//					alert("平年");
+			//				}
+			//				
+			//			}
+
+			//练习3: 输入一门学科的成绩0~100，0~59为不及格，
+			//60~69为及格，70~79为中等，80~89良好，90~100为优秀
+
+			//			var oScore = document.getElementById("score");
+			//			var oOk = document.getElementById("ok");
+			//			oOk.onclick = function() {
+			//				var iScore = parseFloat(oScore.value);
+			//
+			//				if(iScore >= 0 && iScore < 60) {
+			//					alert("不及格");
+			//				} else if(iScore >= 60 && iScore < 70) {
+			//					alert("及格");
+			//				}
+			//				else if(iScore >= 70 && iScore < 80) {
+			//					alert("中等");
+			//				}
+			//				else if(iScore >= 80 && iScore < 90) {
+			//					alert("良好");
+			//				}
+			//				else if(iScore >= 90 && iScore <= 100) {
+			//					alert("优秀");
+			//				}
+			//				else{
+			//					alert("您输入的分数不正确");
+			//				}
+			//			}
+
+			//练习4：一个函数。x < 1时 y = x,  1<=x<10 时 y=2x+1,
+			//x>=10 时 y=3x-11。求y的值，x的值用input输入
+
+			var oNum = document.getElementById("num");
+			var oOk = document.getElementById("ok");
+			oOk.onclick = function() {
+				var x = parseInt(oNum.value);
+				var y = null;
+				if(x < 1) {
+					y = x;
+				} else if(x >= 1 && x < 10) {
+					y = 2 * x + 1;
+				} else if(x >= 10) {
+					y = 3 * x - 11;
+				}
+				
+				alert(y);
+			}
+		</script>
+	</body>
+
+</html>

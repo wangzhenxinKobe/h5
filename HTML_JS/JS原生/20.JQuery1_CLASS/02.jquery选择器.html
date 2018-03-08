@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>1</div>
+		<div></div>
+		<div>3</div>
+		<p>4</p>
+		<h1>5</h1>
+		
+		<ul>
+			<li>北京</li>
+			<li>上海</li>
+			<li>广州</li>
+			<li>深圳</li>
+			<li>大连</li>
+			<li>沈阳</li>
+		</ul>
+		<input type="text" value="123"></input>
+		<input type="text" value="" />
+		
+		<select name="">
+			<option value="">北京</option>
+			<option value="">上海</option>
+			<option value="" selected="selected">广州</option>
+			<option value="">大连</option>
+		</select>
+		
+		<select name="">
+			<option value="">男</option>
+			<option value="">女</option>
+		</select>
+		
+		<select name="">
+			<option value="">未婚</option>
+			<option value="">已婚</option>
+		</select>
+		
+		<script src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				
+				//所有元素
+				//$("*").css("font-size","50px");
+				
+				//获取第一个DIV元素
+				$("div:first").css("color","red");
+				
+				//获取最后一个DIV元素
+				$("div:last").css("color","#0000FF");
+				
+				//获取所有偶数的li元素 从0开始 0算作偶数
+				$("li:even").css("background-color","red");
+				
+				//获取所有奇数的li元素
+				$("li:odd").css("background-color","blue");
+				
+				//获取所有li中的第三个li 从0开始
+				$("li:eq(2)").css("background-color","green");
+				
+				//获取所有index大于第三个的li
+				$("li:gt(2)").css("color","white");
+				
+				//获取所有index大于第三个的li
+				$("li:lt(2)").css("color","pink");
+				
+				//获取div中子元素不为空的
+				$("div:not(:empty)").css("background-color","gold");
+			
+				$(":selected").val("123456")
+				
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 300px;
+				height: 500px;
+				border: 1px solid black;
+				text-align: center;
+				padding: 10px
+			}
+			
+			input {
+				width: 280px;
+				height: 30px;
+				border: 1px solid blue;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+		</div>
+		<div id="wrap2">
+		</div>
+		<script>
+			var oWrap = document.getElementById("wrap");
+
+			//创建文本框元素对象
+			var oGuojia = document.createElement("input");
+			var oSheng = document.createElement("input");
+			var oChengshi = document.createElement("input");
+			var oQuyu = document.createElement("input");
+
+			oGuojia.value = "国家";
+			oWrap.appendChild(oGuojia);
+
+			//点击国家添加省
+			oGuojia.onclick = function() {
+				if(oSheng.parentNode != oWrap) {
+					oSheng.value = "省份";
+					oWrap.appendChild(oSheng);
+				}
+			}
+			//点击省份添加城市
+			oSheng.onclick = function() {
+				if(oChengshi.parentNode != oWrap) {
+					oChengshi.value = "城市";
+					oWrap.appendChild(oChengshi);
+				}
+			}
+			//点城市添加区域
+			oChengshi.onclick = function() {
+				if(oQuyu.parentNode != oWrap){
+					oQuyu.value = "区域";
+					oWrap.appendChild(oQuyu);
+				}	
+			}
+		</script>
+	</body>
+
+</html>

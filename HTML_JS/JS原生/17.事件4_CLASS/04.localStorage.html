@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<script>
+			//localStorage本地存储
+			//是一种类似cookie的保存手段，支持主流的大部分浏览器，
+			//包括IE8，与cookie不同的是,cookie存储的是一个字符串，
+			//而localStorage是以对象方式存储，存储容易为5MB
+
+			//添加localStorage
+			window.localStorage.username = "jiangshuying";
+			window.localStorage["sex"] = "girl";
+			window.localStorage.setItem("height", "170");
+
+			//获取localStorage
+			console.log(window.localStorage.username);
+			console.log(window.localStorage["sex"]);
+			console.log(window.localStorage.getItem("height"));
+
+			//三种添加和获取的方式都可以使用，但是官方建议使用
+			//setItem和getItem方式设置和获取
+
+			//移除localStorage
+			//window.localStorage.removeItem("height");
+
+			//清空localStorage
+			//window.localStorage.clear();
+
+			//遍历localStorage 方法1
+			for(var keyname in window.localStorage) {
+				//console.log(keyname+":"+window.localStorage.getItem(keyname));
+				console.log(keyname + ":" + window.localStorage[keyname]);
+
+			}
+
+			//遍历localStorage 方法2
+			for(var i = 0; i < window.localStorage.length; i++) {
+				//key(索引值)，返回键名
+				var keyname = window.localStorage.key(i);
+				console.log(keyname + ":" + window.localStorage[keyname]);
+
+			}
+		</script>
+	</body>
+
+</html>

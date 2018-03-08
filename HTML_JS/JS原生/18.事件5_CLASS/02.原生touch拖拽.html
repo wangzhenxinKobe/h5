@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		
+		<script type="text/javascript">
+			//获取元素
+			var oBox = document.getElementById("box");
+			
+			//绑定触屏事件
+			oBox.addEventListener("touchstart",function(e){
+				var e = e || window.event;
+				//获取手指对象
+				var finger = e.touches[0];
+				
+				//获取手指触摸屏幕时的位置
+				var fX1 = finger.clientX;
+				var fY1 = finger.clientY;
+				
+				//获取box的初始位置
+				var bX = oBox.offsetLeft;
+				var bY = oBox.offsetTop;
+				
+				oBox.addEventListener("touchmove",function(e){
+					var e = e || window.event;
+					
+					//获取手指对象
+					var finger = e.touches[0];
+					
+					//获取手指当前在屏幕上的位置
+					var fX2 = finger.clientX;
+					var fY2 = finger.clientY;
+					
+					//设置box的位置
+					oBox.style.left = fX2 - fX1 + bX + "px";
+					oBox.style.top = fY2 - fY1 + bY + "px";
+				})
+				
+			})
+			window.addEventListener("touchmove",function(e){
+				//取消浏览器默认行为
+				var e = e ||  window.event;
+				e.preventDefault();
+			})
+		</script>
+	</body>
+</html>

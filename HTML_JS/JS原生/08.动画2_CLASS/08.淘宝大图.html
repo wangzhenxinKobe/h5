@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 790px;
+				height: 340px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#imglist {
+				position: absolute;
+				top: 0;
+				left: -790px;
+				width: 7900px;
+				height: 340px;
+				border: 0;
+				overflow: hidden;
+			}
+			
+			#imglist img {
+				float: left;
+			}
+			
+			#tag {
+				background: rgba(255, 255, 255, 0.5);
+				width: 166px;
+				position: absolute;
+				z-index: 9;
+				border-radius: 11px;
+				bottom: 20px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				padding: 2px 8px;
+				overflow: hidden;
+				text-align: center;
+			}
+			
+			#tag div {
+				height: 12px;
+				width: 12px;
+				background-color: white;
+				display: inline-block;
+				border-radius: 50%;
+				margin: 0 2px;
+			}
+			
+			#next {
+				width: 40px;
+				height: 50px;
+				background-color: black;
+				opacity: 0.5;
+				position: absolute;
+				top: 150px;
+				right: 0;
+				color: white;
+				line-height: 50px;
+				text-align: center;
+				font-size: 20px;
+			}
+			
+			#prev {
+				width: 40px;
+				height: 50px;
+				background-color: black;
+				opacity: 0.5;
+				position: absolute;
+				top: 150px;
+				left: 0;
+				color: white;
+				line-height: 50px;
+				text-align: center;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="imglist">
+				<a href="#8"><img src="img/8.jpg" /></a>
+				<a href="#1"><img src="img/1.jpg" /></a>
+				<a href="#2"><img src="img/2.jpg" /></a>
+				<a href="#3"><img src="img/3.jpg" /></a>
+				<a href="#4"><img src="img/4.jpg" /></a>
+				<a href="#5"><img src="img/5.jpg" /></a>
+				<a href="#6"><img src="img/6.jpg" /></a>
+				<a href="#7"><img src="img/7.jpg" /></a>
+				<a href="#8"><img src="img/8.jpg" /></a>
+				<a href="#1"><img src="img/1.jpg" /></a>
+			</div>
+			<div id="tag">
+				<div style="background-color: red;"></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div id="next">&gt;</div>
+			<div id="prev">&lt;</div>
+		</div>
+		<script src="startMove.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var imglist = document.getElementById("imglist");
+			var tag = document.getElementById("tag");
+			var tags = tag.getElementsByTagName("div");
+			var imglist = document.getElementById("imglist");
+			var oNext = document.getElementById("next");
+			var oPrev = document.getElementById("prev");
+			var oWrap = document.getElementById("wrap");
+
+			var index = 0;
+			var timer = null;
+
+			function bannerStart() {
+				clearInterval(timer);
+				timer = setInterval(function() {
+					index++;
+					bannerChange();
+				}, 2000);
+			}
+
+			function bannerChange() {
+				if(index < 0) {
+					index = 0;
+				}
+				if(index > 9) {
+					index = 9;
+				}
+				itarget = -index * 790;
+				startMove(imglist, {
+					"left": itarget
+				}, function() {
+					if(index == 9) {
+						index = 1;
+						imglist.style.left = "-790px";
+					}
+					if(index == 0) {
+						index = 8;
+						imglist.style.left = -index * 790 + "px";
+					}
+				});
+				for(var i = 0; i < tags.length; i++) {
+					tags[i].style.backgroundColor = "";
+				}
+				if(index == 9) {
+					tags[0].style.backgroundColor = "red";
+				} else if(index == 0) {
+					tags[7].style.backgroundColor = "red";
+				} else {
+					tags[index - 1].style.backgroundColor = "red";
+				}
+			}
+
+			oNext.onclick = function() {
+				index++;
+				bannerChange();
+
+			}
+			oPrev.onclick = function() {
+
+				index--;
+				bannerChange();
+
+			}
+			oWrap.onmouseover = function() {
+				clearInterval(timer);
+			}
+			oWrap.onmouseout = function() {
+				bannerStart();
+			}
+
+			bannerStart();
+		</script>
+	</body>
+
+</html>

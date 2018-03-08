@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//所有的构造函数的函数名单词首字母都要大写
+			function CreatePerson(name,sex){
+				this.name = name;
+				this.sex = sex;
+			}
+			CreatePerson.prototype.showName = function(){
+				alert(this.name);
+			}
+			CreatePerson.prototype.showSex = function(){
+				alert(this.sex);
+			}
+			
+			var p1 = new CreatePerson("江疏影","女");
+			var p2 = new CreatePerson("汤唯","女");
+			
+			p1.showName();
+			p1.showSex();
+			p2.showName();
+			p2.showSex();
+			alert(p1.showName == p2.showName);
+		</script>
+	</body>
+</html>

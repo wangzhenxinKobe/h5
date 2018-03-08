@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 400px;
+				height: 2000px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrap"></div>
+
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+
+			oWrap.onclick = function(e) {
+
+				var e = e || window.event;
+				//获取鼠标指针在当前窗口中的坐标位置
+				//console.log("X:" + e.clientX);
+				//console.log("Y:" + e.clientY);
+
+				//获取鼠标指针在当前页面上的坐标位置
+				//console.log("X:" + e.pageX);
+				//console.log("Y:" + e.pageY);
+
+				//获取鼠标相对于整个屏幕的位置
+				//console.log("X:" + e.screenX);
+				//console.log("Y:" + e.screenY);
+			}
+		</script>
+	</body>
+
+</html>

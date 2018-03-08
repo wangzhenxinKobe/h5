@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 790px;
+				height: 340px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#wrap img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				z-index: 0;
+				border: 0;
+			}
+			
+			#tag {
+				background: rgba(255, 255, 255, 0.5);
+				width: 166px;
+				position: absolute;
+				z-index: 9;
+				border-radius: 11px;
+				bottom: 20px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				padding: 2px 8px;
+				overflow: hidden;
+				text-align: center;
+			}
+			
+			#tag div {
+				height: 12px;
+				width: 12px;
+				background-color: white;
+				display: inline-block;
+				border-radius: 50%;
+				margin: 0 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<a href="#1"><img src="img/1.jpg" style="opacity: 1;z-index: 1;" /></a>
+			<a href="#2"><img src="img/2.jpg" /></a>
+			<a href="#3"><img src="img/3.jpg" /></a>
+			<a href="#4"><img src="img/4.jpg" /></a>
+			<a href="#5"><img src="img/5.jpg" /></a>
+			<a href="#6"><img src="img/6.jpg" /></a>
+			<a href="#7"><img src="img/7.jpg" /></a>
+			<a href="#8"><img src="img/8.jpg" /></a>
+			<div id="tag">
+				<div style="background-color: red;"></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<script src="startMove.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var oWrap = document.getElementById("wrap");
+			var oImgs = oWrap.getElementsByTagName("img");
+			var oTag = document.getElementById("tag");
+			var oTags = oTag.getElementsByTagName("div");
+
+			var timer = null;
+			clearInterval(timer);
+			var index = 1;
+			var imgslen = oImgs.length;
+
+			function bannerStart() {
+				timer = setInterval(function() {
+
+					if(index >= imgslen) {
+						index = 0;
+					}
+
+					var clearIndex = (index - 1) < 0 ? (imgslen - 1) : (index - 1);
+
+					startMove(oImgs[clearIndex], {
+						"opacity": "0"
+					});
+					startMove(oImgs[index], {
+						"opacity": "100"
+					});
+
+					oImgs[clearIndex].style.zIndex = 0;
+					oTags[clearIndex].style.backgroundColor = "";
+					oImgs[index].style.zIndex = 1;
+					oTags[index].style.backgroundColor = "red";
+
+					index++;
+
+				}, 3000);
+			}
+
+			for(var i = 0; i < oImgs.length; i++) {
+				oImgs[i].onmouseover = function() {
+					clearInterval(timer);
+				}
+
+				oImgs[i].onmouseout = function() {
+					bannerStart();
+				}
+			}
+
+			bannerStart();
+			for(var i = 0; i < oTags.length; i++) {
+				oTags[i].index = i;
+				oTags[i].onmouseover = function() {
+
+					clearInterval(timer);
+
+					var clearIndex = null;
+					for(var i = 0; i < oImgs.length; i++) {
+						if(oImgs[i].style.zIndex == "1") {
+							clearIndex = i;
+						}
+					}
+
+					startMove(oImgs[clearIndex], {
+						"opacity": "0"
+					});
+					oImgs[clearIndex].style.zIndex = 0;
+					oTags[clearIndex].style.backgroundColor = "";
+
+					index = this.index;
+
+					startMove(oImgs[index], {
+						"opacity": "100"
+					});
+
+					oImgs[index].style.zIndex = 1;
+					oTags[index].style.backgroundColor = "red";
+
+				}
+			}
+		</script>
+	</body>
+
+</html>

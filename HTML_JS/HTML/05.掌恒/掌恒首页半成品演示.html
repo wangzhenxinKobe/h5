@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				height: 2000px;
+			}
+			
+			.nav {
+				width: 100%;
+				height: 65px;
+				background-color: rgba(0, 0, 0, 0.3);
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			
+			.nav_wrap {
+				width: 930px;
+				height: 65px;
+				margin: 0 auto;
+			}
+			
+			.nav_logo {
+				margin-top: 10px;
+				float: left;
+			}
+			
+			.nav_link {
+				margin-top: 35px;
+				float: right;
+			}
+			
+			.nav_link a {
+				color: #f4f4f5;
+				font-size: 14px;
+				text-decoration: none;
+				padding: 0 20px;
+				border-left: 1px solid #aaaaaa;
+			}
+			
+			.nav_link .nav_link1 {
+				border-left: 0;
+			}
+			
+			.nav_link a:hover {
+				color: #02c0e9;
+			}
+			
+			.banner {
+				background: url('img/banner.jpg') no-repeat center;
+				width: 100%;
+				height: 580px;
+				color: #eeeeee;
+				text-align: center;
+				position: relative;
+			}
+			
+			.banner_text {
+				position: absolute;
+				width: 458px;
+				top: 198px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			
+			.banner_row1 {
+				font-size: 30px;
+			}
+			
+			.banner_row2 {
+				width: 400px;
+				margin: 43px auto 0;
+			}
+			
+			.banner_row2_left {
+				border: 2px solid #EEEEEE;
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding: 0 3px;
+			}
+			
+			.banner_row2_right {
+				border: 2px solid #EEEEEE;
+				float: right;
+				height: 30px;
+				line-height: 30px;
+				padding: 0 3px;
+			}
+			
+			.banner_row3 {
+				margin-top: 120px;
+			}
+			
+			.banner_row4 {
+				margin-top: 20px;
+			}
+			
+			.our_abi_title {
+				text-align: center;
+				margin-top: 20px;
+			}
+			.our_abi{
+				width: 936px;
+				margin: 58px auto 0;
+			}
+			.our_abi_item{
+				float: left;
+				text-align: center;
+				margin: 0 28px;
+			}
+			.our_abi_item_title{
+				margin-top: 20px;
+				color: #666666;
+				font-size: 16px;
+				font-weight: bold;
+			}
+			.our_abi_item_text{
+				margin-top: 48px;
+				color: #7d7d7d;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			.our_abi_item_img img:hover{
+				background-color: #02c0e9;
+			}
+			.banner2 img{
+				margin-top:115px;
+				width: 100%;
+			}
+			.our_por_title{
+				text-align: center;
+				margin-top: 20px;
+			}
+			.our_por{
+				margin: 48px auto 0;
+				width: 982px;
+				height: 406px;
+				
+			}
+			.our_por img{
+				width: 100%;
+				height: 100%;
+			}
+			.our_por_left{
+				float: left;
+				
+				width: 578px;
+				height: 406px;
+			}
+			.our_por_right{
+				float: right;
+				
+				width: 394px;
+				height: 406px;
+			}
+			.our_por_left_top{
+				width: 578px;
+				height: 225px;
+				
+			}
+			.our_por_left_bottom{
+				width: 578px;
+				height: 171px;
+				margin-top: 10px;
+				
+			}
+			.our_por_left_top_1{
+				float: left;
+				width: 206px;
+				height: 225px;
+				position: relative;
+			}
+			.our_por_left_top_2{
+				float: right;
+				width: 365px;
+				height: 225px;
+				
+			}
+			.our_por_left_bottom_1{
+				float: left;
+				width: 284px;
+				height: 171px;
+				
+			}
+			.our_por_left_bottom_2{
+				float: right;
+				width: 284px;
+				height: 171px;
+				
+			}
+			.our_por_right_top{
+				width: 394px;
+				height: 166px;
+
+			}
+			.our_por_right_bottom{
+				margin-top: 10px;
+				width: 394px;
+				height: 230px;
+
+			}
+			.our_por_right_bottom_1{
+				float: left;
+				width: 195px;
+				height: 230px;
+
+			}
+			.our_por_right_bottom_2{
+				float: right;
+				width: 195px;
+				height: 230px;
+				background-color: #CCCCCC;
+				color: white;
+				font-size: 28px;
+				text-align: center;
+				line-height: 230px;
+			}
+			.our_por_item_title{
+				width: 100%;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+				background-color: rgba(0,0,0,0.5);
+				display: none;
+				position: absolute;
+				bottom: 0;	
+			}
+			.our_por_left_top_1:hover .our_por_item_title{
+				display: block;
+			}
+			.our_por_left_top_1:hover img{
+				opacity: 0.7;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="head">
+				<div class="nav">
+					<div class="nav_wrap">
+						<div class="nav_logo"><img src="img/logo.png" /></div>
+						<div class="nav_link">
+							<a href="#" class="nav_link1">Home</a>
+							<a href="#">Abilities</a>
+							<a href="#">Portfolio</a>
+							<a href="#">About</a>
+						</div>
+					</div>
+				</div>
+				<div class="banner">
+					<div class="banner_text">
+						<div class="banner_row1">
+							广州掌恒---专注于数字化营销领域
+						</div>
+						<div class="banner_row2">
+							<div class="banner_row2_left">互联营销、研发、运营 </div>
+							<div class="banner_row2_right">网易、联想联合创始人</div>
+						</div>
+						<div class="banner_row3">
+							电商、IM通讯、O2O营销、移动OA办公
+						</div>
+						<div class="banner_row4">服务于地产、餐饮、广告、教育培训、医疗、服装等多个行业</div>
+					</div>
+				</div>
+			</div>
+			<div class="main">
+				<div class="our_abi_title">
+					<img src="img/our.png" alt="" />
+				</div>
+				<div class="our_abi">
+					<div class="our_abi_item">
+						<div class="our_abi_item_img">
+							<img src="img/our1_01.png" alt="" />
+						</div>
+						<div class="our_abi_item_title">
+							平台建设托管
+						</div>
+						<div class="our_abi_item_text">
+							企业官网、项目官网<br />
+							活动官网、电子商务网站<br />
+							微官网
+						</div>
+					</div>
+					<div class="our_abi_item">
+						<div class="our_abi_item_img">
+							<img src="img/our1_02.png" alt="" />
+						</div>
+						<div class="our_abi_item_title">
+							新媒体营销
+						</div>
+						<div class="our_abi_item_text">
+							企业微信代运营、微信二次开发<br />
+							微信活动策划及推广、无线广告推广
+						</div>
+					</div>
+					<div class="our_abi_item">
+						<div class="our_abi_item_img">
+							<img src="img/our1_03.png" alt="" />
+						</div>
+						<div class="our_abi_item_title">
+							创意设计
+						</div>
+						<div class="our_abi_item_text">
+							产品专题、flash动画<br />
+							平面创意、广告创意
+						</div>
+					</div>
+					<div class="our_abi_item">
+						<div class="our_abi_item_img">
+							<img src="img/our1_04.png" alt="" />
+						</div>
+						<div class="our_abi_item_title">
+							APP定制开发
+						</div>
+						<div class="our_abi_item_text">
+							O2O全案APP定制与运维<br />
+							电商、智慧医疗、地产、企业OA<br />
+							餐饮、家居等行业定制与运维<br />
+							APP半年免维护与终身跟踪服务<br />
+						</div>
+					</div>
+				</div>
+				<div class="banner2">
+					<img src="img/banner2.jpg"/>
+				</div>
+				<div class="our_por_title">
+					<img src="img/our2.png"/>
+				</div>
+				<div class="our_por">
+					<div class="our_por_left">
+						<div class="our_por_left_top">
+							<div class="our_por_left_top_1">
+								<img src="img/ad01.jpg"/>
+								<div class="our_por_item_title">
+									广告平面创意
+								</div>
+							</div>
+							<div class="our_por_left_top_2">
+								<img src="img/ad02.jpg"/>
+							</div>
+						</div>
+						<div class="our_por_left_bottom">
+							<div class="our_por_left_bottom_1">
+								<img src="img/adad04.jpg"/>
+							</div>
+							<div class="our_por_left_bottom_2">
+								<img src="img/ad04.jpg"/>
+							</div>
+						</div>
+					</div>
+					<div class="our_por_right">
+						<div class="our_por_right_top">
+							<img src="img/ad03.jpg"/>
+						</div>
+						<div class="our_por_right_bottom">
+							<div class="our_por_right_bottom_1">
+								<img src="img/ad05.jpg"/>
+							</div>
+							<div class="our_por_right_bottom_2">
+								more
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="foot"></div>
+		</div>
+	</body>
+
+</html>

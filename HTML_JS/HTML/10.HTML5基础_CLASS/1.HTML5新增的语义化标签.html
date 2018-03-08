@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			header{
+				background-color: red;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--语义化标签-->
+		
+		<!--结构部分新增的标签-->
+		<header>页面的头部或板块的头部</header>
+		<nav>导航</nav>	
+		<!--标题组-->
+		<hgroup>
+			<h1>我的女神</h1>
+			<h2>江疏影</h2>
+		</hgroup>
+		<footer>页面底部或板块的底部</footer>
+		
+		<!--内容部分新增的语义化标签-->
+		<section>用于划分页面上不同的区块或文章里不同节</section>
+		<article>文章内容</article>
+		<aside>和主体内容相关的附属信息</aside>
+		<address>定义文章的作者联系方式</address>
+		<mark>标记</mark>
+		
+		<!--媒体元素的组合-->
+		<figure>
+			<img src="img/h5.png" alt="" />
+			<figcaption>灰太狼</figcaption>
+		</figure>
+		
+		<!--时间标签 没啥功能 只是方便查找-->
+		<time>12:00</time>
+		<time datetime="2016-12-25">圣诞节</time>
+		
+		<!--datalist提示信息列表 与文本框联合使用
+			定义文本框中可能会出现的值
+		-->
+		<input type="text" list="area"/>
+		<datalist id="area">
+			<option value="中山区">中山区</option>
+			<option value="西岗区">西岗区</option>
+			<option value="沙河口区">沙河口区</option>
+			<option value="甘井子区">甘井子区</option>
+			<option value="高新园区">高新园区</option>
+			<option value="旅顺口区">旅顺口区</option>
+			<option value="金州新区">金州新区</option>
+		</datalist>
+		
+		<!--用于描述文档或者文档某个部分的细节-->
+		<details>
+			<summary>我的女神是谁？</summary>
+			<p>江疏影</p>
+		</details>
+		
+		<!--对话标签 chrome目前不支持-->
+		<dialog>
+			<dt>韩梅梅</dt>
+			<dd>What's your name?</dd>
+			<dt>李雷</dt>
+			<dd>My name is LiLei</dd>
+		</dialog>
+		
+		<!--进度条-->
+		<progress max="100" value="70">
+			<span>70%</span>
+			<!--为了向下兼容，在IE8以下直接显示70%-->
+		</progress>
+	</body>
+</html>

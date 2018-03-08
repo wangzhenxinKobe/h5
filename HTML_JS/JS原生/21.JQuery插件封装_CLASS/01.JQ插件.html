@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="box">我想高亮</div>
+
+		<script src="jquery-1.11.2.min.js"></script>
+		<script>
+			//用来扩展工具方法
+			$.extend({
+				ltrim: function(str) {
+					return str.replace(/^\s+/, "");
+				},
+				rtrim: function(str) {
+					return str.replace(/\s+$/, "");
+				}
+			});
+
+			//扩展JQ对象方法
+			$.fn.extend({
+				highlight: function() {
+					this.css("background-color", "yellow").css("color", "red");
+					return this;
+				},
+				drag: function() {
+					//this为调用它的那个JQ对象
+					var $box = this;
+
+					$box.on("mousedown", function(e) {
+						//获取鼠标的初始位置
+						var mX1 = e.pageX;
+						var mY1 = e.pageY;
+
+						//获取Box初始位置
+						var bX = $(this).offset().left;
+						var bY = $(this).offset().top;
+
+						$(document).on("mousemove", function(e) {
+							//获取当前鼠标的位置
+							var mX2 = e.pageX;
+							var mY2 = e.pageY;
+
+							//计算差值
+							var lessX = mX2 - mX1;
+							var lessY = mY2 - mY1;
+
+							//设置BOX的位置
+							$box.css("left", bX + lessX + "px");
+							$box.css("top", bY + lessY + "px");
+						})
+						
+						$(document).on("mouseup",function(){
+							$(this).off();
+						})
+					})
+					
+					return $box;
+				}
+			});
+
+			$(function() {
+				var str = "    你好    ";
+				console.log(str);
+				console.log($.ltrim(str));
+				console.log($.rtrim(str));
+
+				$("#box").highlight().css("font-size", "30px");
+				$("#box").drag();
+			})
+		</script>
+	</body>
+
+</html>

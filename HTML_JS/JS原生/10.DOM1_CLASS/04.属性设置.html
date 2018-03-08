@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="我要看" />
+		<img alt="江疏影" />
+	
+		<script>
+			var oImg = document.getElementsByTagName("img")[0];
+		
+			//设置元素的属性
+			oImg.setAttribute("data-src","http://img03.hc360.com/textile/201611/201611010923398700.jpg");
+			
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				//获取元素的属性
+				var dataSrc=oImg.getAttribute("data-src");
+				oImg.src = dataSrc;
+				
+				//移除元素的属性
+				oImg.removeAttribute("alt");
+			}
+			
+			
+		</script>
+	</body>
+</html>

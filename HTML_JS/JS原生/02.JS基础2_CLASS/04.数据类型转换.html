@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="username" />
+		<script>
+			// 取整 parseInt()
+			//var a = parseInt("12.3");
+			//console.log(a);	
+			//console.log(typeof a);
+			
+			//去浮点数
+			//var a = parseFloat(".12");
+			//console.log(a);	
+			//console.log(typeof a);
+			
+			//强制转换
+			//boolean转换
+			
+			var a1 = Boolean("");//false
+			
+			var a2 = Boolean(0); //false
+			var a3 = Boolean(1); //true
+			
+			var a4 = Boolean(-1);//true 非0的数字都是true
+			
+			var a5 =Boolean("hello");//true 非空的字符串都是true
+			
+			var oUsername = document.getElementById("username");
+			
+			var a6 = Boolean(oUsername);
+			
+			var a7 = Boolean(null);
+			
+			//number类型转换
+			var n1 = Number(false); //0
+			
+			var n2 = Number(true);//1
+			
+			var n3 = Number(undefined); //NaN
+			
+			var n4 = Number(null); //0
+			
+			var n5 = Number("1.2.3"); //NaN
+			
+			var n6 = Number(oUsername); //NaN
+			console.log(n6);
+			
+		</script>
+		
+	</body>
+</html>

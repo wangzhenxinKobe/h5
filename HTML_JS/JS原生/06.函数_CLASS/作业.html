@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 1000px;
+				border: 1px solid black;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			
+			#wrap div {
+				width: 100px;
+				height: 100px;
+				background-color: gray;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+				line-height: 100px;
+				float: left;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+
+		</div>
+		<div style="text-align: center;">
+			<input type="button" value="开始点名" id="btn" />
+		</div>
+		<script>
+			//获取元素
+			oWrap = document.getElementById("wrap");
+			oBtn = document.getElementById("btn");
+
+			var persons = ["蔡依林", "杨幂", "郭德纲", "于谦", "江疏影", "邓紫棋", "范冰冰", "Angelababy", "唐嫣", "刘诗诗", "李小璐", "柳岩", "赵丽颖", "张柏芝", "波多野结衣", "苍井空", "苍井优", "章子怡", "汤唯", "谢娜", "林志玲", "林心如", "汤灿", "昆凌"];
+
+			//创建DIV块
+			for(var i = 0; i < persons.length; i++) {
+				oWrap.innerHTML += "<div id=\"p"+i+"\">" + persons[i] + "</div>";
+			}
+
+			//按钮的状态
+			var state = true;
+			var tempnum = 0;
+			var timer=null;
+			oBtn.onclick = function() {
+				if(state) {
+					
+					//清计时器
+					clearInterval(timer);
+					
+					timer = setInterval(function() {
+						document.getElementById("p"+tempnum).style.backgroundColor = "";
+						//新的随机数
+						var num = Math.floor(Math.random() * (persons.length));
+						//设置临时保存数
+						tempnum = num;
+						document.getElementById("p" + num).style.backgroundColor = "red";
+						
+						
+					}, 100);
+					
+					oBtn.value = "停止";
+					state = false;
+
+				}else{
+					
+					clearInterval(timer);
+					oBtn.value = "开始点名";
+					
+					state = true;
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

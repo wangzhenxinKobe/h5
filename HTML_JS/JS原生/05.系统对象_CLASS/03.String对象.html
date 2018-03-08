@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//String对象
+			//创建一个字符串
+			var str1 = new String("我是一个字符串");
+			var str2 = "我也是一个字符串";
+
+			//charAt()方法
+			//通过下标获取字符串中指定位置的字符
+			//越界返回空字符串
+			//console.log(str1.charAt(1));
+			//console.log(typeof str1.charAt(8));
+
+			//search()方法
+			//查找此字符串中是否包含指定的字符或字符串
+			//如果包含返回其下标位置，否则返回-1
+			//console.log(str1.search("一个"));
+
+			//字符的拼接
+			var str3 = "女神";
+			var str4 = "江疏影";
+			//var str5 = str3 + str4;
+			var str5 = str3.concat(str4);
+			//console.log(str5);
+
+			//indexOf() 检索字符串
+			//等同于search() 但是indexOf可以用于数组
+			//console.log(str5.indexOf("n"));
+			//var ary=["女","神","江疏影"];
+			//console.log(ary.indexOf("江疏影"));
+
+			//找到第一个符合的字符停止，从左至右查找
+			//var str6 = "aaabbbcccddd";
+			//console.log(str6.indexOf("b"));
+
+			//lastIndexOf()与indexOf()相反，从右至左查找
+			//console.log(str6.lastIndexOf("b"));
+
+			//var str7="欧#美@日#韩@国#产@泰#国@巴#西";
+			//split()拆分字符串
+			//var ary = str7.split("aa");
+			//console.log(ary);
+
+			//substring 获取子字符串(取子串)
+			//subtring(起始位置，结束位置：取到此位置前一个字符)
+			//var str8="欧美日韩泰国巴西";
+			//console.log(str8.substring(1,9));
+
+			//substr 获取子字符串
+			//substr(起始位置，取出字符的个数)
+			//var str9 = "欧美日韩泰国巴西";
+			//console.log(str9.substr(1,4));
+			
+			//replace 替换
+			//replace(要被替换的值，新的值)
+			//var str10 = "欧美日韩泰国巴西";
+			//console.log(str10.replace("日韩","XXX"));
+			
+			//数据类型转换
+			var num=10;
+			console.log(typeof (num+""));
+			console.log(typeof String(num));
+			console.log(typeof num.toString());
+		</script>
+	</body>
+
+</html>

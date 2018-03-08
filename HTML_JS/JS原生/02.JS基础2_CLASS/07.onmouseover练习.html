@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				transition: all 1s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<div class="box"></div>-->
+		<img src="img/1.jpg" alt="江疏影" width="500" id="jsy" />
+		<script>
+		
+			var oJsy=document.getElementById("jsy");
+			
+			oJsy.onmouseover = function () {
+				oJsy.src = "img/2.jpg";
+				   
+			}
+			
+			oJsy.onmouseout = function () {
+				oJsy.src = "img/1.jpg";
+			}
+			
+//			//获取id=box的div
+//			var oBox = document.getElementById("box");
+//
+//			//当鼠标移入时改变成蓝色
+//			oBox.onmouseover = function() {
+//				oBox.style.backgroundColor = "blue";
+//				oBox.style.width = "300px";
+//				oBox.style.height = "300px";
+//			}
+//
+//			//当鼠标移出时改变成红色
+//			oBox.onmouseout = function() {
+//				oBox.style.backgroundColor = "red";
+//				oBox.style.width = "200px";
+//				oBox.style.height = "200px";
+//			}
+		</script>
+	</body>
+
+</html>

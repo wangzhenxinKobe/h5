@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+
+		<head>
+			<meta charset="UTF-8">
+			<title>绘制椭圆</title>
+			<style type="text/css">
+				#canvas {
+					border: 1px solid black;
+				}
+			</style>
+		</head>
+
+		<body>
+
+			<canvas id="canvas" width="600" height="500"></canvas>
+
+			<script>
+				var oC = document.getElementById("canvas");
+				var ctx = oC.getContext("2d");
+				
+				ctx.beginPath();
+				ctx.arc(200,200,100,0,2*Math.PI);
+				ctx.fillStyle = "red";
+				ctx.fill();
+				
+				ctx.globalCompositeOperation = "destination-out";
+				ctx.beginPath();
+				ctx.arc(250,250,50,0,2*Math.PI);
+				ctx.fillStyle = "blue";
+				ctx.fill();
+			</script>
+	</body>
+</html>

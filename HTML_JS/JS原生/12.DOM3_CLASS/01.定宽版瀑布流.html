@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 800px;
+				border: 1px solid black;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			#wrap ul {
+				list-style: none;
+				float: left;
+				width: 200px;
+				padding: 5px;
+				box-sizing: border-box;
+			}
+			
+			#wrap li {
+				width: 100%;
+				background-color: gray;
+				color: white;
+				font-size: 40px;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+
+		<script>
+			var oUls = document.getElementsByTagName("ul");
+
+			var imgCount = 40;
+
+			for(var i = 0; i < imgCount; i++) {
+				//创建一个新的li
+				var newli = document.createElement("li");
+				newli.innerHTML = i;
+
+				//设置li高度
+				newli.style.height = getRandom(150, 300) + "px";
+
+				//获取当前所有列的高度
+				var ulH = [];
+				for(var j = 0; j < oUls.length; j++) {
+					ulH[j] = oUls[j].offsetHeight;
+
+				}
+				
+				//获取最短的列
+				var minH = ulH[0];
+				var minIndex = 0;
+				for(var j=0;j<ulH.length;j++){
+					if(minH > ulH[j]){
+						minH = ulH[j];
+						minIndex = j;
+					}
+				}
+				
+				//添加当前LI到最短的列中
+				oUls[minIndex].appendChild(newli);
+
+			}
+
+			//随机函数
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+		</script>
+	</body>
+
+</html>

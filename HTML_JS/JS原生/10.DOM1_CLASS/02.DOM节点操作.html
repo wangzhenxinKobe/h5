@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="mygirls"><li>江疏影</li><li>范冰冰</li><li>汤唯</li></ul>
+		
+		<script>
+			//获取元素
+			var oMyGirls = document.getElementById("mygirls");
+			
+			//oMyGirls.innerHTML = oMyGirls.innerHTML 
+			//+ "<li>赵丽颖</li>";
+			
+			//创建元素对象
+			var newli = document.createElement("li");
+			newli.innerHTML = "赵丽颖";
+			
+			//元素对象的尾部添加一个元素
+			//添加一个子节点appendChild()
+			//oMyGirls.appendChild(newli);
+			
+			var oldli = oMyGirls.childNodes[1];
+			//移除一个子节点
+			//oMyGirls.removeChild(oldli);
+			
+			//将节点插入到指定位置
+			//oMyGirls.insertBefore(newli,oMyGirls.lastChild);
+			
+			
+			//替换子节点
+			oMyGirls.replaceChild(newli,oldli);
+			
+			oMyGirls.appendChild(oldli);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="wrap"></div>
+		<script>
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+
+			//定义固定日期
+			var date1 = new Date(2016, 10, 11);
+
+			//设置定时器
+			setInterval(function() {
+				//定义当前时间对象
+				var now = new Date();
+
+				//计算两个日期之间时间差（毫秒数）
+				var diff = date1.getTime() - now.getTime();
+
+				var days = parseInt(diff / 86400000);
+
+				var hours = parseInt((diff % 86400000) / 3600000);
+
+				var min = parseInt(((diff % 86400000) % 3600000) / 60000);
+
+				var sec = parseInt((((diff % 86400000) % 3600000) % 60000) / 1000);
+
+				oWrap.innerHTML = "倒计时："+days + "天" + hours + "小时" + min + "分" + sec + "秒";
+			}, 1000);
+		</script>
+	</body>
+
+</html>

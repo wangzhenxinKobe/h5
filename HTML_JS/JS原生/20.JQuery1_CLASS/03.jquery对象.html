@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>Hello，江疏影</div>
+		<div>Hello，范冰冰</div>
+		
+		<script src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			
+			
+			$(function(){
+				
+				//jQuery对象 
+				//通过jq选择器获取的都是一个jquery对象，而不是js原生的DOM对象
+				//jquery对象是将DOM对象通过jquery进行包装以后产生的对象
+				//jquery对象是jquery独有的对象
+				//jquery对象无法使用DOM对象的任何方法
+				//DOM对象也无法使用jquery对象的任何方法
+				//但是jquery对象可以和DOM对象相互转换
+				//jquery和原生代码可以共存，但不可混编
+				
+				//获取元素
+				//$("div").css("background-color","red");
+				//$("div").style.backgroundColor = "red";
+				
+				//获取元素
+				//var oDiv = document.getElementsByTagName("div")[0];
+				//oDiv.style.backgroundColor = "blue";
+				//oDiv.css("background-color","red");
+				
+				//将jquery对象转换为DOM对象
+				//其实jquery就是一个数组对象,使用数组下标可以讲jquery
+				//对象转换为DOM对象
+				//$("div")[0].style.backgroundColor = "red";
+				//$("div")[1].style.backgroundColor = "red";
+				//$("div").css("background-color","red");
+				
+				//将DOM对象换行为jquery对象
+				var oDiv = document.getElementsByTagName("div");
+				$(oDiv).css("background-color","red");
+				
+				
+			})
+		</script>
+	</body>
+</html>

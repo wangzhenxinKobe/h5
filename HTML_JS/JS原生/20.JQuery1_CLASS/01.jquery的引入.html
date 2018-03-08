@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="div1">江疏影</div>
+		<div>范冰冰</div>
+		<div>汤唯</div>
+		<script src="jquery-1.11.3.min.js" type="text/javascript"></script>
+
+		<script>
+			//			//页面所有引用全部加载完成后执行
+			//			window.onload = function(){
+			//				
+			//			}
+
+			//jQuery是一个快速、简洁的javascript框架(JS代码库)
+			//设计的宗旨"write less,do more"，写更少的代码，做更多的事
+			//预执行函数
+			//所有的JQ代码都应该写在与执行函数中
+			//当页面的DOM结构绘制完毕时执行
+			//			$(document).ready(function(){
+			//				//alert("我的jq引入成功");
+			//			})
+			
+//			var oDivs = document.getElementsByTagName("div");
+//			for(var i =0;i<oDivs.length;i++){
+//				oDivs[i].style.backgroundColor = "red";
+//			}
+
+			$(function() {
+				//alert("我简化了一下");
+				
+				$("#div1").css("background-color","red");
+				
+			
+				
+			})
+		</script>
+	</body>
+
+</html>

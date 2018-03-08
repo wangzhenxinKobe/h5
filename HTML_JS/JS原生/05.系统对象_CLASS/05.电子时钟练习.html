@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="wrap"></div>
+
+		<script type="text/javascript">
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+			//设置时间定时器
+			setInterval(function() {
+				//创建一个时间对象
+				var now = new Date();
+
+				//年
+				var year = now.getFullYear();
+				//月
+				var month = now.getMonth() + 1;
+				//日
+				var day = now.getDate();
+				//时
+				var hours = now.getHours();
+				//分
+				var min = now.getMinutes();
+				//秒
+				var sec = now.getSeconds();
+				//毫秒
+				var ms = now.getMilliseconds();
+
+				oWrap.innerHTML = year + "年" + month + "月" + day + "日" + " " + hours + ":" + min + ":" + sec + "." + ms;
+
+			}, 1);
+		</script>
+	</body>
+
+</html>

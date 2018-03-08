@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box"></div>
+		<script>
+			//原生touch事件 触屏
+			//1.touchstart 手指放到某个元素上时触发
+			//2.touchmove 手指在某个元素上移动时
+			//3.touchend 手指从某个元素上移开时
+
+			var oBox = document.getElementById("box");
+
+			//touchstart 触摸屏幕时发生
+			//touches 在屏幕上的手指集合
+			oBox.addEventListener("touchstart", function(e) {
+				var e = e || window.event;
+
+				var finger = e.touches[0];
+
+				//获取手指在手机屏幕的位置信息
+				var fX = finger.screenX;
+				var fY = finger.screenY;
+				console.log(fX + ":" + fY);
+				console.log("我摸一下你！");
+			}, false);
+			
+			//touchmove 手指移动时触发
+			oBox.addEventListener("touchmove",function(e){
+				var e = e || window.event;
+				var finger = e.touches[0];
+				
+				//获取手指在手机屏幕的位置
+				var fX = finger.clientX;
+				var fY = finger.clientY;
+				console.log(fX + ":" + fY);
+				
+			},false)
+			
+			//touchend 手指移开时触发
+			//changedTouches 发生变化的手指集合
+			oBox.addEventListener("touchend",function(e){
+				var e = e || window.event;
+				
+				var finger = e.changedTouches[0];
+				
+				//获取手指在手机屏幕的位置
+				var fX = finger.clientX;
+				var fY = finger.clientY;
+				console.log(fX + ":" + fY);
+			},false)
+		</script>
+	</body>
+
+</html>

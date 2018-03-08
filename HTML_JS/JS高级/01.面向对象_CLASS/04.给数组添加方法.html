@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var ary1 = new Array(1,2,3);
+			var ary2 = new Array(10,11,12);
+			
+			ary1.sum = function(){
+				var ret = 0;
+				for(var i=0;i<this.length;i++){
+					ret +=this[i];
+				}
+				return ret;
+			}
+			alert(ary1.sum());
+			alert(ary2.sum());
+		</script>
+	</body>
+</html>

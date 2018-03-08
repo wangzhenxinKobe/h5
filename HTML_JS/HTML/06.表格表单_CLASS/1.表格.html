@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			td,th{
+				border: 1px solid black;
+				padding: 0;
+			}
+			table{
+				/*表格与单元格之间的边框重叠*/
+				border-collapse:collapse;
+				width: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+        	1.表格元素中不要给table,td,th以外标签加样式，以免出现兼容性问题
+        	2.单元格默认会平分table的宽度
+        	3.th里面的字体会默认加粗并且左右居中、垂直居中,
+        	4.td里面的字体默认居左、垂直居中
+        	5.table的宽度决定表格宽度
+        	6.表格里同一行继承最大的高度
+        	7.表格同一列继承最大的宽度
+        -->
+		<table>
+			<caption>课程表</caption><!--表格的标题-->
+			<thead><!--表格头-->
+				<tr>
+					<th style="height: 30px;">星期一</th>
+					<th>星期二</th>
+					<th>星期三</th>
+					<th colspan="2">星期四</th>
+					<!--colspan合并列-->
+				</tr>
+			</thead>
+			<tbody><!--表格主体部分-->
+				<tr><!--行-->
+					<td rowspan="3" style="height: 30px;">语文</td><!--单元格-->
+					<!--rowspan合并行-->
+					<td>数学</td>
+					<td>音乐</td>
+					<td>自然</td>
+					<td>体育</td>
+				</tr>
+				<tr>
+					<td>数学</td>
+					<td>音乐</td>
+					<td>自然</td>
+					<td>体育</td>
+				</tr>
+				<tr>
+					<td>数学</td>
+					<td>音乐</td>
+					<td>自然</td>
+					<td>体育</td>
+				</tr>
+				<tr>
+					<td>语文</td>
+					<td>数学</td>
+					<td>音乐</td>
+					<td>自然</td>
+					<td>体育</td>
+				</tr>
+			</tbody>
+			<tfoot><!--表格脚部-->
+				<tr>
+					<td>语文</td>
+					<td>数学</td>
+					<td>音乐</td>
+					<td>自然</td>
+					<td>体育</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+
+</html>

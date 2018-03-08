@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			.top {
+				width: 598px;
+				height: 200px;
+				border: 1px solid #CCCCCC;
+				border-radius: 10px;
+			}
+			
+			.title {
+				height: 40px;
+				overflow: hidden;
+				color: #FDA508;
+				font-size: 20px;
+			}
+			
+			.logo {
+				float: left;
+				width: 200px;
+				height: 40px;
+				line-height: 40px;
+				padding-left: 20px;
+			}
+			
+			#libao {
+				float: right;
+				width: 200px;
+				height: 40px;
+				line-height: 40px;
+				text-align: right;
+				padding-right: 20px;
+			}
+			
+			#textarea {
+				width: 570px;
+				height: 100px;
+				border: 1px solid #CCCCCC;
+				resize: none;
+				font-size: 20px;
+			}
+			
+			.text {
+				text-align: center;
+			}
+			
+			.tag {
+				height: 60px;
+				overflow: hidden;
+			}
+			
+			.left {
+				width: 300px;
+				height: 60px;
+				float: left;
+				line-height: 60px;
+				padding-left: 20px;
+			}
+			
+			.left a {
+				color: black;
+				text-decoration: none;
+				margin: 0 10px;
+			}
+			
+			.left a:hover {
+				color: #FDA508;
+			}
+			
+			.right {
+				height: 60px;
+				width: 80px;
+				float: right;
+				padding-right: 20px;
+				text-align: right;
+				line-height: 50px;
+			}
+			
+			#btn_send {
+				width: 68px;
+				height: 35px;
+				border: 0;
+				border-radius: 5px;
+				color: white;
+				background-color: #FDA508;
+				font-size: 16px;
+				opacity: 0.5;
+			}
+			
+			.main {
+				width: 598px;
+				height: 1000px;
+				border: 1px solid #CCCCCC;
+				border-radius: 10px;
+				margin-top: 10px;
+			}
+			
+			.item {
+				width: 560px;
+				border: 1px solid #CCCCCC;
+				border-radius: 10px;
+				margin: 10px auto;
+				position: relative;
+				padding: 10px;
+				overflow: hidden;
+				top: -180px;
+			}
+			
+			.item_top {
+				height: 30px;
+				overflow: hidden;
+			}
+			
+			.item_bottom {
+				margin-top: 20px;
+				color: #CCCCCC;
+			}
+			
+			.item_del {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="wrap">
+			<div class="top">
+				<div class="title">
+					<div class="logo">LOGO</div>
+					<div id="libao">点击领取红包</div>
+				</div>
+				<div class="text">
+					<textarea id="textarea" name=""></textarea>
+				</div>
+				<div class="tag">
+					<div class="left">
+						<a href="#">表情</a>
+						<a href="#">图片</a>
+						<a href="#">视频</a>
+						<a href="#">话题</a>
+						<a href="#">文章</a>
+					</div>
+					<div class="right">
+						<input type="button" value="发 布" id="btn_send" />
+					</div>
+				</div>
+			</div>
+			<div class="main" id="main"></div>
+		</div>
+		<script src="jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() {
+				//获取JQ对象
+				var $TextArea = $("#textarea");
+				var $Libao = $("#libao");
+				var $BtnSend = $("#btn_send");
+				var $Main = $("#main");
+
+				//当获得焦点时
+				$TextArea.on("focus", function() {
+					comWordsNum();
+				})
+
+				//失去焦点时
+				$TextArea.on("blur", function() {
+					if($.trim($(this).val()).length > 0) {
+						comWordsNum();
+					} else {
+						$Libao.html("点击领取礼包");
+						$Libao.css("color", "");
+					}
+				});
+
+				//按键事件
+				$TextArea.on("keyup", function() {
+					comWordsNum();
+				});
+
+				function comWordsNum() {
+					var max = 140;
+					var textlen = $.trim($TextArea.val()).length;
+
+					if(textlen > 0) {
+
+						$BtnSend.css("opacity", "1");
+					} else {
+						$BtnSend.css("opacity", "0.5");
+					}
+					//当输入的字符长度小于等于最大可输入数值时
+					if(textlen <= max) {
+						$Libao.html("您还可以输入" + (max - $TextArea.val().length) + "个字")
+						$Libao.css("color", "#cccccc");
+					} else {
+						//当输入的字符长度超出范围，截取
+						var str = $.trim($TextArea.val()).substr(0, max);
+						$textArea.val(str);
+					}
+				}
+
+				//发布按钮
+				$BtnSend.on("click", function() {
+					if($.trim($TextArea.val()).length > 0) {
+						//调用添加消息函数
+						AddItem();
+					}
+				});
+
+				//添加消息函数
+				function AddItem() {
+					var $Item = $("<div class='item'></div>");
+					var $ItemTop = $("<div class='item_top'></div>");
+					var $ItemMain = $("<div class='item_main'></div>");
+					var $ItemBottom = $("<div class='item_bottom'></div>");
+					var $ItemDel = $("<div class='item_del'></div>");
+
+					//设置内容
+					$ItemTop.html("江疏影");
+					$ItemMain.html($.trim($TextArea.val()));
+
+					$ItemBottom.html(getDate() + "发布");
+					$ItemDel.html("X");
+
+					//添加删除事件
+					$ItemDel.on("click", function() {
+						$(this).parent().animate({
+							"width": "0",
+							"height": "0"
+						},function(){
+							$(this).remove();
+						});
+					})
+
+					//添加元素
+					$Item.append($ItemTop);
+					$Item.append($ItemMain);
+					$Item.append($ItemBottom);
+					$Item.append($ItemDel);
+
+					//添加当前项到main中
+					$Main.prepend($Item);
+					$Item.animate({"top":"0"});
+				}
+
+				//创建日期函数
+				function getDate() {
+					var now = new Date();
+					var year = now.getFullYear();
+					var month = now.getMonth() + 1;
+					var day = now.getDate();
+					return year + "年" + month + "月" + day + "日";
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top:0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+		
+			var oBox= document.getElementById("box");
+			
+			//添加鼠标按键事件
+			oBox.onmousedown = function(e){
+				//获取event对象
+				var e = e || window.event;
+				//获取鼠标的初始位置
+				var x1 = e.clientX;
+				var y1 = e.clientY;
+				
+				//获取小块当前的位置
+				var boxLeft= oBox.offsetLeft;
+				var boxTop = oBox.offsetTop;
+				
+				document.onmousemove = function(e){
+					//获取event对象
+					var e = e || window.event;
+					
+					var x2 = e.clientX;
+					var y2 = e.clientY;
+					
+					//计算鼠标移动差值
+					var lessX = x2 - x1;
+					var lessY = y2 - y1;
+					
+					//设置BOX的位置
+					oBox.style.left = boxLeft + lessX + "px";
+					oBox.style.top = boxTop + lessY + "px";
+				}
+			}
+			
+			//当鼠标按键抬起时
+			oBox.onmouseup = function(){
+				//清除移动事件
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

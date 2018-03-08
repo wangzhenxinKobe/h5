@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas"></canvas>
+
+		<script type="text/javascript">
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+
+			//获取当前窗口可视宽高
+			oC.width = window.innerWidth;
+			oC.height = window.innerHeight;
+
+			//绘制圆形
+			function drawCircle(obj) {
+				ctx.beginPath();
+				ctx.arc(obj.x, obj.y, obj.r, 0, 2 * Math.PI);
+				ctx.fillStyle = obj.fillStyle;
+				ctx.fill();
+			}
+
+			//创建生成小球的构造函数
+			function Circle(x, y, r, fillStyle, speedx, speedy) {
+
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				this.fillStyle = fillStyle;
+				this.speedx = speedx;
+				this.speedy = speedy;
+
+				drawCircle(this);
+			}
+
+			//随机函数
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			//小球的数量
+			var num = 500;
+
+			//声明储存小球的数组
+			var shapes = [];
+
+			for(var i = 0; i < num; i++) {
+				//半径
+				var r = getRandom(20, 30);
+				//位置
+				var x = getRandom(50, oC.width - r);
+				var y = getRandom(50, oC.height - r);
+
+				//颜色
+				//var red = getRandom(0, 255).toString(16);
+				//var green = getRandom(0, 255).toString(16);
+				//var blue = getRandom(0, 255).toString(16);
+				//var fillStyle = "#" + red + green + blue;
+
+				var red = getRandom(0, 255);
+				var green = getRandom(0, 255);
+				var blue = getRandom(0, 255);
+				var alpha = getRandom(30, 90) / 100;
+				var fillStyle = "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
+
+				//速度
+				var speedx = getRandom(5, 10);
+				var speedy = getRandom(5, 10);
+
+				shapes.push(new Circle(x, y, r, fillStyle, speedx, speedy));
+			}
+
+			//开始运动
+			setInterval(function() {
+				//清除画布
+				ctx.clearRect(0, 0, oC.width, oC.height);
+
+				for(var i = 0; i < num; i++) {
+
+					var tempObj = shapes[i];
+
+					//碰壁判断
+					if(tempObj.x - tempObj.r <= 0 || tempObj.x + tempObj.r > oC.width) {
+						tempObj.speedx = -tempObj.speedx;
+					}
+					if(tempObj.y - tempObj.r <= 0 || tempObj.y + tempObj.r > oC.height) {
+						tempObj.speedy = -tempObj.speedy;
+					}
+
+					tempObj.x += tempObj.speedx;
+					tempObj.y += tempObj.speedy;
+
+					//重新绘制小球
+					drawCircle(tempObj);
+				}
+
+			}, 20);
+		</script>
+	</body>
+
+</html>

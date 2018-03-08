@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//location对象
+			//包含了有关当前URL的信息
+			
+			//location.search返回URL从问号到结尾的字符串
+			console.log(location.search);
+			
+			//location.pathname返回URL的路径部分
+			console.log(location.pathname);
+			
+			//location.hash 返回井号开始的部分
+			console.log(location.hash);
+			
+			//location.href 返回URL地址
+			console.log(location.href);
+			//跳转
+			//location.href = "http://www.baidu.com";
+			
+			//获取当前页面的域名或服务器IP地址(不带端口号)
+			console.log(location.hostname);
+			
+			//获取当前页面的域名或者服务器IP地址(带端口号)
+			console.log(location.host)
+			
+			
+			//获取端口号
+			console.log(location.port);
+			
+			//获取协议
+			console.log(location.protocol)
+			
+			//重新加载页面
+			location.reload();
+
+		</script>
+	</body>
+</html>

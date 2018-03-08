@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="http://www.baidu.com" method="get">
+			<!--
+				1.placeholder输入提示信息
+				2.autocomplete是否提示用户曾经输入过的信息
+				  on开启 off关闭
+				3.autofocus自动获得焦点
+				4.保证当前文本框不能为空
+				5.pattern正则校验
+			
+			-->
+			<input type="text" name="username" 
+				placeholder="请输入用户名" 
+				autocomplete="on" 
+				autofocus="autofocus" 
+				required="required"
+				pattern="\d{5}"
+			/>
+			<input type="submit"  value="发送" />
+			<input type="submit" value="保存至草稿箱" formaction="http://www.163.com" />
+		</form>
+	</body>
+</html>

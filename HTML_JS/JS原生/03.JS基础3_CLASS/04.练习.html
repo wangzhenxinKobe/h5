@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//使用for循环
+
+			//1.输出0～100的所有奇数和偶数
+			//奇数3
+			//偶数4
+
+			//			for(var i = 0; i <= 100; i++) {
+			//				if(i % 2 == 0) {
+			//					console.log("偶数：" + i);
+			//				} else {
+			//					console.log("奇数：" + i);
+			//				}
+			//			}
+
+			//2.计算从1到100累计相加的结果
+			//			var sum = 0;
+			//			for(var i = 1; i <= 100; i++) {
+			//				sum+=i;
+			//			}
+			//			console.log(sum);
+
+			//3.一个球从100m高度自由落下，每次落地后反跳回原来高度的一半，再落下，再反弹。求它在第10次落地时，共经过多少米？第10次反弹多高
+			var h = 100;
+			var sum = 0;
+			for(var i = 0; i < 10; i++) {
+				sum += h + h / 2;
+				h = h / 2;
+			}
+			console.log("第十次落地经过" + sum - h + "米");
+			console.log("第十次落地反弹" + h + "米");
+		</script>
+	</body>
+
+</html>

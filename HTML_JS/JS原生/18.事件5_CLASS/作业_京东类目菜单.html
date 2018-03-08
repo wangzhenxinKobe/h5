@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				position: relative;
+				top: 20px;
+			}
+			
+			#menu {
+				width: 190px;
+				height: 450px;
+				padding: 15px 0;
+				background-color: #6c6669;
+				position: absolute;
+				left: 0;
+				top: 0;
+				color: white;
+				-webkit-font-smoothing: antialiased;
+			}
+			
+			#menu li {
+				font-size: 14px;
+				padding-left: 12px;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			#menu_items {
+				width: 1000px;
+				height: 480px;
+				position: absolute;
+				left: 190px;
+				box-shadow: 2px 0 5px rgba(0, 0, 0, .3);
+				font-size: 60px;
+				display: none;
+			}
+			
+			#menu_items>div {
+				display: none;
+			}
+			
+			#menu a {
+				text-decoration: none;
+				color: white;
+			}
+			
+			#menu a:hover {
+				color: darkred;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<ul id="menu">
+				<li data-index="1">
+					<a href="#">家用电器</a>
+				</li>
+				<li data-index="2">
+					<a href="#">手机</a> / <a href="#">运营商</a> / <a href="#">数码</a></li>
+				<li data-index="3">电脑办公</li>
+				<li data-index="4">家居 / 家具 / 家装 / 厨具</li>
+			</ul>
+			<div id="menu_items">
+				<div id="item_1" class="mitem">1</div>
+				<div id="item_2" class="mitem">2</div>
+				<div id="item_3" class="mitem">3</div>
+				<div id="item_4" class="mitem">4</div>
+			</div>
+		</div>
+
+		<script>
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+			var oMenu = document.getElementById("menu");
+			var oMlis = oMenu.getElementsByTagName("li");
+			var oMenuItems = document.getElementById("menu_items");
+			var oMitems = oMenuItems.querySelectorAll("#menu_items>div");
+
+			//设置li初始索引
+			oMenu.mIndex = 0;
+			oMenu.onmouseover = function(e) {
+				var e = e || window.event;
+
+				if(this != e.target) {
+
+					//恢复上一个li背景色
+					if(oMenu.mIndex) {
+						oMlis[oMenu.mIndex - 1].style.backgroundColor = "";
+						oMitems[oMenu.mIndex - 1].style.display = "none";
+					}
+
+					//获取目标元素
+					var li = e.target;
+					//如果目标元素为A标签，获取A标签的父级节点
+					if(li.nodeName == "A") {
+						li = li.parentNode;
+					}
+
+					//设置当前悬停的li背景色
+					li.style.backgroundColor = "#999395";
+					
+					//更新当前悬停的li索引
+					oMenu.mIndex = Number(li.getAttribute("data-index"));
+
+					//显示当前的菜单项
+					oMenuItems.style.display = "block";
+					oMitems[oMenu.mIndex - 1].style.display = "block";
+				}
+			}
+			
+			//移出整个wrap时清空所有效果
+			oWrap.onmouseleave = function() {
+				if(oMenu.mIndex) {
+					oMenuItems.style.display = "none";
+					oMitems[oMenu.mIndex - 1].style.display = "none";
+					oMlis[oMenu.mIndex - 1].style.backgroundColor = "";
+					oMenu.mIndex = null;
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.txt1{
+				position: relative;
+				top: 100px;
+				left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap" class="txt1">
+			Hello jQuery
+		</div>
+		<script src="jquery-1.11.3.min.js"></script>
+		<script>
+			$(function(){
+				//设置样式
+				//设置一个属性
+				$("#wrap").css("color","#00BFFF");
+				
+				//设置多个属性
+				$("#wrap").css({"font-size":"30px","font-weight":"blod"});
+				
+				//添加class
+				//$("#wrap").addClass("wrap");
+				
+				//移除class
+				//$("#wrap").removeClass("wrap");
+				
+				//切换class
+				
+				$("#wrap").click(function(){
+					$("#wrap").toggleClass("wrap");
+				});
+				
+				//hasClass() 判断元素中是否含有某个class
+				//有返回true 没有返回false
+				console.log($("#wrap").hasClass("txt1"));
+				
+			})
+		</script>
+	</body>
+</html>

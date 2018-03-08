@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+
+		<head>
+			<meta charset="UTF-8">
+			<title>绘制椭圆</title>
+			<style type="text/css">
+				#canvas {
+					border: 1px solid black;
+				}
+			</style>
+		</head>
+
+		<body>
+
+			<canvas id="canvas" width="600" height="500"></canvas>
+
+			<script>
+				var oC = document.getElementById("canvas");
+				var ctx = oC.getContext("2d");
+
+				//保存路径
+				ctx.save();
+				//translate 平移
+				ctx.translate(10, 10);
+				ctx.beginPath();
+				ctx.arc(100, 100, 50, 0, 2 * Math.PI);
+				ctx.fillStyle = "red";
+				ctx.fill();
+				//恢复路径
+				ctx.restore();
+
+				//scale() 缩放
+				ctx.save();
+				ctx.beginPath();
+				ctx.scale(0.5, 0.5);
+				ctx.arc(300, 450, 50, 0, 2 * Math.PI);
+				ctx.fillStyle = "blue";
+				ctx.fill();
+				ctx.restore();
+
+				//rotate()旋转
+
+				//假如fillRect(50, 50, 50, 50)，那么这个矩形的中心点是(x + width/2, y + height/2)，即(75, 75)。
+				//上面刚说了，旋转的中心是canvas的左上角，我们要做的就是把(0, 0)移到(75, 75)的位置。
+				//
+				//canvas的translate()方法可以使坐标系统的原点向上下左右移动。这正是我们需要的！
+				//context.translate(x + width/2, y + height/2);
+				//
+				//好了，中心点处理完了，还记得上面的第一条不，切记顺序，现在该画矩形了，fillRect()的参数 x 和 y 现在是什么呢？
+				// 
+				//调用translate()之后，整个坐标系统都平移了，所以我们之前的fillRect(50, 50, 50, 50)，矩形的左上角不再是(50, 50)了，而是(-0.5 * width, -0.5 * height);
+				//context.fillRect(-0.5 * width, -0.5 * height);
+
+				ctx.translate(100, 100);
+				ctx.fillRect(0, -10, 200, 20);
+				setInterval(function ()  {    
+					ctx.clearRect(-100, -100, canvas.width, canvas.height);    
+					ctx.rotate(1 * Math.PI / 180);    
+					ctx.fillRect(-100, -10, 200, 20);
+				},  20);
+			</script>
+
+		</body>
+
+		</html>
+	</body>
+
+</html>

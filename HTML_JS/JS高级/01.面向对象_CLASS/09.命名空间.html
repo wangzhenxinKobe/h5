@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//命名空间：把同一类包在一起
+//			var Baidu = {};
+//			Baidu.search = {
+//				showName:function(){
+//					alert("搜索部");
+//				}
+////				属性名:属性值,
+////				方法名:匿名函数,
+////				对象:{}
+//			}
+//			Baidu.video = {
+//				showName:function(){
+//					alert("视频部");
+//				}
+////				属性名:属性值,
+////				方法名:匿名函数,
+////				对象:{}
+//			}
+
+			var Baidu = {
+				search:{
+					name:"搜索部",
+					showName:function(){
+						alert(this.name);
+					}
+				},
+				video:{
+					name:"视频部",
+					showName:function(){
+						alert(this.name);
+					}
+				}
+			}
+			
+			Baidu.search.showName();
+			Baidu.video.showName();
+		</script>
+	</body>
+</html>

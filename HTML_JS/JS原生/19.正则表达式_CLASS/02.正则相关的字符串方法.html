@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//replace()替换
+			var str = "12345abc67890abc";
+			//如果使用字符串，只替换第一个
+			console.log(str.replace("abc", "@@@"));
+			var reg = /abc/g;
+			console.log(str.replace(reg, "%%%"));
+			
+			//search()搜索
+			//如果字符串中匹配到符合正则的字符串返回第一个字符的位置
+			//匹配不到返回-1
+			reg = /dfg/g;
+			console.log(str.search(reg));
+			
+			//match()返回匹配到的字符串数组
+			//如果匹配到符合正则的字符串就把结果存到数组中
+			//如果匹配不到返回null
+			str= "abc12def34ghi678rueiwoq7895347583748573489574389573948";
+			reg = /\d+/g;
+			console.log(str.match(reg));
+		</script>
+	</body>
+
+</html>

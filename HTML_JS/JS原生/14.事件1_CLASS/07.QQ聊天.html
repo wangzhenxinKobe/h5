@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="msg" />
+		<ul id="msglist">
+		</ul>
+		
+		<script type="text/javascript">
+			
+			var oMsg = document.getElementById("msg");
+			var oMsgList = document.getElementById("msglist");
+			
+			window.onkeydown = function(e){
+				//获取event对象
+				var e = e || window.event;
+				
+				if(e.ctrlKey && e.keyCode == 13 && oMsg.value.trim() != ""){
+					//创建新的li
+					var newli = document.createElement("li");
+					//将文本框中的值付给li
+					newli.innerHTML = oMsg.value;
+					//将li添加到ul中
+					oMsgList.appendChild(newli);
+					
+					oMsg.value = "";
+				}
+			}
+			
+		</script>
+	</body>
+</html>

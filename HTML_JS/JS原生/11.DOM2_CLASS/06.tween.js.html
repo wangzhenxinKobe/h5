@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="box"></div>
+		<script src="tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oBox = document.getElementById("box");
+
+			var timer = null;
+			var itarget = 600;
+
+			//参数列
+			// t :当前时间（实际上是当前的步数）
+			// b :初始的值
+			// c :变化量（结束值-初始值）
+			// d :持续的时间 (实际上是总步数)
+
+			var t = 0;
+			var b = 0;
+			var c = 600;
+			var d = 50;
+
+			clearInterval(timer);
+			timer = setInterval(function() {
+				t++;
+				if(t > d) {
+					clearInterval(timer);
+				} else {
+					oBox.style.left = Tween.Back.easeOut(t,b,c,d)+"px";
+				}
+
+			}, 20);
+			
+			
+		</script>
+	</body>
+
+</html>

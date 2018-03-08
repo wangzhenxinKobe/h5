@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				border:2px solid red;
+				margin: 10px;
+				font-size: 30px;
+				font-weight: bold;
+			}
+			
+			/*属性名选择器*/
+			/*div[mygirl]{
+				background-color: red;
+			}*/
+			
+			/*选择指定属性名=指定属性值的元素*/
+			/*div[mygirl="jsy"]{
+				background-color: blue;
+			}*/
+			
+			/*选择指定属性名的值中含有指定词组的元素*/
+			/*div[mygirl~="jsy"]{
+				border: 5px solid green;
+			}*/
+	
+			/*选择mygirl的值以f开头的元素*/
+			/*div[mygirl^="f"]{
+				background-color: pink;
+			}*/
+			
+			/*选择mygirl的值以w结尾的元素*/
+			/*div[mygirl$="w"]{
+				background-color: deeppink;
+			}*/
+			
+			/*选择mygirl的值中含有l的元素*/
+			/*div[mygirl*="最爱"]{
+				background-color: yellow;
+			}*/
+			
+			div[mygirl|="t"]{
+				background-color: hotpink;
+			}
+			ul li a[href$=".doc"]{
+				color: red;
+			}
+			ul li a[href$=".ppt"]{
+				color: green;
+			}
+			ul li a[href$=".xls"]{
+				color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div mygirl="jsy 我的最爱">江疏影</div>
+		<div mygirl="fbb">范冰冰</div>
+		<div mygirl="t-ly">佟丽娅</div>
+		<div mygirl="t-w">汤唯</div>
+		<div mygirl="t-">唐嫣</div>
+		
+		<ul>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.ppt">ppt文档</a></li>
+			<li><a href="http://www....../aaa.xls">excel文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.ppt">ppt文档</a></li>
+			<li><a href="http://www....../aaa.xls">excel文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.ppt">ppt文档</a></li>
+			<li><a href="http://www....../aaa.xls">excel文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+			<li><a href="http://www....../aaa.ppt">ppt文档</a></li>
+			<li><a href="http://www....../aaa.xls">excel文档</a></li>
+			<li><a href="http://www....../aaa.doc">word文档</a></li>
+		
+		</ul>
+	</body>
+</html>

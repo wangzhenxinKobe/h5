@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<script src="test.js" type="text/javascript" charset="utf-8"></script>-->
+		<input type="button" id="btn" value="hello" />
+		
+		<script type="text/javascript">
+			//动态加载JS文件
+			var oBtn= document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				loadJS("test.js");
+				//sayHi();
+			}
+			
+			//动态加载JS函数
+			function loadJS(url){
+				var newScript = document.createElement("script");
+				newScript.src = url;
+				newScript.type = "text/javascript";
+				document.body.appendChild(newScript);
+			}
+		</script>
+	</body>
+</html>

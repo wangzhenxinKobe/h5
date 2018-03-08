@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<select id="month">
+			<option value="一月">一月</option>
+			<option value="二月">二月</option>
+			<option value="三月">三月</option>
+			<option value="四月">四月</option>
+			<option value="五月">五月</option>
+			<option value="六月">六月</option>
+			<option value="七月">七月</option>
+			<option value="八月">八月</option>
+			<option value="九月">九月</option>
+			<option value="十月">十月</option>
+			<option value="十一月">十一月</option>
+			<option value="十二月">十二月</option>
+		</select>
+		<input type="button" value="查询" id="sel" />
+		<script>
+			var oMonth = document.getElementById("month");
+			var oSel = document.getElementById("sel");
+
+			oSel.onclick = function() {
+					var sMonth = oMonth.value;
+
+					switch(sMonth) {
+						case "一月":
+							alert("31天");
+							break;
+						case "二月":
+							alert("28天");
+							break;
+						case "三月":
+							alert("31天");
+							break;
+						case "四月":
+							alert("30天");
+							break;
+						case "五月":
+							alert("31天");
+							break;
+						case "六月":
+							alert("30天");
+							break;
+						case "七月":
+							alert("31天");
+							break;
+						case "八月":
+							alert("31天");
+							break;
+						case "九月":
+							alert("30天");
+							break;
+						case "十月":
+							alert("31天");
+							break;
+						case "十一月":
+							alert("30天");
+							break;
+						case "十二月":
+							alert("31天");
+							break;
+					}
+				}
+				//switch语句
+
+			//星期
+			//			var weekday = 8;
+			//
+			//			switch(weekday) {
+			//				case 1:
+			//					console.log("星期一");
+			//					break;
+			//				case 2:
+			//					console.log("星期二");
+			//					break;
+			//				case 3:
+			//					console.log("星期三");
+			//					break;
+			//				case 4:
+			//					console.log("星期四");
+			//					break;
+			//				case 5:
+			//					console.log("星期五");
+			//					break;
+			//				case 6:
+			//					console.log("星期六");
+			//					break;
+			//				case 7:
+			//					console.log("星期日");
+			//					break;
+			//				default:
+			//					console.log("未知");
+			//			}
+		</script>
+	</body>
+
+</html>

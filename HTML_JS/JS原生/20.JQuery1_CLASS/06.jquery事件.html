@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap"></div>
+		<script src="jquery-1.11.3.min.js"></script>
+		<script>
+			//事件
+
+			function myclick() {
+				alert("1111");
+			}
+			
+			$(function() {
+
+//				$("#wrap").on({
+//					click: myclick,
+//					mouseover: function() {
+//						$("body").css("background-color", "red");
+//					},
+//					mouseout: function() {
+//						$("body").css("background-color", "#FFFFFF");
+//					}
+//				});
+				
+				//on()方法绑定事件 最新方法
+				$("#wrap").on("click",function(){
+					alert("123");
+				});
+
+			})
+		</script>
+	</body>
+
+</html>

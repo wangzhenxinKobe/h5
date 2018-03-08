@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 400px;
+				height: 400px;
+				background-color: red;
+			}
+			#box2{
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box2"></div>
+		</div>
+		
+		<script>
+			
+			var oBox = document.getElementById("box");
+			var oBox2 = document.getElementById("box2");
+			
+			//单击鼠标按键或回车时触发
+//			oBox.onclick = function(){
+//				alert("你点了我一下");
+//			}
+			
+			//双击鼠标按键时触发
+//			oBox.ondblclick = function(){
+//				alert("你点了我两下");
+//			}
+			
+			//当按下鼠标任意键时触发
+//			oBox.onmousedown = function(e){
+//				//获取event对象
+//				var e = e || window.event;
+//				
+//				if(e.which==1){
+//					alert("您按了鼠标的左键");
+//				}else if(e.which == 2){
+//					alert("您按了鼠标的滚轮键");
+//				}else{
+//					alert("您按了鼠标的右键");
+//				}
+//			}
+			
+			//当鼠标移入元素范围之内时触发
+//			oBox.onmouseenter = function(){
+//				console.log("我进来了");
+//			}
+//			//当鼠标移出元素范围之内时触发
+//			oBox.onmouseleave = function(){
+//				console.log("我出来了");
+//			}
+			
+//			//当鼠标移入元素的边界时触发
+//			oBox.onmouseover = function(e){
+//				console.log("我进来了");
+//			}
+//			//当鼠标移出元素的边界时触发
+//			oBox.onmouseout = function(){
+//				console.log("我出来了");
+//			}
+			
+			//释放鼠标按键时触发
+//			oBox.onmouseup = function(){
+//				console.log("我抬起了鼠标按键");
+//			}
+			
+			//当鼠标在当前元素上移动时触发
+//			oBox.onmousemove = function(){
+//				console.log("我动，我再动，动啊，动啊，动。。。。");
+//			}
+		</script>
+	</body>
+</html>

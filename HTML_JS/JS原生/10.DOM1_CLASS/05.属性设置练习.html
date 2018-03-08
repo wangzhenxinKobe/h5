@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.red{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin-bottom: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="添加DIV" />
+		<div id="wrap"></div>
+		<script>
+			var oBtn = document.getElementById("btn");
+			var oWrap = document.getElementById("wrap");
+			oBtn.onclick = function(){
+				var newDiv = document.createElement("div");
+				newDiv.setAttribute("class","red");
+				
+				//document.body.appendChild(newDiv);
+				oWrap.appendChild(newDiv);
+			}
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: red;
+				position: absolute;
+				top:0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//创建小球
+			for(var i=0;i<20;i++){
+				//创建一个DIV对象
+				var newDiv = document.createElement("div");
+				//将DIV添加到body中
+				document.body.appendChild(newDiv);
+			}
+			
+			//获取所有的小球
+			var divs = document.getElementsByTagName("div");
+			
+			//添加鼠标移动事件
+			document.onmousemove = function(e){
+				//获取event对象
+				var e = e || window.event;
+				
+				//获取鼠标的位置
+				var mX = e.clientX;
+				var mY = e.clientY;
+				
+				//设置第一个小球的位置
+				divs[0].style.left = (mX - divs[0].offsetWidth/2) + "px";
+				divs[0].style.top = (mY - divs[0].offsetHeight/2) + "px";
+				
+				for(var i= divs.length-1;i>0;i--){
+					divs[i].style.left = divs[i-1].offsetLeft + "px";
+					divs[i].style.top = divs[i-1].offsetTop + "px";
+				}
+			}
+			
+			set
+			
+		</script>
+		
+	</body>
+</html>

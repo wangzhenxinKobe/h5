@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap">
+			用户名：<input type="text" id="username" /> <br /><br />
+			密码：<input type="text" id="userpass" /><br /><br />
+			<input type="button" value="登陆" id="login">
+		</div>
+		
+		<script type="text/javascript">
+			//获取元素
+			//var oWrap = document.getElementById("wrap");
+			
+			//设置元素的宽
+			//oWrap.style.width = "400px";
+			
+			//设置元素的高
+			//oWrap.style.height = "400px";
+			
+			//设置元素的背景颜色
+			//oWrap.style.backgroundColor = "#FF0000";
+			
+			
+			//获取用户名文本框
+			var oUsername = document.getElementById("username");
+			//oUsername.value = "请输入用户名";
+			
+			//获取密码框
+			var oUserpass = document.getElementById("userpass");
+			
+			//获取登陆按钮
+			var oLogin = document.getElementById("login");
+			
+			oLogin.onclick = function(){
+				var username = oUsername.value;
+				var userpass = oUserpass.value;
+				
+				//document.write(username);
+				//document.write(userpass);
+				//alert("用户名:"+username);
+				//alert("密码:" +userpass);
+				
+				alert("用户名："+username+ "密码：" + userpass);
+			}
+		</script>
+	</body>
+</html>

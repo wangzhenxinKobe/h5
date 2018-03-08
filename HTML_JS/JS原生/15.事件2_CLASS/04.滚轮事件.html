@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 2000px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			//滚轮事件
+			//当我们上下滚动鼠标的滚轮时触发的一个事件
+			
+			//非火狐的滚轮事件
+			
+			//e.wheelDelta 
+			//滚动条向上为正数
+			//滚动条向下为负数
+			document.onmousewheel = function(e){
+				var e = e || window.event;
+				console.log(e.wheelDelta);
+			}
+			
+			//火狐的滚轮事件
+			//e.detail
+			//滚动条向上为负数
+			//滚动条向下为正数
+			document.addEventListener("DOMMouseScroll",function(e){
+				var e = e || window.event;
+				console.log(e.detail);
+			},false);
+		</script>
+	</body>
+</html>

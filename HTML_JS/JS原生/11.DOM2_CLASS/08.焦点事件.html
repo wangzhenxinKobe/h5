@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<textarea id="textarea" name="" rows="" cols=""></textarea>
+	
+		<script type="text/javascript">
+			var oTextArea = document.getElementById("textarea");
+			
+			//获得焦点事件
+			oTextArea.onfocus = function(){
+				console.log("我获得了焦点");
+			}
+			
+			//失去焦点事件
+			oTextArea.onblur = function(){
+				console.log("我失去了焦点");
+			}
+			
+			//键盘事件
+			//当键盘按键抬起时触发
+			oTextArea.onkeyup = function(){
+				if(oTextArea.value.length>140){
+					oTextArea.value = oTextArea.value.substr(0,140);
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

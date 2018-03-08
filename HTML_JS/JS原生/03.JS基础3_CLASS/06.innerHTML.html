@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="wrap">
+			
+		</div>
+		
+		<script>
+			var oWrap = document.getElementById("wrap");
+			
+			//添加文本内容
+			//oWrap.innerText = "<a href='http://www.baidu.com'>Hello World!</a>";
+			
+			//添加HTML代码
+			//如果字符串里面出现双引号，需要对里面的双引号进行字符转义，使用\反斜线
+			oWrap.innerHTML = "<a href=\"http://www.baidu.com\">Hello World!</a>";
+		</script>
+		
+	</body>
+</html>

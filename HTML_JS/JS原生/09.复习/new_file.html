@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box1">
+			<div>black</div>
+			<div>red</div>
+		</div>
+		<div id="box2">
+			<div>black</div>
+			<div>red</div>
+		</div>
+		<div id="box3">
+			<div>black</div>
+			<div>red</div>
+		</div>
+		<div id="box4">
+			<div>black</div>
+			<div>red</div>
+		</div>
+		<div id="box5">
+			<div>black</div>
+			<div>red</div>
+		</div>
+		
+		<script type="text/javascript">
+			var oBox1= document.getElementById("box1");
+			var oBox2= document.getElementById("box2");
+			var oBox3= document.getElementById("box3");
+			var oBox4= document.getElementById("box4");
+			var oBox5= document.getElementById("box5");
+			
+			var ary = [oBox1,oBox2,oBox3,oBox4,oBox5]
+			
+			for(var i=0;i<ary.length;i++){
+				ary[i].onmouseover = function(){
+					var divs = this.getElementsByTagName("div");
+					divs[1].style.left = "";
+				}
+				ary[i].onmouseout = function(){
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

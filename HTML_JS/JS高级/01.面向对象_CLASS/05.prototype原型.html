@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//prototype原型
+			//类 ：模型
+			//对象(实例) 批量生产出来的东西
+
+			Array.prototype.sum = function() {
+				var ret = 0;
+				for(var i = 0; i < this.length; i++) {
+					ret += this[i];
+				}
+				return ret;
+			}
+
+			var ary1 = new Array(1, 2, 3);
+			var ary2 = new Array(10, 11, 12);
+			
+			alert(ary1.sum());
+			alert(ary2.sum());
+			
+		</script>
+	</body>
+
+</html>

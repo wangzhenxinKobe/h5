@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap>div {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				line-height: 100px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+
+		</div>
+		<script>
+			var oWrap = document.getElementById("wrap");
+
+			for(var i = 0; i < 9; i++) {
+				for(var j = 0; j <= i; j++) {
+					oWrap.innerHTML = oWrap.innerHTML + "<div>"+(j+1)+"</div>";
+				}
+				oWrap.innerHTML += "<br/>";
+			}
+		</script>
+	</body>
+
+</html>

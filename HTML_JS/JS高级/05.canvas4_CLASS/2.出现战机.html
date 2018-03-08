@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>背景滚动</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	</head>
+
+	<body>
+		<!--<div id="loading">
+			<p>游戏载入中</p>
+			<img src="img/loading.gif"></div>-->
+		<div id="audiocontainer" style="display:none">
+			<audio id="bgsound" loop="loop" autoplay="autoplay" src="">
+			</audio>
+			<audio id="bulletsound" loop="loop" src="audio/bullet.mp3">
+			</audio>
+			<audio id="enemy1sound" loop="loop" src="audio/enemy1_down.mp3">
+			</audio>
+			<audio id="enemy2sound" loop="loop" src="audio/enemy2_down.mp3">
+			</audio>
+			<audio id="enemy3sound" loop="loop" src="audio/enemy3_down.mp3">
+			</audio>
+			<audio id="gameoversound" src="audio/game_over.mp3">
+			</audio>
+		</div>
+		<canvas id="canvas"></canvas>
+		<!--<p id="score">分数：<span id="scores">0</span></p>
+		<div id="lose">
+			<p>游戏结束</p>
+			<p>你的分数为：<span id="scoresend">0</span></p>
+			<p id="again">重新开始</p>
+		</div>-->
+	</body>
+
+	<script>
+		var oC = document.getElementById("canvas");
+		var ctx = oC.getContext("2d");
+
+		//设置画布宽高
+		oC.width = window.innerWidth;
+		oC.height = window.innerHeight;
+		
+		
+		//加载图片函数
+		function loadimg(imgs){
+			//存储加载的图片数量
+			var count =0;
+			//计算图片数量
+			for(i in imgs){
+				count++;
+			}
+			//保存加载完成的图片数量
+			var num =0;
+			
+			//存储图片对象
+			var imgObjs = {};
+			//加载图片
+			for(imgName in imgs){
+				//创建临时image对象
+				var tempImage = new Image();
+				tempImage.src = imgs[imgName];
+				imgObjs[imgName] = tempImage;
+				tempImage.onload = function(){
+					num++;
+					if(num<count){
+						//计算进度
+						var iProgress = num / count;
+					
+					}else{
+						
+						console.log(imgs);
+						console.log(imgObjs);
+						
+						//所有图片加载完成
+						complete(imgObjs);
+					}
+				}
+			}
+		}
+		
+		//声明战机对象
+		var planeObj = {};
+		
+		//图片全部加载完成之后 执行此函数
+		function complete(imgObjs){
+			//获取相关图片对象
+			var bgImage = imgObjs.bgImage;
+			var plane = imgObjs.plane;
+			
+			//背景y轴坐标
+			var imgy = 0;
+			
+			//初始化战机对象
+			planeObj = {
+				"img":plane,
+				"x":oC.width/2 - plane.width/2,
+				"y":oC.height - 100,
+				"width":plane.width,
+				"height":plane.height
+			}
+			
+			//绘制背景
+			function drawBgImage() {
+				
+				imgy += 2;
+				
+				ctx.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, 0, imgy, oC.width, oC.height);
+				
+				ctx.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, 0, imgy - oC.height, oC.width, oC.height);
+				
+				if(imgy >= oC.height) {
+					imgy = 0;
+				}
+			}
+			
+			//绘制战机函数
+			function drawPlane(){
+				ctx.drawImage(
+					planeObj.img, 0, 0, 
+					planeObj.width, 
+					planeObj.height, 
+					planeObj.x, 
+					planeObj.y, 
+					planeObj.width, 
+					planeObj.height);
+			}
+			
+			//绘制所有的对象
+			var drawCount = 0;
+			function drawAll(){
+				drawCount++;
+				ctx.clearRect(0,0,oC.width,oC.height);
+				//调用绘图函数
+				drawBgImage();
+				drawPlane();
+				
+				if(drawCount%10 == 0){
+					plane = imgObjs.planeF;
+					planeObj.img = plane;
+				}else{
+					plane = imgObjs.plane;
+					planeObj.img = plane;
+				}
+				if(drawCount>1000){
+					drawCount = 0;
+				}
+				window.requestAnimationFrame(drawAll);
+			}
+			drawAll();
+		}
+		
+		//执行加载图片
+		loadimg({
+			"bgImage":"img/background.png",
+			"plane":"img/hero1.png",
+			"planeF":"img/hero2.png"
+		});
+
+		
+
+		
+	</script>
+
+</html>

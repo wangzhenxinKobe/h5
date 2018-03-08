@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>清浮动</title>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				border: 5px solid black;
+				/*display: inline-block;*/
+				/*overflow: hidden;*/
+				/*zoom: 1;*/
+			}
+			/*.box:after{content:"";display:block;clear:both;}*/
+			.div1{
+				width: 150px;
+				height: 150px;
+				background-color: blue;
+				float: left;
+			}
+			.clear{
+				clear: both;
+				font-size: 0;
+				height: 0;
+			}
+			
+			/*
+			 清浮动
+			 1.给父级也加浮动float
+			 2.给父级家display:inline-block(IE6 7不支持)
+			 3.给父级加overflow:hidden(IE6不支持)
+			 4.在浮动元素下加<div class="clear"></div>(IE6下有最小2像素问题)
+			 5.在浮动元素下加<br clear="all"/>
+			 5.给父级加{zoom:1;}
+			  :after{content:"";display:block;clear:both;}
+			 (目前最提倡，各大团队推荐)
+			 
+			 在IE6 7下浮动元素的父级有宽度就不用清浮动
+			 
+			 haslayout 根据元素内容的大小重新计算或者父级的父级大小重新计算宽高
+			 */
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="div1"></div>
+			<!--<div class="clear"></div>-->
+			<!--<br clear="all"/>-->
+		</div>
+	</body>
+</html>

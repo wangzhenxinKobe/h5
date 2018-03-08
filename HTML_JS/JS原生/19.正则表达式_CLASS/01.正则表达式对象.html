@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+		
+			//创建一个正则表达式对象 方法1
+			//参数1 正则表达式
+			//参数2(可选) 修饰符
+			//g 全文检索
+			//i 忽略大小写
+			//m 多行匹配
+			//var reg = new RegExp("a","i");
+			//查看指定的字符串当中有没有符合此正则对象的字符串
+			//alert(reg.test("jfdsAjfjdsgjfdklgjdflkg42j4l2"));
+			
+			//创建正则对象 方法2
+			//var reg = /abc/i;
+			//alert(reg.test("fjdskaaBckdlajfdsal"));
+			
+			//正则表达式对象的 test()方法
+			//用于判断指点字符串中是否含有符合该正则表达式的字符串
+			//如果存在返回true 不存在返回false
+			
+			//正则表达式对象的 exec()方法
+			//对字符串执行搜索，并对正则对象的属性进行更新
+			//如果没有匹配返回null
+			//如果有匹配返回一个数组
+			//input属性 存放被检索的字符串
+			
+			var reg = /ab/g;
+			var str = "UIFDJSabAUIabufidoafjdsa";
+			console.log(reg.exec(str));
+			console.log(reg.lastIndex);
+			console.log(reg.exec(str));
+			console.log(reg.lastIndex);
+			console.log(reg.exec(str));
+			console.log(reg.lastIndex);
+			console.log(reg.exec(str));
+			console.log(reg.lastIndex);
+			
+//			while(ret = reg.exec(str)){
+//				console.log(ret);
+//				console.log(reg.lastIndex);
+//			}
+				
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>背景滚动</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	</head>
+
+	<body>
+		<!--<div id="loading">
+			<p>游戏载入中</p>
+			<img src="img/loading.gif"></div>-->
+		<div id="audiocontainer" style="display:none">
+			<!--<audio id="bgsound" loop="loop" autoplay="autoplay" src="audio/game_music.mp3">
+			</audio>-->
+			<audio id="bulletsound" loop="loop" autoplay="autoplay" src="audio/bullet.mp3">
+			</audio>
+			<audio id="enemy1sound"  src="audio/enemy1_down.mp3">
+			</audio>
+			<audio id="enemy2sound"  src="audio/enemy2_down.mp3">
+			</audio>
+			<audio id="enemy3sound"  src="audio/enemy3_down.mp3">
+			</audio>
+			<audio id="gameoversound" src="audio/game_over.mp3">
+			</audio>
+		</div>
+		<canvas id="canvas"></canvas>
+		<!--<p id="score">分数：<span id="scores">0</span></p>
+		<div id="lose">
+			<p>游戏结束</p>
+			<p>你的分数为：<span id="scoresend">0</span></p>
+			<p id="again">重新开始</p>
+		</div>-->
+	</body>
+
+	<script>
+		
+		var enemy1Sound = document.getElementById("enemy1sound");
+		var enemy2Sound = document.getElementById("enemy2sound");
+		var enemy3Sound = document.getElementById("enemy3sound");
+		
+		
+		var oC = document.getElementById("canvas");
+		var ctx = oC.getContext("2d");
+
+		//设置画布宽高
+		oC.width = window.innerWidth;
+		oC.height = window.innerHeight;
+
+		//加载图片函数
+		function loadimg(imgs) {
+			//存储加载的图片数量
+			var count = 0;
+			//计算图片数量
+			for(i in imgs) {
+				count++;
+			}
+			//保存加载完成的图片数量
+			var num = 0;
+
+			//存储图片对象
+			var imgObjs = {};
+			//加载图片
+			for(imgName in imgs) {
+				//创建临时image对象
+				var tempImage = new Image();
+				tempImage.src = imgs[imgName];
+				imgObjs[imgName] = tempImage;
+				tempImage.onload = function() {
+					num++;
+					if(num < count) {
+						//计算进度
+						var iProgress = num / count;
+
+					} else {
+
+						console.log(imgs);
+						console.log(imgObjs);
+
+						//所有图片加载完成
+						complete(imgObjs);
+					}
+				}
+			}
+		}
+
+		//声明战机对象
+		var planeObj = {};
+
+		//图片全部加载完成之后 执行此函数
+		function complete(imgObjs) {
+			//获取相关图片对象
+			var bgImage = imgObjs.bgImage;
+			var plane = imgObjs.plane;
+			var bullet = imgObjs.bullet;
+			//var enemy = imgObjs.enemy1;
+
+			//背景y轴坐标
+			var imgy = 0;
+
+			//初始化战机对象
+			planeObj = {
+				"img": plane,
+				"x": oC.width / 2 - plane.width / 2,
+				"y": oC.height - 100,
+				"width": plane.width,
+				"height": plane.height
+			}
+
+			//绘制背景
+			function drawBgImage() {
+
+				imgy += 2;
+
+				ctx.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, 0, imgy, oC.width, oC.height);
+
+				ctx.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height, 0, imgy - oC.height, oC.width, oC.height);
+
+				if(imgy >= oC.height) {
+					imgy = 0;
+				}
+			}
+
+			//绘制战机函数
+			function drawPlane() {
+				ctx.drawImage(
+					planeObj.img, 0, 0,
+					planeObj.width,
+					planeObj.height,
+					planeObj.x,
+					planeObj.y,
+					planeObj.width,
+					planeObj.height);
+			}
+
+			//声明子弹对象数组
+			var bullets = [];
+			//声明子弹对象的构造函数
+			function Bullet() {
+				this.img = bullet;
+				this.x = planeObj.x + planeObj.width / 2;
+				this.y = planeObj.y;
+				this.width = bullet.width;
+				this.height = bullet.height;
+				this.speed = 2;
+			}
+			//添加子弹对象的方法
+			//子弹对象移动
+			Bullet.prototype.move = function() {
+					this.y -= this.speed;
+				}
+				//清除子弹对象
+			Bullet.prototype.clear = function() {
+					if(this.y < 0) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+				//绘制子弹对象方法
+			Bullet.prototype.drawBullet = function() {
+				this.move();
+				ctx.drawImage(
+					this.img, 0, 0,
+					this.width,
+					this.height,
+					this.x,
+					this.y,
+					this.width,
+					this.height);
+			}
+
+			//随机函数
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			//声明敌机数组
+			var enemys = [];
+			//声明敌机构造函数
+			function Enemy() {
+				this.img = imgObjs.enemy1;
+				this.x = getRandom(0, oC.width - this.img.width / 5);
+				this.y = -this.img.height;
+				this.width = this.img.width / 5;
+				this.height = this.img.height;
+				this.speed = 5;
+				this.blood = 1;
+				this.type = 1;
+				this.score = 10;
+				this.p = 0;
+			}
+			//添加敌机对象方法
+			//移动敌机
+			Enemy.prototype.move = function() {
+					this.y += this.speed;
+				}
+				//改变敌机类型
+			Enemy.prototype.changeType = function(num) {
+				this.type = num;
+				switch(this.type) {
+					case 2:
+						this.img = imgObjs.enemy2;
+						this.x = getRandom(0, oC.width - this.img.width / 6);
+						this.y = -this.img.height;
+						this.width = this.img.width / 6;
+						this.height = this.img.height;
+						this.speed = 3;
+						this.blood = 5;
+						this.type = 2;
+						this.score = 20;
+						break;
+					case 3:
+						this.img = imgObjs.enemy3;
+						this.x = getRandom(0, oC.width - this.img.width / 10);
+						this.y = -this.img.height;
+						this.width = this.img.width / 10;
+						this.height = this.img.height;
+						this.speed = 1;
+						this.blood = 10;
+						this.type = 3;
+						this.score = 100;
+						break;
+					default:
+						break;
+				}
+			}
+			Enemy.prototype.clear = function() {
+				if(this.y > oC.height) {
+					return true
+				} else {
+					return false;
+				}
+			}
+			Enemy.prototype.drawEnemy = function() {
+					this.move();
+					ctx.drawImage(
+						this.img, this.p * this.width, 0,
+						this.width,
+						this.height,
+						this.x,
+						this.y,
+						this.width,
+						this.height);
+				}
+				//绘制所有的对象
+			var drawCount = 0;
+
+			function drawAll() {
+				drawCount++;
+				ctx.clearRect(0, 0, oC.width, oC.height);
+				//调用绘图函数
+				drawBgImage();
+				drawPlane();
+
+				//子弹出现的频率
+				if(drawCount % 10 == 0) {
+					var bullet = new Bullet();
+					bullets.push(bullet);
+				}
+
+				//循环子弹数组
+				for(var i = 0; i < bullets.length; i++) {
+					bullets[i].drawBullet();
+					if(bullets[i].clear()) {
+						//把当前的这个子弹从数组中移除
+						bullets.splice(i, 1);
+						i--;
+					}
+				}
+
+				//敌机出现的频率
+				//小型飞机
+				if(drawCount % 50 == 0) {
+					var enemy = new Enemy();
+					enemys.push(enemy);
+				}
+				//中型飞机
+				if(drawCount % 100 == 0) {
+					var enemy = new Enemy();
+					enemy.type = 2;
+					enemy.changeType(enemy.type);
+					enemys.push(enemy);
+
+				}
+				//大型飞机
+				if(drawCount % 500 == 0) {
+					var enemy = new Enemy();
+					enemy.type = 3;
+					enemy.changeType(enemy.type);
+					enemys.push(enemy);
+				}
+				
+				
+
+				//循环敌机数组
+				for(var i = 0; i < enemys.length; i++) {
+					if(enemys[i].type == 3){
+						if(drawCount % 5 == 0){
+							enemys[i].p = 1;
+						}else{
+							enemys[i].p = 0;
+						}
+					}
+					enemys[i].drawEnemy();
+					if(enemys[i].clear()) {
+						//把当前的这个敌机从数组中移除
+						enemys.splice(i, 1);
+						i--;
+					}
+				}
+
+				//检测子弹与敌机碰撞
+				for(var i = 0; i < bullets.length; i++) {
+					for(var j = 0; j < enemys.length; j++) {
+						if(collide(bullets[i], enemys[j])) {
+							bullets.splice(i,1);
+							i--;
+							enemys[j].blood--;
+							if(enemys[j].blood == 0){
+								
+								if(enemys[j].type == 1){
+									enemy1Sound.play();
+								}
+								if(enemys[j].type == 2){
+									enemy2Sound.play();
+								}
+								if(enemys[j].type == 3){
+									enemy3Sound.play();
+								}
+								
+								enemys.splice(j,1);
+							}
+							break;
+						}
+					}
+				}
+
+				function collide(obj1, obj2) {
+					var left = obj1.x + obj1.width >= obj2.x;
+					var right = obj2.x + obj2.width >= obj1.x;
+					var top = obj1.y + obj1.height >= obj2.y;
+					var bottom = obj2.y + obj2.height >= obj1.y;
+					if(left && right && top && bottom) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+
+				if(drawCount % 10 == 0) {
+					plane = imgObjs.planeF;
+					planeObj.img = plane;
+					//planeObj.img = plane = imgObjs.planeF;
+				} else {
+					plane = imgObjs.plane;
+					planeObj.img = plane;
+				}
+
+				if(drawCount > 10000) {
+					drawCount = 0;
+				}
+				window.requestAnimationFrame(drawAll);
+			}
+			drawAll();
+		}
+
+		//执行加载图片
+		loadimg({
+			"bgImage": "img/background.png",
+			"plane": "img/hero1.png",
+			"planeF": "img/hero2.png",
+			"bullet": "img/bullet1.png",
+			"enemy1": "img/enemy1.png",
+			"enemy2": "img/enemy2.png",
+			"enemy3": "img/enemy3.png"
+		});
+
+		//当手指触摸屏幕时触发
+		oC.addEventListener("touchstart", function(e) {
+			var e = e || window.event;
+
+			//获取手指对象信息
+			var finger = e.touches[0];
+			//获取手指初始位置
+			var fx = finger.clientX;
+			var fy = finger.clientY;
+
+			//判断手指是否触摸在飞机上
+			if(fx >= planeObj.x &&
+				fx <= planeObj.x + planeObj.width &&
+				fy >= planeObj.y &&
+				fy <= planeObj.y + planeObj.height
+			) {
+				//计算手指与飞机的差值
+				var lessx = fx - planeObj.x;
+				var lessy = fy - planeObj.y;
+
+				//添加触屏移动事件
+				oC.addEventListener("touchmove", touchMove);
+
+				function touchMove(e) {
+					var e = e || window.event;
+					var finger = e.touches[0];
+					var fx2 = finger.clientX;
+					var fy2 = finger.clientY;
+
+					planeObj.x = fx2 - lessx;
+					planeObj.y = fy2 - lessy;
+				}
+
+				//清除移动事件
+				oC.addEventListener("touchend", function(e) {
+					oC.removeEventListener("touchmove", touchMove);
+				});
+			}
+		});
+
+		//取消浏览器默认实现，解决页面移动问题
+		document.addEventListener("touchmove", function(e) {
+			var e = e || window.event;
+			e.preventDefault();
+		})
+	</script>
+
+</html>

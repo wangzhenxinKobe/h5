@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#text{
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<textarea id="text"></textarea>
+		<input type="button" id="btn" value="Hello" />
+		
+		<script type="text/javascript">
+		//动态加载JS代码
+			var oBtn = document.getElementById("btn");
+			var oText = document.getElementById("text");
+			
+			oBtn.onclick = function(){
+				loadJSCode(oText.value);
+				sayHi();
+			}
+			
+			//动态加载JS代码函数
+			function loadJSCode(code){
+				//创建script标签
+				var newScript = document.createElement("script");
+				newScript.type = "text/javascript";
+				newScript.text = code;
+				
+				document.body.appendChild(newScript);
+			}
+		</script>
+		
+	</body>
+</html>

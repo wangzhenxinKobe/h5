@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//Date对象
+			//日期对象
+
+			//创建一个日期对象
+			var now = new Date();
+
+			//获取当前年份 getYear已经废除不再使用
+			var year = now.getFullYear();
+
+			//获取当前月份
+			//月份是从0开始的 获取实际月份需要加1
+			var month = now.getMonth() + 1;
+
+			//获取当前日期
+			//1~31开始 
+			var day = now.getDate();
+
+			//获取当前是星期几 星期天为0 范围：0~6
+			var weekday = now.getDay();
+
+			//获取小时
+			var hours = now.getHours();
+
+			//获取分钟
+			var min = now.getMinutes();
+
+			//获取秒
+			var sec = now.getSeconds();
+
+			//获取毫秒
+			var ms = now.getMilliseconds();
+
+			//从1970年到现在的毫秒数
+			var time = now.getTime();
+
+			//console.log(year + "年" + month + "月" + day + "日 " + hours + ":" + min + ":" + sec + "." + ms);
+
+			
+			//日期设置
+			var date1 = new Date(2016,11,11);
+			console.log(date1.getDate());
+			
+			//计算两个日期时间的差值（毫秒）
+			var diff = date1.getTime()-now.getTime();
+			console.log(diff);
+		</script>
+	</body>
+
+</html>

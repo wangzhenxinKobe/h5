@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#canvas {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="600" height="500"></canvas>
+		<script>
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+
+			//绘制矩形
+			function drawRect(obj) {
+				ctx.beginPath();
+				ctx.rect(obj.x, obj.y, obj.w, obj.h);
+				ctx.fillStyle = obj.fillStyle;
+				ctx.fill();
+			}
+
+			//创建生成矩形的构造函数
+			function Rect(x, y, w, h, fillStyle) {
+				this.x = x;
+				this.y = y;
+				this.w = w;
+				this.h = h;
+				this.fillStyle = fillStyle;
+				drawRect(this);
+			}
+
+			var num = 10;
+			var shapes = [];
+			for(var i = 0; i < num; i++) {
+				shapes.push(new Rect(i * 50, i * 50, 50, 50, "blue"));
+			}
+
+			oC.onmousedown = function(e) {
+				var e = e || window.event;
+
+				//声明移动对象变量
+				var moveObj = null;
+
+				//获取鼠标的初始位置
+				var mx = e.pageX;
+				var my = e.pageY;
+
+				//声明移动对象的初始位置变量
+				var ox = 0;
+				var oy = 0;
+
+				for(var i = 0; i < num; i++) {
+					var tempObj = shapes[i];
+					//判断鼠标是否在当前矩形内部
+					if(mx >= tempObj.x && mx <= tempObj.x + tempObj.w &&
+						my >= tempObj.y && my <= tempObj.y + tempObj.h) {
+						moveObj = tempObj;
+						ox = moveObj.x;
+						oy = moveObj.y;
+					}
+				}
+
+				//当moveObj存在时绑定鼠标移动事件
+				if(moveObj) {
+					document.onmousemove = function(e) {
+						var e = e || window.event;
+						//清空画布
+						ctx.clearRect(0, 0, oC.width, oC.height);
+
+						//获取鼠标的当前位置
+						var mx2 = e.pageX;
+						var my2 = e.pageY;
+
+						//更新移动对象位置
+						moveObj.x = ox + (mx2 - mx);
+						moveObj.y = oy + (my2 - my);
+
+						for(var i = 0; i < num; i++) {
+							
+							//如果移动对象不等于当前对象，进行碰撞判断
+							if(moveObj != shapes[i]) {
+
+								var right = moveObj.x + moveObj.w >= shapes[i].x;
+								var left = shapes[i].x + shapes[i].w >= moveObj.x;
+								var top = moveObj.y + moveObj.h >= shapes[i].y;
+								var bottom = shapes[i].y + shapes[i].h >= moveObj.y;
+
+								if(right && left && top && bottom) {
+									shapes[i].fillStyle = "red";
+
+								} else {
+									shapes[i].fillStyle = "blue";
+								}
+							}
+
+							drawRect(shapes[i]);
+						}
+
+					}
+
+					document.onmouseup = function() {
+						document.onmousemove = null;
+					}
+				}
+
+			};
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				/*
+				 * linear 匀速
+				 * ease 由快到慢 默认
+				 * ease-in 加速
+				 * ease-out 慢速结束
+				 */
+				/*复合属性写法*/
+				/*-webkit-transition:  width 1s,height 2s 1s,background-color 3s 3s;
+				-moz-transition:  width 1s,height 2s 1s,background-color 3s 3s;
+				-ms-transition:  width 1s,height 2s 1s,background-color 3s 3s;
+				-o-transition:  width 1s,height 2s 1s,background-color 3s 3s;
+				transition:  width 1s,height 2s 1s,background-color 3s 3s;*/
+				/*transition: width 1s,height 2s 1s,background-color 3s 3s;*/
+				/*transition: all 1s cubic-bezier(0, 0, 0, 1.28);*/
+				/*设置过度效果的属性名称 trap*/
+				-webkit-transition-property: width, height, background-color;
+				-moz-transition-property: width, height, background-color;
+				-ms-transition-property: width, height, background-color;
+				-o-transition-property: width, height, background-color;
+				transition-property: width, height, background-color;
+				/*设置过度的时间*/
+				-webkit-transition-duration: 1s, 2s, 3s;
+				-moz-transition-duration: 1s, 2s, 3s;
+				-ms-transition-duration: 1s, 2s, 3s;
+				-o-transition-duration: 1s, 2s, 3s;
+				transition-duration: 1s, 2s, 3s;
+				/*设置过度的效果 tratf*/
+				-webkit-transition-timing-function: ease-out;
+				-moz-transition-timing-function: ease-out;
+				-ms-transition-timing-function: ease-out;
+				-o-transition-timing-function: ease-out;
+				transition-timing-function: ease-out;
+				
+				/*设置过渡的延迟时间*/
+				-webkit-transition-delay: 1s;
+				-moz-transition-delay: 1s;
+				-ms-transition-delay: 1s;
+				-o-transition-delay:1s;
+				transition-delay: 1s;
+			}
+			
+			.box:hover {
+				background-color: red;
+				width: 800px;
+				height: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box"></div>
+	</body>
+
+</html>

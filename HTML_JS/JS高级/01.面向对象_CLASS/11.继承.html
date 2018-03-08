@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+			function Person(name,sex){
+				this.name = name;
+				this.sex = sex;
+			}
+			Person.prototype.showName = function(){
+				alert(this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert(this.sex);
+			}
+			
+			function PersonPlus(name,sex,height){
+				Person.call(this,name,sex);
+				this.height = height;
+			}
+			PersonPlus.prototype = Person.prototype;
+			for(var keyname in Person.prototype){
+				PersonPlus.prototype[keyname] = Person.prototype[keyname];
+			}
+			//console.log(PersonPlus.prototype);
+			
+			PersonPlus.prototype.showHeight = function(){
+				alert(this.height);
+			}
+			
+			var pp = new PersonPlus("江疏影","女",168);
+			pp.showName();
+			pp.showSex();
+			pp.showHeight();
+			//alert(pp.height);
+			
+			var p = new Person("汤唯","男",180);
+			p.showName();
+			p.showSex();
+			p.showHeight();
+			
+			
+			
+		</script>
+	</body>
+</html>

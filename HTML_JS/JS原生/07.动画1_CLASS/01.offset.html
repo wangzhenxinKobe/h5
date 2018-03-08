@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				top: 100px;
+				left: 50px;
+				border: 5px solid blue;
+				padding: 10px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		
+		<script>
+			var oBox = document.getElementById("box");
+			
+			//行间样式
+			//oBox.style.top = "200px";
+//			console.log(oBox.style.top);
+			
+			
+			//获取元素的偏移量 居上偏移量
+			//offset为只读的属性 不可以设置
+			console.log (oBox.offsetTop);
+			//获取元素的偏移量 居左偏移量
+			console.log(oBox.offsetLeft);
+			
+//			console.log(oBox.style.width);
+//			console.log(oBox.style.height);
+
+			//获取可见宽度 不包括外边距
+			console.log(oBox.offsetWidth);
+			//获取可见高度
+			console.log(oBox.offsetHeight);
+		</script>
+		
+	</body>
+</html>

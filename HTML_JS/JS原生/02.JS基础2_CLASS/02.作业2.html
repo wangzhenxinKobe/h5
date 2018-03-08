@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+			作业2:
+			开发一个简单的计算器（＋－＊／）
+			
+			文本框1
+			文本框2
+			结果：文本框
+			下拉菜单（加，减，乘，除）
+			按钮（计算）
+		-->
+		<input type="text" id="num1" />
+		<select id="fh">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text" id="num2" /> =
+		<input type="text" id="num3" />
+		<input type="button" id="compute" value="计算" />
+
+		<script>
+			var oNum1 = document.getElementById("num1");
+			var oNum2 = document.getElementById("num2");
+			var oFh = document.getElementById("fh");
+			var oNum3 = document.getElementById("num3");
+			var oCom = document.getElementById("compute");
+
+			oCom.onclick = function() {
+				
+				var n1 = parseFloat(oNum1.value);
+				var n2 = parseFloat(oNum2.value);
+				
+				if(oFh.value == "+") {
+					oNum3.value = n1 + n2;
+				}
+				if(oFh.value == "-") {
+					oNum3.value = n1 - n2;
+				}
+				if(oFh.value == "*") {
+					oNum3.value = n1 * n2;
+				}
+				if(oFh.value == "/") {
+					oNum3.value = n1 / n2;
+				}
+			}
+		</script>
+	</body>
+
+</html>

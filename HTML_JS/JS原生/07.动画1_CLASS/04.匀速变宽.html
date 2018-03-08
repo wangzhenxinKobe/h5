@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0;
+			}
+			
+			#box1 {
+				top: 10px;
+			}
+			
+			#box2 {
+				top: 120px;
+			}
+			
+			#box3 {
+				top: 230px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box1"></div>
+
+		<div id="box2"></div>
+
+		<div id="box3"></div>
+		<script>
+			//通过标签名获取元素
+			var oBoxs = document.getElementsByTagName("div");
+
+			function startMove(obj, speed, itarget) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					if(Math.abs(itarget - obj.offsetWidth) <= Math.abs(speed)) {
+						clearInterval(obj.timer);
+						obj.style.width = itarget + "px";
+					} else {
+						obj.style.width = obj.offsetWidth + speed + "px";
+					}
+				}, 20);
+			}
+
+			//startMove(oBox,10,1000);
+
+			for(var i = 0; i < oBoxs.length; i++) {
+				
+				oBoxs[i].timer = null;
+				
+				oBoxs[i].onmouseover = function() {
+				
+					startMove(this, 10, 1000);
+				}
+
+				oBoxs[i].onmouseout = function() {
+					startMove(this, -10, 100);
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>背景滚动</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	</head>
+
+	<body>
+		<!--<div id="loading">
+			<p>游戏载入中</p>
+			<img src="img/loading.gif"></div>-->
+		<div id="audiocontainer" style="display:none">
+			<audio id="bgsound" loop="loop" autoplay="autoplay" src="">
+			</audio>
+			<audio id="bulletsound" loop="loop" src="audio/bullet.mp3">
+			</audio>
+			<audio id="enemy1sound" loop="loop" src="audio/enemy1_down.mp3">
+			</audio>
+			<audio id="enemy2sound" loop="loop" src="audio/enemy2_down.mp3">
+			</audio>
+			<audio id="enemy3sound" loop="loop" src="audio/enemy3_down.mp3">
+			</audio>
+			<audio id="gameoversound" src="audio/game_over.mp3">
+			</audio>
+		</div>
+		<canvas id="canvas"></canvas>
+		<!--<p id="score">分数：<span id="scores">0</span></p>
+		<div id="lose">
+			<p>游戏结束</p>
+			<p>你的分数为：<span id="scoresend">0</span></p>
+			<p id="again">重新开始</p>
+		</div>-->
+	</body>
+
+	<script>
+		var oC = document.getElementById("canvas");
+		var ctx = oC.getContext("2d");
+
+		//设置画布宽高
+		oC.width = window.innerWidth;
+		oC.height = window.innerHeight;
+
+		//背景滚动
+		//创建图片对象
+		var bgImg = new Image();
+		bgImg.src = "img/background.png";
+
+		bgImg.onload = function() {
+			//背景图y坐标
+			var imgy = 0;
+
+			function drawImage() {
+				ctx.clearRect(0, 0, oC.width, oC.height);
+				imgy += 2;
+				ctx.drawImage(bgImg, 0, 0, bgImg.width, bgImg.height, 0, imgy, oC.width, oC.height);
+				ctx.drawImage(bgImg, 0, 0, bgImg.width, bgImg.height, 0, imgy - oC.height, oC.width, oC.height);
+				window.requestAnimationFrame(drawImage);
+				if(imgy >= oC.height) {
+					imgy = 0;
+				}
+			}
+			drawImage();
+
+		}
+	</script>
+
+</html>

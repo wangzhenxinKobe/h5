@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<canvas id="canvas" width="600" height="500"></canvas>
+		<script>
+			var oC = document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+			//设置数据
+			var data = [{
+				value: 0.3,
+				color: "red"
+			}, {
+				value: 0.25,
+				color: "green"
+			}, {
+				value: 0.35,
+				color: "blue"
+			}, {
+				value: 0.1,
+				color: "pink"
+			}];
+
+			//设置设置
+			var beginX = 200;
+			var beginY = 200;
+			//设置半径
+			var radius = 100;
+
+			//设置起点度数
+			var tempAngle = -90;
+
+			for(var i = 0; i < data.length; i++) {
+				//计算所占用的角度
+				var angle = data[i].value * 360;
+				 var beginAngle = tempAngle * Math.PI / 180;
+				 var endAngle = (tempAngle + angle) *Math.PI /180;
+				 
+				 //开始绘制
+				 ctx.beginPath();
+				 ctx.fillStyle = data[i].color;
+				 ctx.moveTo(beginX,beginY);
+				 ctx.arc(beginX,beginY,radius,beginAngle,endAngle);
+				 ctx.closePath();
+				 ctx.fill();
+				 
+				 //更新起始度数
+				 tempAngle += angle;	 
+			}
+		</script>
+	</body>
+
+</html>

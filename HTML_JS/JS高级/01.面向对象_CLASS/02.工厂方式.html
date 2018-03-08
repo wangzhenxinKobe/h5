@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//构造函数
+			//因为它的作用就是用来创建对象
+			
+			//函数
+			//方法
+			//构造函数
+			//事件处理程序
+			function createPerson(name,sex) {
+				//1.原料
+				var obj = new Object();
+				
+				//2.加工
+				obj.name = name;
+				obj.sex = sex;
+				obj.showName = function() {
+					alert(this.name);
+				}
+				obj.showSex = function() {
+					alert(this.sex);
+				}	
+				//3.出厂
+				return obj;
+			}
+			var p1 = createPerson("江疏影","女");
+			var p2 = createPerson("汤唯","女");
+			
+//			p1.showName();
+//			p1.showSex();
+//			p2.showName();
+//			p2.showSex();
+			
+			//alert(p1.showName==p2.showName);
+			
+			//工厂方式
+			//1.原料
+			//2.加工
+			//3.出厂
+			
+			//工厂方式的缺点（比较原始）
+			//1.没有new
+			//2.每一个对象都有一套自己的方法，浪费资源
+			
+//			var a = function(){
+//				alert("hello");
+//			}
+//			var b = function(){
+//				alert("hello");
+//			}
+//			alert(a==b);
+			
+		</script>
+	</body>
+
+</html>

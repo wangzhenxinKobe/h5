@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 800px;
+				height: 600px;
+				border: 2px solid black;
+				position: relative;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-size:cover;
+				background-image:url(img/3.gif);
+				/*动画的名称*/
+				/*animation-name: animit;*/
+				
+				/*动画运动的时间*/
+				/*animation-duration: 2s;*/
+				
+				/*动画的播放次数*/
+				/*infinite 无限次*/
+				/*animation-iteration-count: infinite;*/
+				
+				/*动画结束时停留的位置
+				 * backwards停留在起点
+				 * forwards停留在结束的位置
+				 */
+				/*animation-fill-mode: backwards;*/
+				
+				/*运动的方式*/
+				/*animation-timing-function: cubic-bezier(0, 1.99, 0.4,-0.17);*/
+				/*animation-timing-function:linear;*/
+				
+				/*运动方向
+				  reverse 反方向运动
+				  alternate 往返运动
+				  altername-reverse 从反方向开始往返运动
+				 */
+				/*animation-direction: reverse;*/
+				/*animation-direction: alternate;*/
+				
+				/*动画的的延迟时间*/
+				/*animation-delay: 1s;*/
+				
+				/*动画的复合属性
+				 * 动画名称 时间 方式 次数 延迟 方向 停留位置
+				 */
+				animation:animit 4s linear infinite 1s alternate backwards;
+				
+			}
+			/*
+			 * 设置动画的过程
+			 * @keyframes 过程名称
+			 */
+			@keyframes animit{
+				from{
+					top:0;
+					left:0;
+				}
+				30%{
+					top:100px;
+					left: 100px;
+					transform: rotateX(360deg);
+				}
+				60%{
+					top:200px;
+					left: 200px;
+					transform: rotateY(-360deg);
+				}
+				to{
+					top:200px;
+					left: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>

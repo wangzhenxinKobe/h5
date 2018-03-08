@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 600px;
+				margin: 0 auto;
+			}
+			.top{
+				width: 598px;
+				height: 200px;
+				border: 1px solid #CCCCCC;
+				border-radius: 10px;
+			}
+			.title{
+				height: 40px;
+				overflow: hidden;
+				color: #FDA508;
+				font-size: 20px;
+			}
+			.logo{
+				float:left;
+				width: 200px;
+				height: 40px;
+				line-height: 40px;
+				padding-left: 20px;
+			}
+			#libao{
+				float:right;
+				width: 200px;
+				height: 40px;
+				line-height: 40px;
+				text-align: right;
+				padding-right: 20px;
+			}
+			#textarea{
+				width: 570px;
+				height: 100px;
+				border: 1px solid #CCCCCC;
+				resize: none;
+				font-size: 20px;
+			}
+			.text{
+				text-align: center;
+			}
+			.tag{
+				height: 60px;
+				overflow: hidden;
+			}
+			.left{
+				width: 300px;
+				height: 60px;
+				float:left;
+				line-height: 60px;
+				padding-left: 20px;
+			}
+			.left a{
+				color: black;
+				text-decoration: none;
+				margin: 0 10px;
+			}
+			.left a:hover{
+				color: #FDA508;
+			}
+			.right{
+				height: 60px;
+				width: 80px;
+				float:right;
+				padding-right: 20px;
+				text-align: right;
+				line-height: 50px;
+			}
+			#btn_send{
+				width: 68px;
+				height: 35px;
+				border: 0;
+				border-radius: 5px;
+				color: white;
+				background-color: #FDA508;
+				font-size: 16px;
+				opacity: 0.5;
+			}
+			.main{
+				width: 598px;
+				height: 1000px;
+				border:1px solid #CCCCCC;
+				border-radius: 10px;
+				margin-top: 10px;
+			}
+			.item{
+				width: 560px;
+				border: 1px solid #CCCCCC;
+				border-radius: 10px;
+				margin: 10px auto;
+				position: relative;
+				padding: 10px;
+				overflow: hidden;
+			}
+			.item_top{
+				height: 30px;
+				overflow: hidden;
+			}
+			.item_bottom{
+				margin-top: 20px;
+				color: #CCCCCC;
+			}
+			.item_del{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="wrap">
+			<div class="top">
+				<div class="title">
+					<div class="logo">LOGO</div>
+					<div id="libao">点击领取红包</div>
+				</div>
+				<div class="text">
+					<textarea id="textarea" name=""></textarea>
+				</div>
+				<div class="tag">
+					<div class="left">
+						<a href="#">表情</a> 
+						<a href="#">图片</a>
+						<a href="#">视频</a>
+						<a href="#">话题</a>
+						<a href="#">文章</a>
+					</div>
+					<div class="right">
+						<input type="button" value="发 布" id="btn_send" />
+					</div>
+				</div>
+			</div>
+			<div class="main" id="main"></div>
+		</div>
+		<script src="js/tween.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+	</body>
+</html>

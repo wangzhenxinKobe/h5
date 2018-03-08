@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="box"></div>
+		<script type="text/javascript">
+			var oBox = document.getElementById("box");
+			
+			//当鼠标指针悬停在元素上方时触发
+			oBox.onmouseover = function(){
+				alert("你的手放在了我的身上！");
+			}
+			
+			//当鼠标指针移出元素时触发
+			oBox.onmouseout = function(){
+				alert("你离开了我");
+			}
+		</script>
+	</body>
+
+</html>

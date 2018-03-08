@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//什么是面向对象？
+			//面向对象是一种编程思想，只关注其功能，
+			//不关注其内部细节。
+			
+			//面向对象的特点：
+			//1.封装：不考虑内部实现，只考虑功能
+			//2.继承：从已有的对象上，继承出新的对象
+			//3.多态:相同的操作，产生不同的结果
+			
+			//对象的组成
+			//1.方法 函数
+			//2.属性 变量
+			
+			var ary = [1,2,3,4,5];
+//			alert(typeof ary);
+//			alert(ary.length);
+//			ary.push(6);
+			
+			//什么方法？什么是函数？
+			//不属于任何对象的函数就是函数
+			//function show(){
+			//	alert("hello world");
+			//}
+			//show();
+			
+			//属于一个对象的函数就是方法
+			//ary.show = function(){
+			//	alert("hello world");
+			//}
+			//ary.show();
+			
+			//什么是属性？什么是变量？
+			//var num = 10; //变量
+			
+			//属于一个对象的变量就是属性
+			//ary.num = 20;
+			
+			//var ary = [1,2,3];
+			//var ary = new Array();
+			
+			//创建一个空对象
+			var obj = new Object();
+			obj.name = "江疏影";
+			obj.sex = "女";
+			obj.showName = function(){
+				alert(this.name);
+			}
+			obj.showSex = function(){
+				alert(this.sex);
+			}
+			
+			obj.showName();
+			obj.showSex();
+			
+			var obj2 = new Object();
+			obj2.name = "汤唯";
+			obj2.sex = "女";
+			obj2.showName = function(){
+				alert(this.name);
+			}
+			obj2.showSex = function(){
+				alert(this.sex);
+			}
+			
+			obj2.showName();
+			obj2.showSex();
+			
+		</script>
+	</body>
+</html>

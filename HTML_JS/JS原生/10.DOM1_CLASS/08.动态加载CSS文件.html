@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="" />
+	</head>
+	<body>
+		<input type="button" value="变个色" id="btn"/>
+		<div></div>
+		
+		<script type="text/javascript">
+		
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function () {
+				loadCss("test.css");
+			}
+			
+			//动态加载CSS文件函数
+			function loadCss(url){
+				var newlink = document.createElement("link");
+				newlink.rel="stylesheet";
+				newlink.type="text/css";
+				newlink.href=url;
+				
+				document.head.appendChild(newlink);
+			}
+		</script>
+		
+	</body>
+</html>

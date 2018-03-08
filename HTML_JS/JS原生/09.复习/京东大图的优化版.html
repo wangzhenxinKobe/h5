@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 790px;
+				height: 340px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#wrap img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				z-index: 0;
+				border: 0;
+			}
+			
+			#tag {
+				background: rgba(255, 255, 255, 0.5);
+				width: 166px;
+				position: absolute;
+				z-index: 9;
+				border-radius: 11px;
+				bottom: 20px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				padding: 2px 8px;
+				overflow: hidden;
+				text-align: center;
+			}
+			
+			#tag div {
+				height: 12px;
+				width: 12px;
+				background-color: white;
+				display: inline-block;
+				border-radius: 50%;
+				margin: 0 2px;
+			}
+			
+			#left {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				left: 0;
+				width: 25px;
+				height: 60px;
+				color: #f5f5f5;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 2;
+				line-height: 60px;
+				text-align: center;
+				cursor: pointer;
+			}
+			
+			#right {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				right: 0;
+				width: 25px;
+				height: 60px;
+				color: #f5f5f5;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 2;
+				line-height: 60px;
+				text-align: center;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<a href="#1"><img src="img/1.jpg" style="opacity: 1;z-index: 1;" /></a>
+			<a href="#2"><img src="img/2.jpg" /></a>
+			<a href="#3"><img src="img/3.jpg" /></a>
+			<a href="#4"><img src="img/4.jpg" /></a>
+			<a href="#5"><img src="img/5.jpg" /></a>
+			<a href="#6"><img src="img/6.jpg" /></a>
+			<a href="#7"><img src="img/7.jpg" /></a>
+			<a href="#8"><img src="img/8.jpg" /></a>
+			<div id="tag">
+				<div style="background-color: red;"></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div id="left">&lt;</div>
+			<div id="right">&gt;</div>
+		</div>
+		<script src="js/startMove.js"></script>
+		<script>
+			var oWrap = document.getElementById("wrap");
+			var oImgs = oWrap.getElementsByTagName("img");
+
+			var oTag = document.getElementById("tag");
+			var oTags = oTag.getElementsByTagName("div");
+
+			var oLeft = document.getElementById("left");
+			var oRight = document.getElementById("right");
+
+			var timer = null;
+
+			//当前显示图片的索引
+			var index = 0;
+			var clearIndex = 0;
+
+			//自动播放
+			function autoPlay() {
+				clearInterval(timer);
+				timer = setInterval(function() {
+					index++;
+					if(index >= oImgs.length) {
+						index = 0;
+					}
+					//要清除的索引
+					if(index - 1 < 0) {
+						clearIndex = oImgs.length - 1;
+					} else {
+						clearIndex = index - 1;
+					}
+					
+					//改变图片
+					bannerChange();
+
+				}, 2000);
+			}
+			autoPlay();
+
+			oWrap.onmouseover = function() {
+				clearInterval(timer);
+			}
+			oWrap.onmouseout = function() {
+				autoPlay();
+			}
+			//获取小球数量
+			var iTagsLen = oTags.length;
+			for(var i = 0; i < iTagsLen; i++) {
+				oTags[i].index = i;
+				oTags[i].onmouseover = function() {
+					clearIndex = index;			
+					index = this.index;
+					bannerChange();
+				}
+			}
+			function bannerChange() {
+				//设置要清除的图片透明度
+				oImgs[clearIndex].style.zIndex = 0;
+				startMove(oImgs[clearIndex], {
+					"opacity": "0"
+				});
+				oTags[clearIndex].style.backgroundColor = "";
+				//设置要显示的图片透明度
+				oTags[index].style.backgroundColor = "red";
+				oImgs[index].style.zIndex = 1;
+				startMove(oImgs[index], {
+					"opacity": "100"
+				});
+			}
+			oLeft.onclick = function() {
+
+				clearIndex = index;
+				//设置要显示的图片透明度
+				index--;
+				if(index < 0) {
+					index = 7;
+				}
+				bannerChange();		
+			}
+			oRight.onclick = function() {
+				clearIndex = index;
+				//设置要显示的图片透明度
+				index++;
+				if(index >= oImgs.length) {
+					index = 0;
+				}				
+				bannerChange();
+			}
+		</script>
+	</body>
+
+</html>

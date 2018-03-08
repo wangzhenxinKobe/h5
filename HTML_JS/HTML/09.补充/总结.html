@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	
+		
+		
+			*基础标签：
+			块标签：h1~h6(标题) p(段落) div(无语义标签)
+			 br(换行符) hr(分割线)
+				ul(无序列表) ol(有序列表) li（列表项）
+				dl(定义列表) dt(标题) dd(项)
+			行标签：a(超链接) span img(图片) input(表单)
+					 i b u sup sub
+			
+			*相对路径 绝对路径
+			
+			*css引入方式
+			外部引入 link 创建.css文件
+			内部引入 head style 
+			行间样式 标签内 style="样式：样式值；样式：样式值；"
+			
+			*css选择器
+			类选择器   标签内 class="类名"  .类名  10
+			id选择器   标签内 id="id名"     #id名  100
+			标签选择器                      标签名 1
+			
+			后代选择器    div .div1 div里面的所有.div1的标签
+			群组选择器    用逗号相连
+		    通配符选择器  *当前网页的所有标签
+		    
+		    *盒模型
+		    一个元素大小 内容的大小 + padding + border + margin
+		    兄弟用margin 父子padding 
+		    margin垂直合并问题
+		    
+		    *行标签：
+		    1.内容撑开宽高
+		    2.在一行显示
+		    3.行标签不能设置上下的margin
+		    4.不能设置大小（img input除外）
+		    5.只能嵌套行标签
+		    
+		    *块标签
+		    1.独占一行
+		    2.可以设置大小，宽高
+		    3.可以嵌套块标签和行标签（p除外）
+		    4.不设置宽高，默认内容撑开高度，宽度为父级的宽度
+		    5.可以设置margin 和 padding
+		    
+		    浮动元素：
+		    	1.不占文本流
+		    	2.失去标签本来的特性
+		    	3.可以设置宽高，默认内容撑开大小
+		    	4.需要清浮动 使用overflow:hidden
+		    	5.如果一个父标签中有一个子标签浮动，子标签的兄弟标签都要浮动
+		   	
+		   	定位元素：
+		   	1.固定定位 fixed
+		   	使用场景：导航 广告
+		   	*不占文本流
+		   	*内容撑开宽高
+		   	*失去标签本来的特性
+		   	*相对于窗口定位
+		   	
+		   	2.相对定位 relative
+		   	使用场景：微调 绝对定位的父标签
+		   	*相对于自身定位
+		   	*占文本流
+		   	*保持标签本来的特性
+		   	*不设置top left right bottom值，不动
+		   	
+		   	3.绝对定位 absolute
+			使用场景：相对于祖宗辈定位
+			*相对于祖宗辈设置相对 绝对定位的元素进行定位
+			*如果祖宗辈没有定位元素 相对于显示器定位
+			*不占文本流
+			*失去标签本来的特性 可以设置宽高
+			
+			z-index:
+			1.兄弟之间进行比较
+			2.只有定位元素才可以使用z-index调整堆叠顺序
+			3.值越大 越在上面
+			
+			*隐藏
+			opacity 透明度 0 ~ 1
+			visiblity 占文本流 隐藏使用hidden
+			display  none 不占文本流 
+			
+			*行块转换
+			display inline block inline-block table none
+			inline-block 行块标签 既具有行标签在一行显示 也就有块标签设置宽高
+			表单
+			
+			form action 提交的网址
+				 method 提交的方式 get post 
+		
+			input 
+			text      文本框
+			password  密码框
+			button    按钮
+			checkbox  复选框
+			radio     单选框
+			file      文件
+			reset     重置
+			submit    提交
+			
+			select    下拉框
+			textarea  多行文本框
+			
+			表格
+			
+			table 
+			tr 一行
+			th 标题
+			td 一个单元格
+			
+			行合并 rowspan
+			列合并 colspan
+			border-collapse 去掉单元格间的距离
+			
+			样式：
+			width height 宽高
+			backgroud 复合样式
+			backgroud-color 背景颜色
+			backgroud-image 背景图片
+			backgroud-size  背景大小
+			backgroud-position 背景位置
+			text-indent 缩进
+			word-spacing   单词间距
+			letter-spacing 文字间距
+			line-height 行高
+			text-decoration 
+			text-align 对齐方式
+			font-style 字体样式
+			color 文本颜色
+			font-family 字体
+			font-size 字体大小
+			font-weight 加粗
+			overflow 超出隐藏 hidden scroll 
+			clear:both
+			border-radius 圆角
+			
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>
+</html>

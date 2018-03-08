@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script>
+		
+			//在javascript中，回调函数具体定义为：
+			//函数A做为参数传递到函数B中，并且由函数B
+			//去执行函数A。我们就说函数A是函数B的回调函数。
+			//如果没有名称函数，就叫做匿名回调函数
+			function A(msg){
+				alert(msg);
+			}
+			
+			function B(fn){
+				fn("hello");
+			}
+			
+			//回调函数
+			B(A);
+			
+			//匿名回调函数
+			B(function(msg){
+				console.log(msg);
+			})
+		</script>
+	</body>
+</html>

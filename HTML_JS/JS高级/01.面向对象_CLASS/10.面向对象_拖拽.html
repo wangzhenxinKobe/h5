@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box1 {
+				width: 50px;
+				height: 50px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#box2 {
+				width: 50px;
+				height: 50px;
+				background-color: blue;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#box3 {
+				width: 50px;
+				height: 50px;
+				background-color: green;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+
+		<script>
+			//创建构造函数
+			function Drag(id) {
+				
+				var _this = this;
+				this.mX = 0;
+				this.mY = 0;
+				this.bX = 0;
+				this.bY = 0;
+
+				this.boxObj = document.getElementById(id);
+				this.boxObj.onmousedown = function() {
+					_this.fnDown();
+				}
+			}
+
+			Drag.prototype.fnDown = function(e) {
+				var _this = this;
+				var e = e || window.event;
+				//获取鼠标的初始位置
+				this.mX = e.clientX;
+				this.mY = e.clientY;
+
+				//获取box的位置
+				this.bX = this.boxObj.offsetLeft;
+				this.bY = this.boxObj.offsetTop;
+				
+				document.onmousemove = function() {
+					_this.fnMove();
+				}
+				document.onmouseup = function() {
+					_this.fnUp();
+				}
+			}
+			Drag.prototype.fnMove = function(e) {
+				var e = e || window.event;
+				//获取鼠标当前的位置
+				var mX2 = e.clientX;
+				var mY2 = e.clientY;
+
+				//计算差值
+				var lessX = mX2 - this.mX;
+				var lessY = mY2 - this.mY;
+
+				this.boxObj.style.left = this.bX + lessX + "px";
+				this.boxObj.style.top = this.bY + lessY + "px";
+			}
+			Drag.prototype.fnUp = function() {
+				document.onmousemove = null;
+			}
+			
+			new Drag("box1");
+			new Drag("box2");
+			new Drag("box3");
+		</script>
+	</body>
+
+</html>

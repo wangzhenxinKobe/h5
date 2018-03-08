@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			//设置cookie
+			//默认情况下，如果不设置cookie过期时间，当浏览器退出时
+			//cookie会自动清除
+			
+			//document.cookie = "username=jiangshuying";
+			document.cookie = "username=jiangshuying";
+			document.cookie = "sex=girl";
+			document.cookie = "height=170";
+			
+			
+			//设置cookie的过期时间
+			//var newdate = new Date();
+			//newdate.setDate(newdate.getDate()+1);
+			//console.log(newdate);
+			//Chrome浏览器会有时差问题需要toGMTString()
+			//document.cookie = "username=jiangshuying;expires="+newdate.toGMTString();
+			
+			//清空cookie
+//			var newdate = new Date();
+//			newdate.setDate(newdate.getDate()-1);
+//			document.cookie = "username=;expires="+newdate;
+
+			//获取cookie
+			console.log(document.cookie);
+			
+			
+		</script>
+	</body>
+</html>

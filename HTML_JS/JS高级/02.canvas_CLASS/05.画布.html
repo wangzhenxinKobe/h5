@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas{
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<canvas id="canvas" width="600" height="500" ></canvas>
+	
+		<script>
+			var oC=  document.getElementById("canvas");
+			var ctx = oC.getContext("2d");
+			
+			
+			oC.onmousedown = function(e){
+				var e = e || window.event;
+				//获取鼠标的位置
+				var mX = e.clientX - oC.offsetLeft;
+				var mY = e.clientY - oC.offsetTop;
+				
+				ctx.beginPath();
+				ctx.moveTo(mX,mY);
+				
+				document.onmousemove = function(e){
+					var e = e || window.event;		
+					//获取当前的鼠标位置
+					var mX2 = e.clientX - oC.offsetLeft;
+					var mY2 = e.clientY - oC.offsetTop;
+					ctx.lineTo(mX2,mY2);
+					ctx.stroke();
+				}
+				
+				document.onmouseup = function(){
+					document.onmousemove = null;				
+				}
+				
+			}
+		</script>
+		
+	</body>
+</html>

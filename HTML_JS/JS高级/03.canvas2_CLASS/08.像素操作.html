@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+
+		<head>
+			<meta charset="UTF-8">
+			<title>绘制椭圆</title>
+			<style type="text/css">
+				#canvas {
+					border: 1px solid black;
+				}
+			</style>
+		</head>
+
+		<body>
+
+			<canvas id="canvas" width="600" height="500"></canvas>
+
+			<script>
+				var oC = document.getElementById("canvas");
+				var ctx = oC.getContext("2d");
+				
+				ctx.beginPath();
+				ctx.fillStyle="red";
+				ctx.fillRect(100,100,200,100);
+				//获取像素对象
+				var imgData = ctx.getImageData(100,100,200,100);
+				
+				//console.log(imgData);
+				
+				//ctx.putImageData(imgData,100,300,50,50,20,20);
+				
+				//创建image对象
+				var img = new Image();
+				//设置图片的地址
+				img.src = "img/1.jpg";
+				//浏览器加载图片完毕后再绘制图片
+				img.onload = function(){	
+					
+					ctx.drawImage(img,0,0);
+					//反色
+					//反色又叫补色
+					//与原色叠加可以变为白色的颜色
+					
+//					var imgData = ctx.getImageData(0,0,oC.width,oC.height);
+//					for(var i=0;i<imgData.data.length;i+=4){
+//						imgData.data[i] = 255-imgData.data[i];
+//						imgData.data[i+1] = 255-imgData.data[i+1];
+//						imgData.data[i+2] = 255-imgData.data[i+2];	
+//					}
+//					ctx.putImageData(imgData,0,0);
+
+					//灰度色
+					var imgData = ctx.getImageData(0,0,oC.width,oC.height);
+					for(var i=0;i<imgData.data.length;i+=4){
+						var r = imgData.data[i];
+						var g = imgData.data[i+1];
+						var b = imgData.data[i+2];
+						//计算灰度色
+						var gray = parseInt((r+g+b)/3);
+						
+						imgData.data[i]=gray;
+						imgData.data[i+1]=gray;
+						imgData.data[i+2]=gray;
+					}
+					ctx.putImageData(imgData,0,0);
+				}
+			</script>
+	</body>
+</html>

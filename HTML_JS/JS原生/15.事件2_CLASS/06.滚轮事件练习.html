@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script src="mousewheel.js" type="text/javascript" charset="utf-8"></script>
+	
+		<script type="text/javascript">
+			
+			var oBox = document.getElementById("box");
+			
+			MouseWheel(document,function(down){
+				if(down){
+					oBox.style.width = oBox.offsetWidth + 10 + "px";
+					oBox.style.height = oBox.offsetHeight + 10 + "px";
+				}else{
+					oBox.style.width = oBox.offsetWidth - 10 + "px";
+					oBox.style.height = oBox.offsetHeight - 10 + "px";	
+				}
+			});
+			
+		</script>
+	</body>
+</html>

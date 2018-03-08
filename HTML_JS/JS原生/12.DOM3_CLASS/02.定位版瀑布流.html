@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#flow {
+				position: relative;
+				margin: 0 auto;
+				list-style: none;
+				transition: all 1s;
+			}
+			
+			#flow li {
+				position: absolute;
+				width: 200px;
+				padding: 10px;
+				border: 1px solid gainsboro;
+				overflow: hidden;
+				transition: all 1s;
+			}
+			
+			#flow img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<ul id="flow"></ul>
+
+		<script>
+			//图片数据
+			var images = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/7.jpg", "img/8.jpg", "img/9.jpg", "img/10.jpg", "img/11.jpg", "img/12.jpg", "img/13.jpg", "img/14.jpg", "img/15.jpg", "img/16.jpg", "img/17.jpg", "img/18.jpg", "img/19.jpg", "img/20.jpg"];
+
+			//获取元素
+			var oFlow = document.getElementById("flow");
+			var oLis = oFlow.getElementsByTagName("li");
+
+			//每一个li的块占用的宽度
+			var liW = 0;
+
+			//每一个li之间间距
+			var marginRight = 10;
+
+			//行与行之间的间距
+			var marginTop = 10;
+
+			//添加图片函数
+			function loadImg() {
+				//循环图片数据数组
+				for(var i = 0; i < images.length; i++) {
+					//创建新的li
+					var newli = document.createElement("li");
+					//创建图片对象
+					var newImage = new Image();
+					newImage.src = images[i];
+					//将图片添加到li中
+					newli.appendChild(newImage);
+					//将li添加到oFlow中
+					oFlow.appendChild(newli);
+				}
+			}
+
+			//生成瀑布流定位函数
+			function createflow() {
+				//获取列数
+				var cols = getCols();
+				//console.log(cols);
+
+				//获取每一个li的高度,存放到数组中
+				var liH = [];
+				for(var i = 0; i < oLis.length; i++) {
+					liH[i] = oLis[i].offsetHeight;
+				}
+
+				//定义存放每列高度的数组
+				var colH = new Array(cols);
+				for(var i = 0; i < colH.length; i++) {
+					colH[i] = 0;
+				}
+
+				//开始设置定位
+				var liLength = oLis.length;
+				for(var i = 0; i < liLength; i++) {
+					//获取最短列的下标
+					var minIndex = getMinIndex(colH);
+					//设置top
+					oLis[i].style.top = colH[minIndex] + marginTop + "px";
+					//设置left
+					oLis[i].style.left = minIndex * liW + "px";
+
+					//更新列高
+					colH[minIndex] = colH[minIndex] + marginTop + liH[i];
+
+				}
+
+			}
+
+			//获取最短列的下标函数
+			function getMinIndex(ary) {
+				var minH = ary[0];
+				var minIndex = 0;
+				for(var i = 0; i < ary.length; i++) {
+					if(minH > ary[i]) {
+						minH = ary[i];
+						minIndex = i;
+					}
+				}
+				return minIndex;
+			}
+
+			//计算列数函数
+			function getCols() {
+				//获取窗口的可见宽度
+				var pageW = document.documentElement.clientWidth;
+
+				//获取每个块宽度
+				liW = oLis[0].offsetWidth + marginRight;
+
+				//计算列数
+				var cols = Math.floor(pageW / liW);
+
+				//设置ul的固定宽度
+				oFlow.style.width = (cols * liW - marginRight) + "px";
+
+				return cols;
+			}
+
+			//执行加载图片函数
+			loadImg();
+
+			//当页面所有内容都加载完成之后执行
+			//包括图片、CSS文件、JS文件
+			window.onload = function() {
+				createflow();
+			}
+
+			//当浏览器窗口尺寸发生变化时触发
+			window.onresize = function() {
+				createflow();
+			}
+
+			//滚动事件
+			window.onscroll = function() {
+
+				//获取滚动偏移量
+				var sTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+				//获取窗口可视高度
+				var winH = document.documentElement.clientHeight;
+
+				//获取页面的整体高度
+				var pageH = document.documentElement.scrollHeight;
+
+				if((sTop + winH) == pageH) {
+					loadImg();
+					createflow();
+				}
+			}
+		</script>
+	</body>
+
+</html>

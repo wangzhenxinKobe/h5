@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="userpass"/>
+		<p id="msg"></p>
+		<script>
+			var oUserPass = document.getElementById("userpass");
+			var oMsg = document.getElementById("msg");
+			
+			oUserPass.onkeyup = function(){
+				var userpass = oUserPass.value;
+				
+				var reg = /^.{6,16}$/;
+				if(reg.test(userpass)){
+					oMsg.innerHTML= "密码格式正确";
+					oMsg.style.color = "green";
+					
+					//记录密码强度
+					var i = 0;
+					//判断是否有数字
+					var reg1 = /\d/;
+					if(reg1.test(userpass)){
+						i++;
+					}
+					//是否有字母
+					var reg2 = /[A-Za-z]/;
+					if(reg2.test(userpass)){
+						i++;
+					}
+					
+					//判断是否有符号
+					var reg3 = /[^A-Za-z0-9]/;
+					if(reg3.test(userpass)){
+						i++;
+					}
+					
+					if(i==1){
+						oMsg.innerHTML += " &nbsp;&nbsp; 密码强度：弱";
+					}
+					else if(i==2){
+						oMsg.innerHTML += " &nbsp;&nbsp; 密码强度：中";
+					}
+					else if(i==3){
+						oMsg.innerHTML += " &nbsp;&nbsp; 密码强度：强";
+					}
+					
+				}
+				else{
+					oMsg.innerHTML = "密码格式不正确";
+					oMsg.style.color = "red";
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

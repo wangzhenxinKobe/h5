@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*
+			 1. !important 高于一切 放到属性后面使用(使用较少)
+			 2. ID选择器
+			 3. 类选择器
+			 4. 标签选择器
+			 5. * 通配符选择器(选择所有元素) 等级最低
+			 
+			 如果优先级相同,按照CSS编写顺序最下面的覆盖上面的
+			 
+			 遇到组合选择器或者后代选择器组合使用时按照 "特指度"进行优先级判断
+			 ID选择器权重 100
+			 类选择器权重 10
+			 标签选择器权重 1
+			 
+			 
+			 */
+			
+			#div1 p{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+			#p1{
+				color: white;
+				background-color: blue;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<p id="p1">你问我爱你有多深</p>
+			<p id="p2">月亮代表我的心</p>
+			<p id="p3">轻轻的一个吻,曾经打动我的心</p>
+		</div>
+		<div id="div2">
+		</div>
+		<div id="div3">
+		</div>
+		
+	</body>
+</html>

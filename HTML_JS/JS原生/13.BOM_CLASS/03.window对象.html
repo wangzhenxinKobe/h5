@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="button" value="打开" id="btn" />
+		<!--
+			window对象
+			所有的浏览器都支持window对象，所有javascript的全局对象 变量
+			函数都自动成为window对象的成员，全局变量是window对象的属性,全局
+			函数是window对象的一个方法。
+			
+			我们以前学过的alert/setInterval都是window的方法
+		-->
+
+		<script>
+			//浏览器窗口相对于屏幕顶端的位置
+			//支持chrome safari opera IE
+			//console.log(window.screenTop);
+			//支持firefox chrome safari 
+			//console.log(window.screenY);
+
+			//浏览器窗口相对于屏幕左端的位置
+			//console.log(window.screenLeft);
+			//console.log(window.screenX);
+
+			//浏览器窗口内部的高度和宽度
+			//IE9以上支持
+			//console.log(window.innerHeight);
+			//console.log(window.innerWidth);
+			//低版本的IE支持
+			//console.log(document.body.clientHeight);
+			//console.log(document.body.clientWidth);
+
+			//chrome safari opera
+			//console.log(document.documentElement.clientHeight);
+			//console.log(document.documentElement.clientWidth);
+
+			//窗口大小 IE9以上支持
+			//console.log(window.outerHeight);
+			//console.log(window.outerWidth);
+
+			//打开窗口
+			//window.open(URL,打开的目标，复合参数)
+			//			document.getElementById("btn").onclick = function(){
+			//				window.open("http://www.baidu.com","_blank","resizable=no,height=200,width=300");
+			//			}
+
+			//系统对话框
+
+			//1.警告对话框
+			//window.alert("你好");
+
+			//2.确认对话框
+			//点击"确定"返回true,点击"取消"返回false
+			//			if(window.confirm("你愿意嫁给我吗？")){
+			//				alert("我也愿意！");
+			//			}else{
+			//				alert("跟你开个玩笑！");
+			//			}
+
+			//3.提示对话框
+			//点击确定后返回输入的内容，点击取消返回null
+			//console.log(window.prompt("你在干什么？"));
+
+			//关闭窗口
+//			document.getElementById("btn").onclick = function() {
+//				window.close();
+//			}
+
+			var newwindow = window.open("http://www.baidu.com","newwindow","width=400,height=300,top=200,left=200");
+			
+			document.getElementById("btn").onclick = function(){
+				//移动窗口
+				//newwindow.moveTo(10,400);
+				
+				//改变窗口大小
+				//newwindow.resizeTo(500,600);
+			}
+		</script>
+	</body>
+
+</html>

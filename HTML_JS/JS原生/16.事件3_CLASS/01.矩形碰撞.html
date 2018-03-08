@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				margin: 0 auto;
+				position: relative;
+			}
+			#box1{
+				width: 50px;
+				height: 50px;
+				background-color: blue;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+			}
+			#box2{
+				width: 50px;
+				height: 50px;
+				background-color: gray;
+				position: absolute;
+				top: 200px;
+				left: 200px;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box1"></div>
+			<div id="box2"></div>
+		</div>
+		
+		<script>
+			//获取元素
+			var oBox1 = document.getElementById("box1");
+			var oBox2 = document.getElementById("box2");
+			var oWrap = document.getElementById("wrap");
+			
+			//给box1绑定鼠标事件
+			oBox1.onmousedown = function(e){
+				//获取event对象
+				var e = e || window.event;
+				
+				//获取鼠标的初始位置
+				var mX1 = e.clientX;
+				var mY1 = e.clientY;
+				
+				//获取box1的初始位置
+				var box1Left = oBox1.offsetLeft;
+				var box1Top = oBox1.offsetTop;
+				
+				//绑定移动事件
+				oWrap.onmousemove = function(e){
+					//获取event对象
+					var e = e || window.event;
+					
+					//获取鼠标的当前位置
+					var mX2 = e.clientX;
+					var mY2 = e.clientY;
+					
+					//计算鼠标位置的差值
+					var lessX = mX2 - mX1;
+					var lessY = mY2 - mY1;
+					
+					//设置box1当前的位置
+					oBox1.style.left = lessX + box1Left + "px";
+					oBox1.style.top = lessY + box1Top + "px";
+					
+					//获取box1位置
+					var box1X = oBox1.offsetLeft;
+					var box1Y = oBox1.offsetTop;
+					
+					//获取box1宽高
+					var box1W = oBox1.offsetWidth;
+					var box1H = oBox1.offsetHeight;
+					
+					//获取box2位置
+					var box2X = oBox2.offsetLeft;
+					var box2Y = oBox2.offsetTop;
+					
+					//获取box2宽高
+					var box2W = oBox2.offsetWidth;
+					var box2H = oBox2.offsetHeight;
+					
+					//判断碰撞
+					var leftType = box1X + box1W >= box2X;
+					var rightType = box2X + box2W >= box1X;
+					var topType = box1Y + box1H >= box2Y;
+					var bottomType = box2Y + box2H >= box1Y;
+					
+					if(leftType && rightType && topType && bottomType){
+						oBox2.style.backgroundColor = "red";
+					}else{
+						oBox2.style.backgroundColor = "";
+					}
+					
+				}	
+			}
+			oWrap.onmouseup = function(){
+				oWrap.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

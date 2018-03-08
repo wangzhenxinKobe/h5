@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			//当用户按下键盘时触发
+			//如果按住不放会连续触发(功能键除外)
+//			window.onkeydown = function(e){
+//				
+//				var e = e || window.event;
+//				//键盘码
+//				console.log(e.keyCode);
+//				//只适用于非IE
+//				console.log(e.which);
+//			}
+			
+			//当用户按下键盘时触发,按住不放会时会连续触发
+			//如果按下系统功能键时不触发
+//			window.onkeypress = function(e){
+//				var e = e || window.event;
+//				//keyCode返回时字符ASCII编码
+//				console.log(e.keyCode);
+//			}
+			//当用户抬起键盘按键时触发
+//			window.onkeyup = function(e){
+//				var e = e || window.event;
+//				//keyCode返回的是键盘码
+//				console.log(e.keyCode);
+//			}
+
+			window.onkeydown = function(e){
+				var e = e || window.event;
+				//是否按了ctrl键
+				//console.log(e.ctrlKey);
+				
+				//是否按了shift键
+				//console.log(e.shiftKey);
+				
+				//是否按了alt键
+				//console.log(e.altKey);
+				
+				//是否按了多媒体键
+				//console.log(e.metaKey);
+				
+				//组合按键
+				if(e.ctrlKey && e.keyCode == 13){
+					console.log("发送消息");
+				}
+				
+				if(e.ctrlKey && e.altKey && e.keyCode == 13){
+					console.log("截屏");
+				}
+			}
+			
+		</script>
+		
+	</body>
+</html>

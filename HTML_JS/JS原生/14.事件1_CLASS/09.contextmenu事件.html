@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			
+			//contextmenu事件是H5新增的事件，通过鼠标右键调出上下文菜单时触发。
+			
+			window.oncontextmenu = function(e){
+				//alert("显示菜单");
+				
+				var e = e || window.event;
+				
+				//取消浏览器的默认行为
+				if(e.preventDefault){
+					e.preventDefault();
+				}else{
+					e.returnValue = false;
+				}
+			}
+			
+		</script>
+		
+	</body>
+</html>

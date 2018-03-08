@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="600" height="500" style="border:1px solid black">
+			您的浏览器不支持canvas，请升级浏览器。
+		</canvas>
+
+		<script>
+			var oC = document.getElementById("canvas");
+			//获取绘图环境对象
+			var ctx = oC.getContext("2d");
+			var rectH = 20;
+			var rectW = 20;
+			var tableW = oC.width;
+			ctx.lineWidth = 0.5;
+			//绘制横线
+			for(var i = 0; i <= tableW / rectH; i++) {
+				
+				ctx.beginPath();
+				ctx.moveTo(0,i*rectH);
+				ctx.lineTo(tableW,i*rectH);
+				ctx.closePath();
+				ctx.stroke();
+				
+				ctx.beginPath();
+				ctx.moveTo(i*rectW,0);
+				ctx.lineTo(i*rectW,tableW);
+				ctx.closePath();
+				ctx.stroke();
+			}
+		</script>
+	</body>
+
+</html>

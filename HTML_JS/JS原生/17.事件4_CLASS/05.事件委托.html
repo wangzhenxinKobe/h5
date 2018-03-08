@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<ul id="mygirl">
+			<li><a>江疏影</a></li>
+			<li>范冰冰</li>
+			<li>汤唯</li>
+			<li>佟丽娅</li>
+			<li>赵丽颖</li>
+		</ul>
+
+		<script>
+			var oMygirl = document.getElementById("mygirl");
+
+			oMygirl.onmouseover = function(e) {
+				var e = e || window.event;
+				//target代表的是目标元素对象
+				if(this != e.target) {
+					var li = e.target;
+					if(e.target.nodeName == "A"){
+						li = e.target.parentNode;
+					}
+					
+					li.style.backgroundColor = "red";
+				}
+			}
+
+			oMygirl.onmouseout = function(e) {
+				var e = e || window.event;
+				var li = e.target;
+				li.style.backgroundColor = "";
+			}
+		</script>
+	</body>
+
+</html>

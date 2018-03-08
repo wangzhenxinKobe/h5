@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 200px;
+				height: 300px;
+				border: 1px solid black;
+				overflow: hidden;
+				position: relative;
+				font-size: 20px;
+				line-height: 24px;
+			}
+			#text{
+				width: 180px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#scrollwrap{
+				width: 14px;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+				background-color: pink;
+				opacity: 0.3;
+			}
+			#scroll{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 14px;
+				height: 100px;
+				background-color: deeppink;
+				border-radius: 7px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="text">
+				江疏影，1986年9月1日出生于上海[1-2]  ，中国内地女演员，毕业于上海戏剧学院2004级表演系本科班，英国东英格利亚大学传媒经济学2009级硕士。
+2005年出演首部电视剧《飞花如蝶》“金凤”一角而出道。[3]  2013年在电影《致我们终将逝去的青春》出演校园女神“阮莞”得到广泛关注，[4]  凭借该片获得第五届英国万像国际华语电影节最佳女配角奖和第八届亚洲电影大奖最佳新演员奖。[5-7]  2014年在都市时尚情感剧《一仆二主》饰演绿茶女神“顾菁菁”，凭借该片提名第21届上海电视节最佳女配角，斩获第17届华鼎奖中国百强电视剧最佳女配角。[8-15]  2015年初在青春励志剧《长大》饰演萌妹天使“陈曦"。[16-17]  同年8月出演都市浪漫爱情偶像剧《最佳前男友》女一号强势女王“傅方思”。[18] 
+2016年4月1日，主演青春热血励志剧《旋风十一人》，剧中饰演表格领队“裴朵”[19-20]  。2016年5月31日，主演的都市情感剧《好先生》首播，剧中饰演千金烈女“江莱”。2016年7月7日，主演都市爱情剧《一路繁花相送》，剧中饰演女一号任性少女“辛辰”[21]  。
+			</div>
+			<div id="scrollwrap">
+				<div id="scroll"></div>
+			</div>
+		</div>
+		<script src="mousewheel.js" type="text/javascript"></script>
+		<script>
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+			var oText = document.getElementById("text");
+			var oSWrap = document.getElementById("scrollwrap");
+			var oScroll = document.getElementById("scroll");
+			
+			//计算可视高度与文字整体高度的比例
+			var textRatio = oWrap.offsetHeight / oText.offsetHeight;
+			
+			//计算滚动条的高度
+			var sHeight = oWrap.offsetHeight * textRatio;
+			
+			//设置滚动条的高度
+			oScroll.style.height = sHeight + "px";
+			
+			//计算滚动条的移动范围
+			var maxSTop = oWrap.offsetHeight - oScroll.offsetHeight;
+			
+			//计算内容可以移动的范围
+			var maxTTop = oText.offsetHeight - oWrap.offsetHeight;
+			
+			oScroll.onmousedown = function(e){
+				var e = e || window.event;
+				
+				//获取初始鼠标位置
+				//var mX1 = e.clientX;
+				var mY1 = e.clientY;
+				
+				//获取初始滚动条的位置
+				var sTop = oScroll.offsetTop;
+				
+				document.onmousemove = function(e){
+					var e = e || window.event;
+					
+					//获取当前的鼠标位置
+					var mY2 = e.clientY;
+					
+					//计算鼠标移动的差值
+					var lessY = mY2 - mY1;
+					
+					//计算滚动条的新位置(临时的)
+					var sNewTop = lessY + sTop;
+					
+					//判断滚动条是否超出范围
+					if(sNewTop <= 0){
+						sNewTop = 0;
+					}
+					else if(sNewTop >= maxSTop){
+						sNewTop = maxSTop;
+					}
+					
+					//设置滚动条的位置
+					oScroll.style.top = sNewTop + "px";
+					
+					//计算移动比例
+					var moveRatio = sNewTop / maxSTop;
+					
+					//设置内容的位置
+					oText.style.top = (-moveRatio * maxTTop) + "px";
+					
+				}
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+			
+			MouseWheel(oWrap,function(down){
+				//获取当前的滚动条的位置
+				var sTop = oScroll.offsetTop;
+				
+				if(down){
+					sTop += 1; 
+				}else{
+					sTop -= 1;
+				}
+				
+				if(sTop <= 0){
+					sTop = 0;
+				}
+				else if(sTop >= maxSTop){
+					sTop = maxSTop;
+				}
+				
+				//设置滚动条的位置
+				oScroll.style.top = sTop + "px";
+				
+				//计算移动比例
+				var moveRatio = sTop / maxSTop;
+				//设置内容的位置
+				oText.style.top = (-moveRatio * maxTTop) + "px";
+				
+			})
+			
+			
+		</script>
+	</body>
+</html>

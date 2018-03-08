@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				border: 1px dashed black;
+				padding: 10px;
+				color: green;
+				word-break: break-all;
+				font-size: 16px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap1"></div>
+		<input type="button" value="删除1月" id="btn1" />
+		<input type="button" value="删除12月" id="btn2" />
+		<div id="wrap2"></div>
+		<input type="button" value="复制" id="btn3"/>
+		<input type="button" value="还原" id="btn4"/>
+		<div id="wrap3"></div>
+		<input id="btn5"  type="button" value="还原" />
+		<input id="btn6" type="button" value="删除前三项" />
+		<input id="btn7" type="button" value="删除第二项至第三项" />
+		<input id="btn8" type="button" value="在第二项后面插入orange,purple" />
+		<input id="btn9" type="button" value="替换第二项和第三项" />
+
+		<script>
+			//第一个块的数组内容
+			var ary_wrap1 = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+			
+			//第二个块的数组内容
+			var ary_wrap2 = [0,1,2,3,4,5,6,7,8,9]
+			
+			//第三个块的数组内容
+			var ary_wrap3 = ["red","green","blue","white","yellow","black","brown"];
+
+			//获取元素
+			var oWrap1 = document.getElementById("wrap1");
+			var oWrap2 = document.getElementById("wrap2");
+			var oWrap3 = document.getElementById("wrap3");
+			
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			
+			var oBtn3 = document.getElementById("btn3");
+			var oBtn4 = document.getElementById("btn4");
+			
+			var oBtn5 = document.getElementById("btn5");
+			var oBtn6 = document.getElementById("btn6");
+			var oBtn7 = document.getElementById("btn7");
+			var oBtn8 = document.getElementById("btn8");
+			var oBtn9 = document.getElementById("btn9");
+	
+			//设置初始内容
+			oWrap1.innerHTML = ary_wrap1.join();
+			oWrap2.innerHTML = ary_wrap2.join();
+			oWrap3.innerHTML = ary_wrap3.join();
+			
+			
+			//设置点击事件 删除1月和添加一月
+			oBtn1.onclick = function() {
+				if(this.value == "删除1月") {
+					ary_wrap1.shift();
+					this.value = "添加1月";
+				} else {
+					ary_wrap1.unshift("1月");
+					this.value = "删除1月";
+				}
+				oWrap1.innerHTML = ary_wrap1.join();
+			}
+			//删除12月和添加12月
+			oBtn2.onclick = function() {
+				if(this.value == "删除12月") {
+					ary_wrap1.pop();
+					this.value = "添加12月";
+				} else {
+					ary_wrap1.push("12月");
+					this.value = "删除12月";
+				}
+				oWrap1.innerHTML = ary_wrap1.join();
+			}
+			
+			var wrap2_temp=ary_wrap2;
+			//复制数组
+			oBtn3.onclick = function () {
+				wrap2_temp = wrap2_temp.concat(wrap2_temp);
+				oWrap2.innerHTML = wrap2_temp.join();
+			}
+			//还原数组
+			oBtn4.onclick = function () {
+				wrap2_temp = ary_wrap2;
+				oWrap2.innerHTML =wrap2_temp.join();
+			}
+			
+			//还原第三个块的内容
+			//concat开辟新空间给wrap3_temp
+			var wrap3_temp = ary_wrap3.concat();
+			oBtn5.onclick = function () {
+				wrap3_temp = ary_wrap3.concat();
+				oWrap3.innerHTML = wrap3_temp.join();
+			}
+			
+			//删除前三项
+			oBtn6.onclick = function(){
+				wrap3_temp.splice(0,3);
+				oWrap3.innerHTML = wrap3_temp.join();
+			}
+			
+			//删除第二项至第三项
+			oBtn7.onclick = function(){
+				wrap3_temp.splice(1,2);
+				oWrap3.innerHTML = wrap3_temp.join();
+			}
+			
+			//在第二项后插入orange,purple
+			oBtn8.onclick = function(){
+				wrap3_temp.splice(2,0,"orange","purple");
+				oWrap3.innerHTML = wrap3_temp.join();
+			}
+			
+			//替换第二项和第三项
+			oBtn9.onclick = function(){
+				wrap3_temp.splice(1,2,"#FF00000","#FFFFFF");
+				oWrap3.innerHTML = wrap3_temp.join();
+			}
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+
+		<head>
+			<meta charset="UTF-8">
+			<title>绘制椭圆</title>
+			<style type="text/css">
+				#canvas {
+					border: 1px solid black;
+				}
+			</style>
+		</head>
+
+		<body>
+
+			<canvas id="canvas" width="600" height="500"></canvas>
+
+			<script>
+				var oC = document.getElementById("canvas");
+				var ctx = oC.getContext("2d");
+				
+				ctx.font = "50px Arial";
+				ctx.strokeStyle = "red";
+				//绘制文本 空心
+				//strokeText(文本字符串,位置X,位置y,文本最大宽度)
+				//文字超出文本最大宽度时按照最大宽度进行缩放
+				ctx.strokeText("Hello World",200,200,200);
+				
+				ctx.fillStyle = "blue";
+				//绘制文本 填充
+				//fillText(文本字符串,位置X,位置y,文本最大宽度)
+				//文字超出文本最大宽度时按照最大宽度进行缩放
+				ctx.fillText("Hello World",200,300);
+			</script>
+
+		</body>
+
+		</html>
+	</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>tab面向对象</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.tabs {
+				margin: 10px;
+			}
+			
+			.tabs-nav::before,
+			.tabs-nav::after {
+				display: block;
+				content: '';
+			}
+			
+			.tabs-nav::after {
+				width: 100%;
+				clear: both;
+				border-bottom: 1px solid #47a3da;
+			}
+			
+			.tabs-nav li {
+				position: relative;
+				float: left;
+				margin-right: 5px;
+				border: 1px solid #becbd2;
+				border-bottom: none;
+			}
+			
+			.tabs-nav li.active:after {
+				position: absolute;
+				bottom: -1px;
+				width: 100%;
+				display: block;
+				content: ' ';
+				border-bottom: 1px solid #fff;
+			}
+			
+			.tabs-nav a {
+				display: block;
+				padding: 0 20px;
+				line-height: 30px;
+				text-decoration: none;
+				color: #000;
+				font-size: 14px;
+			}
+			
+			.tabs-cnt {
+				padding: 10px;
+			}
+			
+			.tabs-content {
+				display: none;
+			}
+			
+			.tabs-content:first-child {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="tabs" id="tabs1">
+			<ul class="tabs-nav">
+				<li class="active">
+					<a href="javascript:;">折扣</a>
+				</li>
+				<li>
+					<a href="javascript:;">活动</a>
+				</li>
+				<li>
+					<a href="javascript:;">优惠</a>
+				</li>
+				<li>
+					<a href="javascript:;">其他</a>
+				</li>
+			</ul>
+			<div class="tabs-cnt">
+				<div class="tabs-content">
+					11111111
+				</div>
+				<div class="tabs-content">
+					2222
+				</div>
+				<div class="tabs-content">
+					3333
+				</div>
+				<div class="tabs-content">
+					4444
+				</div>
+			</div>
+		</div>
+		
+		<div class="tabs" id="tabs2">
+			<ul class="tabs-nav">
+				<li class="active">
+					<a href="javascript:;">新闻</a>
+				</li>
+				<li>
+					<a href="javascript:;">动态</a>
+				</li>
+				<li>
+					<a href="javascript:;">视频</a>
+				</li>
+				<li>
+					<a href="javascript:;">空间</a>
+				</li>
+			</ul>
+			<div class="tabs-cnt">
+				<div class="tabs-content">
+					新闻
+				</div>
+				<div class="tabs-content">
+					动态
+				</div>
+				<div class="tabs-content">
+					视频
+				</div>
+				<div class="tabs-content">
+					空间
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function Taps(id) {
+				
+				var _this = this;
+				
+				this.oTabs = document.getElementById(id);
+				this.oNavs = this.oTabs.querySelectorAll(".tabs-nav li");
+				this.oCnts = this.oTabs.querySelectorAll(".tabs-content");
+
+				for(var i = 0; i < this.oNavs.length; i++) {
+					
+					this.oNavs[i].index = i;
+					
+					this.oNavs[i].onclick = function() {
+						
+						_this.sel(this.index);
+					}
+				}
+			}
+
+			Taps.prototype.sel = function(index) {
+				for(var i = 0; i < this.oNavs.length; i++) {
+					this.oNavs[i].className = "";
+					this.oCnts[i].style.display = "none";
+				}
+				this.oNavs[index].className = "active";
+				this.oCnts[index].style.display = "block";
+			}
+
+			new Taps("tabs1");
+			new Taps("tabs2");
+		</script>
+	</body>
+
+</html>

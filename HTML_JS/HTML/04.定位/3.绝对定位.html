@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div {
+				width: 200px;
+				height: 200px;
+				font-size: 30px;
+				color: #FFFFFF;
+			}
+			.wrap{
+				width: 800px;
+				height: 800px;
+				border: 2px solid black;
+				margin: 0 auto;
+				position: relative;
+			}
+			.box1 {
+				background-color: red;
+			}
+			
+			.box2 {
+				background-color: green;
+				position: absolute;
+				margin: 20px;
+				top: 200px;
+				left: 200px;
+				
+			}
+			
+			.box3 {
+				background-color: blue;
+				position: absolute;
+				margin: auto;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+			/*
+			 * position:absolute
+			 * 绝对定位
+			 * 1.使元素完全脱离文档流
+			 * 2.使内联元素支持宽高
+			 * 3.使块属性标签内容撑开宽高
+			 * 4.如果有定位父级相对于定位父级发生偏移，没有定位父级相对于整个页面文档偏移
+			 * 
+			 * z-index:1 设置层级
+			 */
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="box1">box1</div>
+			<div class="box2">box2</div>
+			<div class="box3">box3</div>
+		</div>
+	</body>
+
+</html>

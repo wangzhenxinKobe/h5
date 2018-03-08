@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div class="wrap" id="w1">
+			<div class="item1">1</div>
+			<div class="item2">2</div>
+			<div class="item3">3</div>
+		</div>
+		<div class="wrap" id="w2">
+			<div class="item1">1</div>
+			<div class="item2">2</div>
+			<div class="item3">3</div>
+		</div>
+		<script src="jquery-1.11.2.min.js"></script>
+		<script>
+			$(function() {
+				//filter()过滤
+				//查找JQ对象中的某一个元素
+				$(".wrap").filter("#w2").css("font-size", "30px");
+				
+				//find()
+				//查找JQ对象中的子元素
+				$(".wrap").find(".item2").css("color","red");
+
+			})
+		</script>
+	</body>
+
+</html>

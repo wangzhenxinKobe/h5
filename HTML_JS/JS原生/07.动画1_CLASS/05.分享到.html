@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#share {
+				width: 200px;
+				height: 300px;
+				background-color: pink;
+				position: fixed;
+				left: -200px;
+				top: 300px;
+			}
+			
+			#tag {
+				width: 30px;
+				height: 50px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				background-color: deeppink;
+				color: #FFFFFF;
+				text-align: center;
+				position: absolute;
+				border-radius: 0 10px 10px 0;
+				top: 125px;
+				right: -30px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="share">
+			<div id="tag">分享到</div>
+		</div>
+
+		<script type="text/javascript">
+			var oShare = document.getElementById("share");
+
+			oShare.timer = null;
+			oShare.onmouseover = function() {
+				startMove(this, 0);
+			}
+			oShare.onmouseout = function() {
+				startMove(this, -200);
+			}
+
+			function startMove(obj,itarget) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function(){
+					var speed = (itarget - obj.offsetLeft)/10;
+					speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+					if(obj.offsetLeft == itarget){
+						clearInterval(obj.timer);
+						obj.style.left = itarget + "px";
+					}else{
+						obj.style.left = obj.offsetLeft + speed + "px";	
+					}
+				},20);
+			}
+		</script>
+	</body>
+
+</html>

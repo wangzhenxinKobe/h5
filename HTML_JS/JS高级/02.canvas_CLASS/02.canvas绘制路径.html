@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="500" style="border:1px solid black">
+			您的浏览器不支持canvas，请升级浏览器。
+		</canvas>
+		
+		<script>
+			//获取canvas元素
+			var oC = document.getElementById("canvas");
+			//获取绘图环境对象
+			var ctx = oC.getContext("2d");
+			
+//			ctx.moveTo(100,100);
+//			ctx.lineTo(300,100);
+//			
+////			ctx.moveTo(300,100);
+//			ctx.lineTo(300,300);
+//			ctx.lineTo(100,300);
+//			ctx.lineTo(100,100);
+			
+			//开辟一个新路径（开启一个新的状态），
+			//状态样式可以继承之前的状态样式
+			ctx.beginPath();
+			//设置路径颜色
+			ctx.strokeStyle = "red";
+			ctx.moveTo(100,100);
+			ctx.lineTo(300,300);
+			ctx.lineTo(100,300);	
+			//关闭路径(闭合起始点和终点)
+			ctx.closePath();
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.strokeStyle = "blue";
+			ctx.moveTo(200,200);
+			ctx.lineTo(400,400);
+			ctx.lineTo(200,400);
+			//关闭路径(闭合起始点和终点)
+			ctx.closePath();
+			//画线
+			ctx.stroke();
+			
+			//清除画布（橡皮擦）
+			ctx.clearRect(0,0,600,500);
+			
+			ctx.beginPath();
+			//设置填充颜色
+			ctx.fillStyle = "chartreuse";
+			ctx.moveTo(200,200);
+			ctx.lineTo(400,400);
+			ctx.lineTo(200,400);	
+			//关闭路径(闭合起始点和终点)
+			ctx.closePath();
+			ctx.fill();
+			
+			ctx.beginPath();
+			//设置填充颜色
+			ctx.fillStyle = "#0070C9";
+			ctx.moveTo(100,100);
+			ctx.lineTo(300,300);
+			ctx.lineTo(100,300);	
+			//关闭路径(闭合起始点和终点)
+			ctx.closePath();
+			ctx.fill();
+			
+			
+		</script>
+	</body>
+</html>

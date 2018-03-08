@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#goTop {
+				position: fixed;
+				right: 0;
+				top: 500px;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				background-color: plum;
+				color: white;
+				padding-top: 15px;
+			}
+			
+			.red {
+				height: 1000px;
+				background-color: red;
+			}
+			
+			.blue {
+				height: 1000px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="goTop">回到<br>顶部</div>
+		<div class="red"></div>
+		<div class="blue"></div>
+
+		<script>
+			var oGoTop = document.getElementById("goTop");
+			var timer = null;
+			oGoTop.onclick = function() {
+
+				clearInterval(timer);
+				timer = setInterval(function() {
+
+					//获取滚动偏移量
+					var sTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+					//滚动偏移量小于等0时 停止定时器
+					if(sTop <= 0) {
+						clearInterval(timer);
+					} else {
+						if(document.body.scrollTop) {
+							document.body.scrollTop -= 50;
+						} else {
+							document.documentElement.scrollTop -= 50;
+						}
+					}
+				}, 20);
+
+			}
+		</script>
+	</body>
+
+</html>

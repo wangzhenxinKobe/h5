@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				height: 2000px;
+				width: 2500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		1
+		<script>
+			//获取滚动偏移量
+			//被隐藏的页面高度
+			//document.documentElement.scrollTop 火狐支持 IE
+			//document.body.scrollTop chrome 支持			
+			var sHeight = document.documentElement.scrollTop || document.body.scrollTop;
+			console.log(sHeight);
+
+			//获取窗口的可视高度
+			var winHeight = document.documentElement.clientHeight;
+			//console.log(winHeight);
+			//获取窗口的可视高度
+			var winWidth = document.documentElement.clientWidth;
+			//console.log(winWidth);
+
+			//页面的整体高度
+			var pageHeight = document.documentElement.scrollHeight;
+			//console.log(pageHeight);
+
+			//页面的整体宽度
+			var pageWidth = document.documentElement.scrollWidth;
+			//console.log(pageWidth);
+
+			//console.log(sHeight+winHeight); 
+
+			//判断页面是否滚动到底部
+			if(sHeight + winHeight >= pageHeight) {
+				alert("你到底啦");
+			}
+		</script>
+	</body>
+
+</html>

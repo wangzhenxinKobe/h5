@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="添加" id="btn" />
+		<ul id="list"></ul>
+		
+		<script>
+			
+			var oBtn = document.getElementById("btn");
+			var oList = document.getElementById("list");
+			var index = 0;
+			oBtn.onclick = function(){
+				index++;
+				
+				//创建新的li对象
+				var newli = document.createElement("li");
+				newli.innerHTML = "列表项"+index;
+				
+				//创建新的按钮对象
+				var newBtn = document.createElement("input");
+				newBtn.type = "button";
+				newBtn.value = "删除";
+				
+				newli.appendChild(newBtn);
+				oList.appendChild(newli);
+				
+				newBtn.onclick = function(){
+					oList.removeChild(this.parentNode);
+				}
+			}
+			
+		</script>
+	</body>
+</html>

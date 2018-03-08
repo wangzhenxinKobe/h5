@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="wrap"></div>
+		<script>
+			var oWrap = document.getElementById("wrap");
+			//alert(typeof oWrap);
+			//数组
+			//数据元素按照一定顺序排列的集合，一次性定义多个变量，
+			//组成一个集合用一个变量保存
+
+			//定义数组
+			//第一种
+			//空数组
+			var arr1 = new Array();
+
+			//定义一个有10个元素的数组，但是现在10个元素都是空的
+			var arr2 = new Array(10);
+
+			//定义一个有3个元素的数组，第一个元素的值为2
+			//第二个元素的值为5，第三个元素的值为10
+			var arr3 = new Array(2, 5, 10);
+
+			//JS中数组可以保存不同数据类型的变量
+			var a = "hello";
+			var arr4 = new Array(a, "world", 518, oWrap);
+
+			//可以省略new 
+			var arr5 = Array(1, "2", "world", oWrap);
+
+			//第二种方法
+			//空数组
+			var arr6 = [];
+			//定义一个有1个元素的数组，里面的值是10
+			var arr7 = [10];
+
+			//定义一个有3个元素的数组，第一个元素的值为1
+			//第二个元素的值为2，第三个元素的值为 字符串3
+			var arr8 = [1, 2, "3", 0];
+
+			//返回object
+			//alert(typeof arr8);
+
+			//如何使用数组
+			//通过下标访问数组取值
+			//alert(arr8[0]);
+
+			//			console.log(arr8[0]);
+			//			console.log(arr8[1]);
+			//			console.log(arr8[2]);
+
+			//遍历数组，把数组中所有的元素都取出一次
+			//			for(var i=0;i<3;i++){
+			//				console.log(arr8[i]);
+			//			}
+
+			//获取数组的长度
+			//			alert(arr8.length);
+			//			for(var i=0;i<arr8.length;i++){
+			//				console.log(arr8[i]);
+			//			}
+
+			//数组越界
+			//当数组下标超出数组长度时，就会发生数组越界
+			//返回undefined
+			//console.log(arr8[4]);
+
+			//数组赋值
+			//arr8[0] = 3;
+
+			//如果直接给超出数组长度的元素赋值，会自动添加此数组
+			//并且长度也跟着增加
+//			arr8[10] = 10;
+//			console.log(arr8[10]);
+//			console.log(arr8.length);
+//			console.log(arr8[9]);
+
+			//练习：定义一个数组，给数组添加1~10个数字，并且控制台打印
+			
+			//var arr10 = new Array(10);
+			var arr10=[];
+			for(var i = 0; i < 10; i++) {
+				arr10[i] = i + 1;
+				console.log(arr10[i]);
+			}
+		</script>
+	</body>
+
+</html>

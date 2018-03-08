@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 180px;
+				height: 100px;
+				background-color: red;
+				opacity: 0.3;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			//获取元素
+			var oBox = document.getElementById("box");
+			
+			
+			
+			//获取非行间样式 非IE下的方法
+			var  bgc =getComputedStyle(oBox,null)["background-color"];
+			//console.log(bgc);
+			
+			//IE下获取 非行间样式
+			var height = oBox.currentStyle["height"];
+			//console.log(height);
+			
+//			for(var arr in getComputedStyle(oBox,null)){
+//				console.log(arr+"$$$$$"+getComputedStyle(oBox,null)[arr]);
+//			}
+
+			//获取非行间样式函数
+			function getStyle(obj,name){
+				if(obj.currentStyle){
+					return obj.currentStyle[name];
+				}else{
+					return getComputedStyle(obj,null)[name];
+				}
+			}
+			
+			console.log(getStyle(oBox,"width"));
+			console.log(getStyle(oBox,"height"));
+			console.log(getStyle(oBox,"opacity"));
+			
+		</script>
+	</body>
+</html>

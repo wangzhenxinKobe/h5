@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background: url(../../映分视觉/img/04.jpg);
+				background-size: cover;
+				padding: 100px;
+			}
+			
+			#wrap {
+				width: 1000px;
+				height: 400px;
+				margin: 0 auto;
+			}
+			
+			#quan {
+				width: 1000px;
+				margin: 0 auto;
+				text-align: center;
+				margin-top: 20px;
+			}
+			
+			#wrap div {
+				width: 100px;
+				height: 80px;
+				margin: 10px;
+				font-size: 30px;
+				text-align: center;
+				line-height: 80px;
+				display: inline-block;
+				background-color: gray;
+				color: white;
+			}
+			
+			#star {
+				width: 80px;
+				font-size: 30px;
+				font-family: arial;
+				border: none;
+				height: 50px;
+				border: 1px dashed goldenrod;
+				border-radius: 10px;
+				background-color: orange;
+				color: white;
+			}
+			
+			#wrap #div_1 {
+				background-color: orange;
+				color: blue;
+				font-weight: bold;
+				animation: long 2s linear 2 alternate;
+			}
+			
+			@keyframes long {
+				from {
+					transform: scale(1.5, 1.5);
+				}
+				to {
+					transform: scale(1, 1);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+
+		</div>
+		<div id="quan">
+			<input type="button" value="开始" id="star" />
+		</div>
+
+		<script type="text/javascript">
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+			var oStar = document.getElementById("star");
+			// 设置数组
+			var arr = ["姜广龙", "米鹏", "王新然", "吕正昊", "张国立", "刘建成","杨国庆", "裴志文", "王宇夫", "郑尼", "梁警徽", "王振新", "罗皓","王振", "李好文", "杨松", "姜宇", "沈冬雷", "张杰", "李文浩", "范明阳", "孙建为"];
+			//	添加元素
+			for(var i = 0; i < arr.length; i++) {
+				oWrap.innerHTML += "<div>" + arr[i] + "</div>";
+			};
+			//			var time;
+			//点击事件
+
+			oStar.onclick = function() {
+				if(oStar.value == "开始") {
+					oStar.value = "停止";
+					//计时器
+					//每次使用 setInterval 之后 一定要 清计时器用	clearInterval(time)
+					time = setInterval(function() {
+						var min = 0;
+						var max = 21;
+						var a = Math.floor(Math.random() * (max - min + 1) + min);
+						oWrap.innerHTML = "";
+						for(var i = 0; i < arr.length; i++) {
+							if(i != a) {
+								oWrap.innerHTML += "<div>" + arr[i] + "</div>";
+							} else {
+								oWrap.innerHTML += "<div id='div_1'>" + arr[a] + "</div>";
+							}
+						}
+					}, 200);
+
+				} else {
+					clearInterval(time);
+					oStar.value = "开始";
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

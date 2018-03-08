@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				overflow: hidden;
+			}
+			
+			#wrap>div {
+				width: 30px;
+				height: 30px;
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 50%;
+				float: left;
+				margin: 5px;
+			}
+			
+			.red {
+				background-color: red;
+			}
+			
+			.blue {
+				background-color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrap">
+			<div class="red" id="r1">33</div>
+			<div class="red" id="r2">33</div>
+			<div class="red" id="r3">33</div>
+			<div class="red" id="r4">33</div>
+			<div class="red" id="r5">33</div>
+			<div class="red" id="r6">33</div>
+			<div class="blue" id="b1">33</div>
+		</div>
+		<input type="button" value="随机一注" id="btn" />
+
+		<script>
+			//获取元素
+			var oBtn = document.getElementById("btn");
+
+			//随机函数
+			function randomNum(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			//获取一组红球的随机数
+			function getRed() {
+				var ary = [];
+				while(ary.length < 6) {
+					var newNum = randomNum(1, 33);
+					var repeat = false; //状态变量 不重复
+					for(var i = 0; i < ary.length; i++) {
+						if(newNum == ary[i]) {
+							repeat = true;
+						}
+					}
+					//如果不重复
+					if(!repeat) {
+						//将新生成的随机数插入到数组的尾部
+						ary.push(newNum);
+					}
+				}
+
+				//冒泡排序
+				for(var i = 0; i < ary.length - 1; i++) {
+					for(var j = 0; j < ary.length - 1 - i; j++) {
+						var tempNum = 0;
+						if(ary[j] > ary[j + 1]) {
+							tempNum = ary[j];
+							ary[j] = ary[j + 1];
+							ary[j + 1] = tempNum;
+						}
+					}
+				}
+
+				return ary;
+			}
+
+			var timer = null;
+			
+			//生成一注
+			function createNew() {
+				//设置定时器循环次数
+				var count = 0;
+				clearInterval(timer);
+				timer = setInterval(function() {
+					
+					
+					if(count < 10) {
+						var ary = getRed();
+						//设置红球
+						for(var i = 0; i < ary.length; i++) {
+							document.getElementById("r" + (i + 1)).innerHTML = ary[i];
+						}
+						//设置篮球
+						document.getElementById("b1").innerHTML = randomNum(1, 16);
+						count++;
+					}else{
+						//停止定时器
+						clearInterval(timer);
+					}
+
+				}, 100);
+
+			}
+
+			createNew();
+			
+			//添加点击事件
+			oBtn.onclick = function(){
+				createNew();
+			}
+		</script>
+	</body>
+
+</html>
